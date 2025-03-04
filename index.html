@@ -234,126 +234,138 @@
       transform: translateY(-50%);
       color: var(--secondary-color);
     }
+    /* Repositioned Legend */
+    .legend {
+      /* Legend styles - improved positioning and interaction */
+      position: absolute;
+      bottom: 90px; /* Moved up to avoid overlap with map controls */
+      right: 20px;
+      z-index: 900; /* Lower than map controls (1000) */
+      background-color: var(--card-bg);
+      padding: 15px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      width: 250px;
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
 
-/* Repositioned Legend */
-.legend {
-/* Legend styles - improved positioning and interaction */
-.legend {
-  position: absolute;
-  bottom: 90px;  /* Moved up to avoid overlap with map controls */
-  right: 20px;
-  z-index: 900;  /* Lower than map controls (1000) */
-  background-color: var(--card-bg);
-  padding: 15px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--card-shadow);
-  width: 250px;
-  max-height: 300px;
-  overflow-y: auto;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
+    .legend h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: var(--dark-color);
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 8px;
+    }
 
-.legend h3 {
-  margin: 0 0 12px 0;
-  font-size: 16px;
-  color: var(--dark-color);
-  border-bottom: 2px solid var(--primary-light);
-  padding-bottom: 8px;
-}
+    /* Add legend minimize button */
+    .legend-minimize {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 12px;
+      transition: background-color 0.2s ease;
+    }
 
-/* Add legend minimize button */
-.legend-minimize {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: var(--light-color);
-  color: var(--dark-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 12px;
-  transition: background-color 0.2s ease;
-}
+    .legend-minimize:hover {
+      background-color: var(--primary-light);
+      color: white;
+    }
 
-.legend-minimize:hover {
-  background-color: var(--primary-light);
-  color: white;
-}
+    .legend.minimized {
+      transform: translateY(calc(100% - 40px));
+      height: 40px;
+      max-height: 40px;
+      overflow: hidden;
+    }
 
-.legend.minimized {
-  transform: translateY(calc(100% - 40px));
-  height: 40px;
-  max-height: 40px;
-  overflow: hidden;
-}
+    .legend.minimized h3 {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
 
-.legend.minimized h3 {
-  margin: 0;
-  padding: 0;
-  border: none;
-}
+    .legend.minimized .legend-section {
+      display: none;
+    }
 
-.legend.minimized .legend-section {
-  display: none;
-}
+    .legend-section {
+      margin-bottom: 15px;
+    }
 
-/* Your existing legend styles - preserved */
-.legend-section {
-  margin-bottom: 15px;
-}
+    .legend-item,
+    .legend-tier-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      transition: transform 0.2s ease;
+    }
+    .legend-item:hover,
+    .legend-tier-item:hover {
+      transform: translateX(5px);
+    }
 
-.legend-item, .legend-tier-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-  transition: transform 0.2s ease;
-}
+    .legend-color,
+    .legend-tier-icon {
+      width: 30px;
+      height: 30px;
+      margin-right: 12px;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+      border: 2px solid white;
+    }
+    .legend-color:hover,
+    .legend-tier-icon:hover {
+      transform: scale(1.1);
+    }
 
-.legend-item:hover, .legend-tier-item:hover {
-  transform: translateX(5px);
-}
+    .type-hyderabad-police { background-color: var(--hyderabad-color); }
+    .type-cyberabad-police { background-color: var(--cyberabad-color); }
 
-.legend-color, .legend-tier-icon {
-  width: 30px;
-  height: 30px;
-  margin-right: 12px;
-  border-radius: 50%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-  border: 2px solid white;
-}
+    .tier-vip {
+      background: linear-gradient(135deg, var(--vip-color), #ff6347);
+      color: white;
+    }
+    .tier-platinum {
+      background: linear-gradient(135deg, var(--platinum-color), #ffffff);
+      color: #333;
+    }
+    .tier-gold {
+      background: linear-gradient(135deg, var(--gold-color), #FFF7CC);
+      color: #333;
+    }
+    .tier-silver {
+      background: linear-gradient(135deg, var(--silver-color), #E6E6E6);
+      color: #333;
+    }
 
-.legend-color:hover, .legend-tier-icon:hover {
-  transform: scale(1.1);
-}
+    /* Improve map controls positioning to avoid overlap with legend */
+    .mapboxgl-ctrl-top-right {
+      top: 20px !important;
+      right: 20px !important;
+    }
+    .mapboxgl-ctrl-bottom-right {
+      bottom: 20px !important;
+      right: 20px !important;
+    }
 
-.type-hyderabad-police { background-color: var(--hyderabad-color); }
-.type-cyberabad-police { background-color: var(--cyberabad-color); }
-.tier-vip { background: linear-gradient(135deg, var(--vip-color), #ff6347); color: white; }
-.tier-platinum { background: linear-gradient(135deg, var(--platinum-color), #ffffff); color: #333; }
-.tier-gold { background: linear-gradient(135deg, var(--gold-color), #FFF7CC); color: #333; }
-.tier-silver { background: linear-gradient(135deg, var(--silver-color), #E6E6E6); color: #333; }
-
-/* Improve map controls positioning to avoid overlap with legend */
-.mapboxgl-ctrl-top-right {
-  top: 20px !important;
-  right: 20px !important;
-}
-
-.mapboxgl-ctrl-bottom-right {
-  bottom: 20px !important;
-  right: 20px !important;
-}
-    /* VIP Popup styling */
+    /* Custom Popup styling */
     .custom-popup {
       max-width: 350px;
       background: var(--card-bg);
@@ -372,6 +384,7 @@
       align-items: center;
       justify-content: space-between;
     }
+
     .site-type-icon {
       display: inline-flex;
       align-items: center;
@@ -418,13 +431,12 @@
       color: var(--secondary-color);
       margin-top: 3px;
     }
-    
+
     .popup-header-info {
       display: flex;
       align-items: center;
       margin-bottom: 5px;
     }
-    
     .popup-tier-badge {
       background-color: var(--light-color);
       border-radius: 20px;
@@ -436,22 +448,18 @@
       gap: 4px;
       margin-left: auto;
     }
-    
     .popup-tier-badge.vip {
       background-color: var(--vip-color);
       color: white;
     }
-    
     .popup-tier-badge.platinum {
       background-color: var(--platinum-color);
       color: #333;
     }
-    
     .popup-tier-badge.gold {
       background-color: var(--gold-color);
       color: #333;
     }
-    
     .popup-tier-badge.silver {
       background-color: var(--silver-color);
       color: #333;
@@ -465,7 +473,6 @@
       font-size: 14px;
       border-left: 3px solid var(--primary-light);
     }
-    
     .popup-address i {
       color: var(--primary-light);
       margin-right: 5px;
@@ -502,7 +509,7 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    
+
     /* Custom Mapbox marker styles */
     .mapboxgl-marker {
       transition: transform 0.3s ease;
@@ -510,7 +517,6 @@
     .mapboxgl-marker:hover {
       transform: scale(1.2);
     }
-    
     .custom-marker {
       width: 30px;
       height: 30px;
@@ -525,19 +531,15 @@
       cursor: pointer;
       transition: transform 0.3s ease;
     }
-    
     .custom-marker:hover {
       transform: scale(1.2);
     }
-    
     .custom-marker.hyderabad-police {
       background-color: var(--hyderabad-color);
     }
-    
     .custom-marker.cyberabad-police {
       background-color: var(--cyberabad-color);
     }
-    
     .custom-marker.vip::after,
     .custom-marker.platinum::after,
     .custom-marker.gold::after,
@@ -551,23 +553,19 @@
       border-radius: 50%;
       border: 2px solid white;
     }
-    
     .custom-marker.vip::after {
       background-color: var(--vip-color);
     }
-    
     .custom-marker.platinum::after {
       background-color: var(--platinum-color);
     }
-    
     .custom-marker.gold::after {
       background-color: var(--gold-color);
     }
-    
     .custom-marker.silver::after {
       background-color: var(--silver-color);
     }
-    
+
     /* Status indicator */
     .status-indicator {
       position: absolute;
@@ -587,16 +585,13 @@
       transition: opacity 0.3s ease, transform 0.3s ease;
       border: 1px solid rgba(0, 0, 0, 0.05);
     }
-    
     .status-indicator.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    
     .status-indicator i {
       color: var(--success-color);
     }
-    
     .status-indicator.error i {
       color: var(--danger-color);
     }
@@ -629,1141 +624,605 @@
     }
   </style>
 </head>
-
 <body>
-  <div id="map-container">
-    <!-- Loader -->
-    <div class="loader-container" id="loader">
-      <div class="loader"></div>
-      <div class="loader-text">Loading facility data...</div>
-    </div>
-
-    <!-- Header -->
-    <div class="header">
-      <img src="https://raw.githubusercontent.com/Vibraneum/facilty-data/refs/heads/main/Ixora%20FM%20logo.png" alt="Ixora FM Logo">
-      <h1>Ixora Facility Management - Police Stations Hyderabad</h1>
-    </div>
-
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-      <div class="sidebar-toggle" id="sidebar-toggle">
-        <i class="fas fa-chevron-left"></i>
+    <div id="map-container">
+      <!-- Loader -->
+      <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">Loading facility data...</div>
       </div>
-      <div class="sidebar-content">
-        <div class="search-container">
-          <input type="text" id="search-bar" placeholder="Search by site name...">
-          <span class="search-icon"><i class="fas fa-search"></i></span>
-        </div>
-
-        <div class="filter-section">
-          <h3><i class="fas fa-filter"></i> Site Types</h3>
-          <div class="checkbox-container">
-            <div class="checkbox-item">
-              <label class="custom-checkbox">
-                <input type="checkbox" id="hyderabad-police" checked data-type="hyderabad-police"/>
-                <span class="checkmark"></span>
-              </label>
-              <span>Hyderabad Police</span>
-            </div>
-            <div class="checkbox-item">
-              <label class="custom-checkbox">
-                <input type="checkbox" id="cyberabad-police" checked data-type="cyberabad-police"/>
-                <span class="checkmark"></span>
-              </label>
-              <span>Cyberabad Police</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="filter-section">
-          <h3><i class="fas fa-medal"></i> Site Category</h3>
-          <div class="checkbox-container">
-            <div class="checkbox-item">
-              <label class="custom-checkbox">
-                <input type="checkbox" id="vip-tier" checked data-tier="vip"/>
-                <span class="checkmark"></span>
-              </label>
-              <span>VIP</span>
-            </div>
-            <div class="checkbox-item">
-              <label class="custom-checkbox">
-                <input type="checkbox" id="platinum-tier" checked data-tier="platinum"/>
-                <span class="checkmark"></span>
-              </label>
-              <span>Platinum</span>
-            </div>
-            <div class="checkbox-item">
-              <label class="custom-checkbox">
-                <input type="checkbox" id="gold-tier" checked data-tier="gold"/>
-                <span class="checkmark"></span>
-              </label>
-              <span>Gold</span>
-            </div>
-            <div class="checkbox-item">
-              <label class="custom-checkbox">
-                <input type="checkbox" id="silver-tier" checked data-tier="silver"/>
-                <span class="checkmark"></span>
-              </label>
-              <span>Silver</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="filter-section">
-          <h3><i class="fas fa-info-circle"></i> Statistics</h3>
-          <div id="stats-container">
-            Loading statistics...
-          </div>
-        </div>
+  
+      <!-- Header -->
+      <div class="header">
+        <img src="https://raw.githubusercontent.com/Vibraneum/facilty-data/refs/heads/main/Ixora%20FM%20logo.png" alt="Ixora FM Logo">
+        <h1>Ixora Facility Management - Police Stations Hyderabad</h1>
       </div>
-    </div>
-
-    <!-- Legend -->
-    <div class="legend" id="legend">
-      <div class="legend-section">
-        <h3>Site Types</h3>
-        <div class="legend-item">
-          <div class="legend-color type-hyderabad-police">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <span>Hyderabad Police</span>
+  
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-toggle" id="sidebar-toggle">
+          <i class="fas fa-chevron-left"></i>
         </div>
-        <div class="legend-item">
-          <div class="legend-color type-cyberabad-police">
-            <i class="fas fa-laptop-code"></i>
+        <div class="sidebar-content">
+          <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search by site name...">
+            <span class="search-icon"><i class="fas fa-search"></i></span>
           </div>
-          <span>Cyberabad Police</span>
+  
+          <div class="filter-section">
+            <h3><i class="fas fa-filter"></i> Site Types</h3>
+            <div class="checkbox-container">
+              <div class="checkbox-item">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="hyderabad-police" checked data-type="hyderabad-police"/>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Hyderabad Police</span>
+              </div>
+              <div class="checkbox-item">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="cyberabad-police" checked data-type="cyberabad-police"/>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Cyberabad Police</span>
+              </div>
+            </div>
+          </div>
+  
+          <div class="filter-section">
+            <h3><i class="fas fa-medal"></i> Site Category</h3>
+            <div class="checkbox-container">
+              <div class="checkbox-item">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="vip-tier" checked data-tier="vip"/>
+                  <span class="checkmark"></span>
+                </label>
+                <span>VIP</span>
+              </div>
+              <div class="checkbox-item">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="platinum-tier" checked data-tier="platinum"/>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Platinum</span>
+              </div>
+              <div class="checkbox-item">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="gold-tier" checked data-tier="gold"/>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Gold</span>
+              </div>
+              <div class="checkbox-item">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="silver-tier" checked data-tier="silver"/>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Silver</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="filter-section">
+            <h3><i class="fas fa-info-circle"></i> Statistics</h3>
+            <div id="stats-container">
+              Loading statistics...
+            </div>
+          </div>
         </div>
       </div>
-      <div class="legend-section">
-        <h3>Site Categories</h3>
-        <div class="legend-tier-item">
-          <div class="legend-tier-icon tier-vip">V</div>
-          <span>VIP Tier</span>
+  
+      <!-- Legend -->
+      <div class="legend" id="legend">
+        <div class="legend-section">
+          <h3>Site Types</h3>
+          <div class="legend-item">
+            <div class="legend-color type-hyderabad-police">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <span>Hyderabad Police</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color type-cyberabad-police">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <span>Cyberabad Police</span>
+          </div>
         </div>
-        <div class="legend-tier-item">
-          <div class="legend-tier-icon tier-platinum">P</div>
-          <span>Platinum Tier</span>
-        </div>
-        <div class="legend-tier-item">
-          <div class="legend-tier-icon tier-gold">G</div>
-          <span>Gold Tier</span>
-        </div>
-        <div class="legend-tier-item">
-          <div class="legend-tier-icon tier-silver">S</div>
-          <span>Silver Tier</span>
+        <div class="legend-section">
+          <h3>Site Categories</h3>
+          <div class="legend-tier-item">
+            <div class="legend-tier-icon tier-vip">V</div>
+            <span>VIP Tier</span>
+          </div>
+          <div class="legend-tier-item">
+            <div class="legend-tier-icon tier-platinum">P</div>
+            <span>Platinum Tier</span>
+          </div>
+          <div class="legend-tier-item">
+            <div class="legend-tier-icon tier-gold">G</div>
+            <span>Gold Tier</span>
+          </div>
+          <div class="legend-tier-item">
+            <div class="legend-tier-icon tier-silver">S</div>
+            <span>Silver Tier</span>
+          </div>
         </div>
       </div>
-    </div>
-    
-    <!-- Status Indicator -->
-    <div class="status-indicator" id="status-indicator">
-      <i class="fas fa-check-circle"></i>
-      <span id="status-text">Data loaded successfully</span>
-    </div>
-
-    <div id="map"></div>
-  </div>
-
-  <script>
-    // Use your actual Mapbox token
-    mapboxgl.accessToken = 'pk.eyJ1IjoidmVkYW50aG5hdGgiLCJhIjoiY203c3lsOWZyMGs4MzJpcmJoZTY1Ync4bSJ9.Hx83V0-qM8JOmh4y_SSXCw';
-
-    // Create the map with improved style
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/light-v10', // Using a cleaner style
-      center: [78.4867, 17.3850], // Hyderabad center
-      zoom: 11,
-      pitch: 15, // Slight pitch for better 3D look
-      bearing: 0
-    });
-
-    // UI Elements
-    const loader = document.getElementById('loader');
-    const sidebar = document.getElementById('sidebar');
-    const sidebarTgl = document.getElementById('sidebar-toggle');
-    const searchBar = document.getElementById('search-bar');
-    const statusIndicator = document.getElementById('status-indicator');
-    const statusText = document.getElementById('status-text');
-    const statsContainer = document.getElementById('stats-container');
-
-    let rawData = null;        // store fetched JSON
-    let currentPopup = null;   // track open popup
-    let markers = [];          // store all markers
-    let visibleMarkers = [];   // track which markers are visible
-    
-    // Sample VIP data to ensure proper display
-    const sampleVIPData = {
-      "Saifabad": { staff: 45, supervisors: 5, managers: 2, area: "12,500 sq ft", chemicals: 12, wasteVehicles: 4, machines: 15 },
-      "Begumpet": { staff: 38, supervisors: 4, managers: 1, area: "10,200 sq ft", chemicals: 9, wasteVehicles: 3, machines: 12 },
-      "Charminar": { staff: 52, supervisors: 6, managers: 2, area: "15,800 sq ft", chemicals: 15, wasteVehicles: 5, machines: 18 },
-      "Jubilee Hills": { staff: 41, supervisors: 5, managers: 2, area: "11,600 sq ft", chemicals: 11, wasteVehicles: 4, machines: 14 },
-      "Gachibowli": { staff: 35, supervisors: 3, managers: 1, area: "9,800 sq ft", chemicals: 8, wasteVehicles: 3, machines: 10 },
-      "Kukatpally": { staff: 47, supervisors: 5, managers: 2, area: "13,200 sq ft", chemicals: 13, wasteVehicles: 4, machines: 16 }
-    };
-
-// Replace your existing map.on('load') data source configuration with this enhanced version
-map.on('load', () => {
-  console.log('Map has loaded. Fetching data...');
-  
-  // Add navigation controls with improved positioning
-  map.addControl(new mapboxgl.NavigationControl(), 'top-right');
-  
-  // Add fullscreen control
-  map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
-  
-  // Add geolocate control
-  map.addControl(
-    new mapboxgl.GeolocateControl({
-      positionOptions: {enableHighAccuracy: true},
-      trackUserLocation: true,
-      showUserHeading: true
-    }), 
-    'top-right'
-  );
-  
-  // Fetch data
-  fetchDataAndBuildLayers();
-});
-
-// Update your fetchDataAndBuildLayers function to use proper GeoJSON source and layers
-function fetchDataAndBuildLayers() {
-  showStatus('Loading facility data...', 'loading');
-  
-  fetch('facilities.json')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      rawData = data;
       
-      // Convert array data to GeoJSON format
-      const geojsonData = {
-        type: 'FeatureCollection',
-        features: rawData.map(item => ({
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [parseFloat(item.longitude), parseFloat(item.latitude)]
-          },
-          properties: {
-            ...item
-          }
-        }))
+      <!-- Status Indicator -->
+      <div class="status-indicator" id="status-indicator">
+        <i class="fas fa-check-circle"></i>
+        <span id="status-text">Data loaded successfully</span>
+      </div>
+  
+      <div id="map"></div>
+    </div>
+
+    <script>
+      // Use your actual Mapbox token
+      mapboxgl.accessToken = 'pk.eyJ1IjoidmVkYW50aG5hdGgiLCJhIjoiY203c3lsOWZyMGs4MzJpcmJoZTY1Ync4bSJ9.Hx83V0-qM8JOmh4y_SSXCw';
+  
+      // Create the map
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v10',
+        center: [78.4867, 17.3850], // Hyderabad
+        zoom: 11,
+        pitch: 15,
+        bearing: 0
+      });
+  
+      // UI Elements
+      const loader = document.getElementById('loader');
+      const sidebar = document.getElementById('sidebar');
+      const sidebarTgl = document.getElementById('sidebar-toggle');
+      const searchBar = document.getElementById('search-bar');
+      const statusIndicator = document.getElementById('status-indicator');
+      const statusText = document.getElementById('status-text');
+      const statsContainer = document.getElementById('stats-container');
+  
+      let rawData = null;
+      let currentPopup = null; 
+      let markers = [];       
+      let visibleMarkers = []; 
+  
+      // Sample VIP data for demonstration
+      const sampleVIPData = {
+        "Saifabad": { staff: 45, supervisors: 5, managers: 2, area: "12,500 sq ft", chemicals: 12, wasteVehicles: 4, machines: 15 },
+        "Begumpet": { staff: 38, supervisors: 4, managers: 1, area: "10,200 sq ft", chemicals: 9, wasteVehicles: 3, machines: 12 },
+        "Charminar": { staff: 52, supervisors: 6, managers: 2, area: "15,800 sq ft", chemicals: 15, wasteVehicles: 5, machines: 18 },
+        "Jubilee Hills": { staff: 41, supervisors: 5, managers: 2, area: "11,600 sq ft", chemicals: 11, wasteVehicles: 4, machines: 14 },
+        "Gachibowli": { staff: 35, supervisors: 3, managers: 1, area: "9,800 sq ft", chemicals: 8, wasteVehicles: 3, machines: 10 },
+        "Kukatpally": { staff: 47, supervisors: 5, managers: 2, area: "13,200 sq ft", chemicals: 13, wasteVehicles: 4, machines: 16 }
       };
-      
-      // Add the facilities source with optimized clustering params
-      map.addSource('facilities', {
-        type: 'geojson',
-        data: geojsonData,
-        cluster: true,
-        clusterMaxZoom: 14,
-        clusterRadius: 50,
-        clusterProperties: {
-          // Count sites by type
-          hyderabad_count: ['+', ['case', ['==', ['get', 'type'], 'hyderabad-police'], 1, 0]],
-          cyberabad_count: ['+', ['case', ['==', ['get', 'type'], 'cyberabad-police'], 1, 0]],
-          // Count sites by tier
-          vip_count: ['+', ['case', ['==', ['get', 'tier'], 'vip'], 1, 0]],
-          platinum_count: ['+', ['case', ['==', ['get', 'tier'], 'platinum'], 1, 0]],
-          gold_count: ['+', ['case', ['==', ['get', 'tier'], 'gold'], 1, 0]],
-          silver_count: ['+', ['case', ['==', ['get', 'tier'], 'silver'], 1, 0]]
-        }
+  
+      map.on('load', () => {
+        // Add controls
+        map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+        map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
+        map.addControl(
+          new mapboxgl.GeolocateControl({
+            positionOptions: { enableHighAccuracy: true },
+            trackUserLocation: true,
+            showUserHeading: true
+          }),
+          'top-right'
+        );
+  
+        fetchDataAndBuildLayers();
       });
-      
-      // Add a layer for the clusters
-      map.addLayer({
-        id: 'clusters',
-        type: 'circle',
-        source: 'facilities',
-        filter: ['has', 'point_count'],
-        paint: {
-          // Size circles based on cluster size
-          'circle-radius': [
-            'step',
-            ['get', 'point_count'],
-            20,   // Default radius of 20px
-            5,    // If point_count >= 5
-            25,   // radius = 25px
-            10,   // If point_count >= 10
-            30,   // radius = 30px
-            20,   // If point_count >= 20
-            35    // radius = 35px
-          ],
-          // Color circles based on cluster composition
-          'circle-color': [
-            'case',
-            ['>', ['get', 'hyderabad_count'], ['get', 'cyberabad_count']], 
-            'var(--hyderabad-color)',  // More Hyderabad police
-            'var(--cyberabad-color)'   // More or equal Cyberabad police
-          ],
-          'circle-stroke-width': 2,
-          'circle-stroke-color': '#ffffff'
-        }
-      });
-      
-      // Add a layer for cluster counts
-      map.addLayer({
-        id: 'cluster-count',
-        type: 'symbol',
-        source: 'facilities',
-        filter: ['has', 'point_count'],
-        layout: {
-          'text-field': '{point_count_abbreviated}',
-          'text-size': 14,
-          'text-font': ['DIN Pro Medium', 'Arial Unicode MS Bold']
-        },
-        paint: {
-          'text-color': '#ffffff'
-        }
-      });
-      
-      // Create a layer for individual points
-      map.addLayer({
-        id: 'unclustered-point',
-        type: 'circle',
-        source: 'facilities',
-        filter: ['!', ['has', 'point_count']],
-        paint: {
-          'circle-radius': 12,
-          'circle-color': [
-            'match',
-            ['get', 'type'],
-            'hyderabad-police', 'var(--hyderabad-color)',
-            'cyberabad-police', 'var(--cyberabad-color)',
-            '#ccc'  // fallback color
-          ],
-          'circle-stroke-width': 2,
-          'circle-stroke-color': '#ffffff'
-        }
-      });
-      
-      // Add a symbol layer for individual points
-      map.addLayer({
-        id: 'unclustered-label',
-        type: 'symbol',
-        source: 'facilities',
-        filter: ['!', ['has', 'point_count']],
-        layout: {
-          'text-field': [
-            'match',
-            ['get', 'type'],
-            'hyderabad-police', 'H',
-            'cyberabad-police', 'C',
-            'X'
-          ],
-          'text-size': 10,
-          'text-font': ['DIN Pro Bold', 'Arial Unicode MS Bold']
-        },
-        paint: {
-          'text-color': '#ffffff'
-        }
-      });
-      
-      // Add a second ring to show tier color for individual points
-      map.addLayer({
-        id: 'tier-indicator',
-        type: 'circle',
-        source: 'facilities',
-        filter: ['!', ['has', 'point_count']],
-        paint: {
-          'circle-radius': 6,
-          'circle-color': [
-            'match',
-            ['get', 'tier'],
-            'vip', 'var(--vip-color)',
-            'platinum', 'var(--platinum-color)',
-            'gold', 'var(--gold-color)',
-            'silver', 'var(--silver-color)',
-            '#ccc'  // fallback color
-          ],
-          'circle-stroke-width': 1,
-          'circle-stroke-color': '#ffffff',
-          'circle-translate': [10, -10]
-        }
-      });
-      
-      // Setup click events for clusters and points
-       // Setup click events for clusters and points
-      setupMapInteraction();
-      
-      // Update stats and hide loader
-      updateStats(rawData);
-      loader.style.display = 'none';
-      
-      // Show success status
-      showStatus(`Data loaded successfully (${rawData.length} facilities)`, 'success');
-      
-      // Fit map to all points
-      fitBoundsToSource('facilities');
-    })
-    .catch(error => {
-      console.error('Fetch error:', error);
-      rawData = generateSampleData();
-      // Process sample data the same way...
-      // [Same code as above for creating layers with the sample data]
-    });
-}
-  //from heree
-// Set up map interactions for clusters and individual points
-function setupMapInteraction() {
-  // Click handler for clusters
-  map.on('click', 'clusters', (e) => {
-    const features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
-    if (!features || features.length === 0) return;
-    
-    const clusterId = features[0].properties.cluster_id;
-    
-    // Get cluster expansion info
-    map.getSource('facilities').getClusterExpansionZoom(clusterId, (err, zoom) => {
-      if (err) return;
-      
-      // Get cluster center
-      const coordinates = features[0].geometry.coordinates.slice();
-      
-      // Create cluster popup content
-      const hyderabadCount = features[0].properties.hyderabad_count || 0;
-      const cyberabadCount = features[0].properties.cyberabad_count || 0;
-      const vipCount = features[0].properties.vip_count || 0;
-      const platinumCount = features[0].properties.platinum_count || 0;
-      const goldCount = features[0].properties.gold_count || 0;
-      const silverCount = features[0].properties.silver_count || 0;
-      
-      const popupContent = `
-        <div class="custom-popup">
-          <h3>Cluster Details</h3>
-          <div class="popup-stats-grid">
-            ${buildStatCard('fa-shield-alt', hyderabadCount, 'Hyderabad')}
-            ${buildStatCard('fa-laptop-code', cyberabadCount, 'Cyberabad')}
-            ${buildStatCard('fa-crown', vipCount, 'VIP')}
-            ${buildStatCard('fa-medal', platinumCount, 'Platinum')}
-            ${buildStatCard('fa-award', goldCount, 'Gold')}
-            ${buildStatCard('fa-certificate', silverCount, 'Silver')}
-          </div>
-          <div style="text-align: center; margin-top: 10px;">
-            <button id="zoom-to-cluster" style="background-color: var(--primary-light); color: white; 
-                   border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
-              <i class="fas fa-search-plus"></i> Zoom In
-            </button>
-          </div>
-        </div>
-      `;
-      
-      // Create and show popup
-      if (currentPopup) currentPopup.remove();
-      
-      currentPopup = new mapboxgl.Popup({
-        offset: 25,
-        closeButton: true,
-        closeOnClick: false,
-        maxWidth: '350px'
-      })
-        .setLngLat(coordinates)
-        .setHTML(popupContent)
-        .addTo(map);
-      
-      // Add zoom button click handler
-      popup.on('open', () => {
-        document.getElementById('zoom-to-cluster').addEventListener('click', () => {
-          popup.remove();
-          map.flyTo({
-            center: coordinates,
-            zoom: zoom + 1
-      });
-        });
-      });
-    });
-  });
   
-  // Hover effects for clusters
-  map.on('mouseenter', 'clusters', () => {
-    map.getCanvas().style.cursor = 'pointer';
-  });
+      function fetchDataAndBuildLayers() {
+        showStatus('Loading facility data...', 'loading');
   
-  map.on('mouseleave', 'clusters', () => {
-    map.getCanvas().style.cursor = '';
-  });
-  
-  // Click handler for individual points
-  map.on('click', 'unclustered-point', (e) => {
-    const features = map.queryRenderedFeatures(e.point, { layers: ['unclustered-point'] });
-    if (!features || features.length === 0) return;
-    
-    const properties = features[0].properties;
-    const coordinates = features[0].geometry.coordinates.slice();
-    
-    // Format popup content based on site data
-    const popupContent = createFacilityPopupHTML(properties);
-    
-    // Create popup
-    if (currentPopup) currentPopup.remove();
-    
-    currentPopup = new mapboxgl.Popup({
-      offset: 25,
-      closeButton: true,
-      closeOnClick: true,
-      maxWidth: '350px'
-    })
-      .setLngLat(coordinates)
-      .setHTML(popupContent)
-      .addTo(map);
-  });
-  
-  // Hover effects for points
-  map.on('mouseenter', 'unclustered-point', () => {
-    map.getCanvas().style.cursor = 'pointer';
-  });
-  
-  map.on('mouseleave', 'unclustered-point', () => {
-    map.getCanvas().style.cursor = '';
-  });
-}
-
-// Create HTML for facility popup
-function createFacilityPopupHTML(properties) {
-  // Parse string properties - JSON properties get stringified when in GeoJSON layers
-  // Try to parse any necessary numeric properties
-  const squareFeet = parseInt(properties.squareFeet) || 0;
-  const staff = parseInt(properties.staff) || 0;
-  const chemicals = parseInt(properties.chemicals) || 0;
-  const wasteVehicles = parseInt(properties.wasteVehicles) || 0;
-  const machines = parseInt(properties.machines) || 0;
-  
-  // Format facility name
-  const siteName = properties.siteName || 'Unknown Site';
-  const siteType = properties.type || 'unknown';
-  const siteTier = properties.tier || 'unknown';
-  
-  // Start building popup HTML
-  let html = `<div class="custom-popup">`;
-  
-  // Header with site type icon and tier badge
-  html += `
-  <div class="popup-header-info">
-    <span class="site-type-icon ${
-      siteType === 'hyderabad-police' ? 'type-hyderabad-police' :
-      siteType === 'cyberabad-police' ? 'type-cyberabad-police' : ''
-    }">
-      ${siteType === 'hyderabad-police' ? '<i class="fas fa-shield-alt"></i>' :
-        siteType === 'cyberabad-police' ? '<i class="fas fa-laptop-code"></i>' :
-        '<i class="fas fa-map-marker-alt"></i>'}
-    </span>
-    <h3>${siteName}</h3>
-    <span class="popup-tier-badge ${siteTier}">
-      ${siteTier === 'vip' ? '<i class="fas fa-crown"></i> VIP' :
-        siteTier === 'platinum' ? '<i class="fas fa-medal"></i> Platinum' :
-        siteTier === 'gold' ? '<i class="fas fa-award"></i> Gold' :
-        '<i class="fas fa-certificate"></i> Silver'}
-    </span>
-  </div>`;
-
-  // VIP sites get detailed statistics
-  if (siteTier === 'vip') {
-    html += `<div class="popup-stats-grid">`;
-    // Core information
-    html += buildStatCard('fa-chart-area', formatNumber(squareFeet) + ' sq ft', 'Area');
-    
-    // VIP-specific information
-    if (staff) html += buildStatCard('fa-user', staff, 'Staff');
-    if (chemicals) html += buildStatCard('fa-flask', chemicals, 'Chemicals');
-    if (wasteVehicles) html += buildStatCard('fa-truck', wasteVehicles, 'Waste Veh');
-    if (machines) html += buildStatCard('fa-cogs', machines, 'Machines');
-    html += `</div>`;
-  } else {
-    // Non-VIP layout
-    html += `<p><strong>Square Feet:</strong> ${formatNumber(squareFeet)} sq ft</p>`;
-  }
-  
-  // Add address for all sites
-  if (properties.address) {
-    html += `<div class="popup-address"><i class="fas fa-map-marker-alt"></i> ${properties.address}</div>`;
-  }
-
-  html += `</div>`;
-  
-  return html;
-}
-
-// Helper function to format numbers with commas
-function formatNumber(num) {
-  if (!num) return 'N/A';
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-// Helper function to fit map bounds to a source
-function fitBoundsToSource(sourceName) {
-  const sourceFeatures = map.querySourceFeatures(sourceName);
-  
-  if (sourceFeatures.length === 0) {
-    // Fallback to Hyderabad center if no features
-    map.flyTo({
-      center: [78.4867, 17.3850],
-      zoom: 11
-    });
-    return;
-  }
-  
-  const bounds = new mapboxgl.LngLatBounds();
-  
-  sourceFeatures.forEach(feature => {
-    if (feature.geometry && feature.geometry.type === 'Point') {
-      bounds.extend(feature.geometry.coordinates);
-    }
-  });
-  
-  map.fitBounds(bounds, {
-    padding: { top: 100, bottom: 100, left: 350, right: 50 },
-    maxZoom: 14,
-    duration: 1000
-  });
-}
-      
-      // Update stats and hide loader
-      updateStats(rawData);
-      loader.style.display = 'none';
-      
-      // Show success status
-      showStatus(`Data loaded successfully (${rawData.length} facilities)`, 'success');
-      
-      // Fit map to all points
-      fitBoundsToSource('facilities');
-    })
-    .catch(error => {
-      console.error('Fetch error:', error);
-      rawData = generateSampleData();
-      // Process sample data the same way...
-      // [Same code as above for creating layers with the sample data]
-    });
-}
-      // Use sample data if fetch fails
-      console.log('Falling back to sample data');
-      rawData = generateSampleData();
-      
-      // Add VIP data to relevant sites
-      enrichWithVIPData(rawData);
-      
-      // Create markers
-      createMarkers(rawData);
-      
-      // Update stats
-      updateStats(rawData);
-      
-      // Hide loader
-      loader.style.display = 'none';
-      
-      // Show error status with detailed message
-      showStatus(`Failed to fetch facilities.json: ${error.message}. Using sample data.`, 'error');
-    });
-}
-
-// Set up map interactions for clusters and individual points
-function setupMapInteraction() {
-  // Click handler for clusters
-  map.on('click', 'clusters', (e) => {
-    const features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
-    if (!features || features.length === 0) return;
-    
-    const clusterId = features[0].properties.cluster_id;
-    
-    // Get cluster expansion info
-    map.getSource('facilities').getClusterExpansionZoom(clusterId, (err, zoom) => {
-      if (err) return;
-      
-      // Get cluster center
-      const coordinates = features[0].geometry.coordinates.slice();
-      
-      // Create cluster popup content
-      const hyderabadCount = features[0].properties.hyderabad_count || 0;
-      const cyberabadCount = features[0].properties.cyberabad_count || 0;
-      const vipCount = features[0].properties.vip_count || 0;
-      const platinumCount = features[0].properties.platinum_count || 0;
-      const goldCount = features[0].properties.gold_count || 0;
-      const silverCount = features[0].properties.silver_count || 0;
-      
-      const popupContent = `
-        <div class="custom-popup">
-          <h3>Cluster Details</h3>
-          <div class="popup-stats-grid">
-            ${buildStatCard('fa-shield-alt', hyderabadCount, 'Hyderabad')}
-            ${buildStatCard('fa-laptop-code', cyberabadCount, 'Cyberabad')}
-            ${buildStatCard('fa-crown', vipCount, 'VIP')}
-            ${buildStatCard('fa-medal', platinumCount, 'Platinum')}
-            ${buildStatCard('fa-award', goldCount, 'Gold')}
-            ${buildStatCard('fa-certificate', silverCount, 'Silver')}
-          </div>
-          <div style="text-align: center; margin-top: 10px;">
-            <button id="zoom-to-cluster" style="background-color: var(--primary-light); color: white; 
-                   border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
-              <i class="fas fa-search-plus"></i> Zoom In
-            </button>
-          </div>
-        </div>
-      `;
-      
-      // Create and show popup
-      if (currentPopup) currentPopup.remove();
-      
-      currentPopup = new mapboxgl.Popup({
-        offset: 25,
-        closeButton: true,
-        closeOnClick: false,
-        maxWidth: '350px'
-      })
-        .setLngLat(coordinates)
-        .setHTML(popupContent)
-        .addTo(map);
-      
-      // Add zoom button click handler
-      setTimeout(() => {
-        const zoomButton = document.getElementById('zoom-to-cluster');
-        if (zoomButton) {
-          zoomButton.addEventListener('click', () => {
-            currentPopup.remove();
-            map.flyTo({
-              center: coordinates,
-              zoom: zoom + 1,
-              duration: 1000
-            });
+        // Fetch your facilities JSON here:
+        fetch('facilities.json')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            rawData = data;
+            buildGeoJSONClusters(rawData);
+            loader.style.display = 'none';
+            showStatus(`Data loaded successfully (${rawData.length} facilities)`, 'success');
+          })
+          .catch(err => {
+            console.error('Fetch error:', err);
+            showStatus(`Failed to fetch: ${err.message}`, 'error');
+            // Fallback to sample data
+            rawData = generateSampleData();
+            buildGeoJSONClusters(rawData);
+            loader.style.display = 'none';
           });
-        }
-      }, 100);
-    });
-  });
-  
-  // Hover effects for clusters
-  map.on('mouseenter', 'clusters', () => {
-    map.getCanvas().style.cursor = 'pointer';
-  });
-  
-  map.on('mouseleave', 'clusters', () => {
-    map.getCanvas().style.cursor = '';
-  });
-  
-  // Click handler for individual points
-  map.on('click', 'unclustered-point', (e) => {
-    const features = map.queryRenderedFeatures(e.point, { layers: ['unclustered-point'] });
-    if (!features || features.length === 0) return;
-    
-    const properties = features[0].properties;
-    const coordinates = features[0].geometry.coordinates.slice();
-    
-    // Format popup content based on site data
-    const popupContent = createFacilityPopupHTML(properties);
-    
-    // Create popup
-    if (currentPopup) currentPopup.remove();
-    
-    currentPopup = new mapboxgl.Popup({
-      offset: 25,
-      closeButton: true,
-      closeOnClick: true,
-      maxWidth: '350px'
-    })
-      .setLngLat(coordinates)
-      .setHTML(popupContent)
-      .addTo(map);
-  });
-  
-  // Hover effects for points
-  map.on('mouseenter', 'unclustered-point', () => {
-    map.getCanvas().style.cursor = 'pointer';
-  });
-  
-  map.on('mouseleave', 'unclustered-point', () => {
-    map.getCanvas().style.cursor = '';
-  });
-}
-
-// Create HTML for facility popup
-function createFacilityPopupHTML(properties) {
-  // Parse string properties - JSON properties get stringified when in GeoJSON layers
-  // Try to parse any necessary numeric properties
-  const squareFeet = parseInt(properties.squareFeet) || 0;
-  const staff = parseInt(properties.staff) || 0;
-  const chemicals = parseInt(properties.chemicals) || 0;
-  const wasteVehicles = parseInt(properties.wasteVehicles) || 0;
-  const machines = parseInt(properties.machines) || 0;
-  
-  // Format facility name
-  const siteName = properties.siteName || 'Unknown Site';
-  const siteType = properties.type || 'unknown';
-  const siteTier = properties.tier || 'unknown';
-  
-  // Start building popup HTML
-  let html = `<div class="custom-popup">`;
-  
-  // Header with site type icon and tier badge
-  html += `
-  <div class="popup-header-info">
-    <span class="site-type-icon ${
-      siteType === 'hyderabad-police' ? 'type-hyderabad-police' :
-      siteType === 'cyberabad-police' ? 'type-cyberabad-police' : ''
-    }">
-      ${siteType === 'hyderabad-police' ? '<i class="fas fa-shield-alt"></i>' :
-        siteType === 'cyberabad-police' ? '<i class="fas fa-laptop-code"></i>' :
-        '<i class="fas fa-map-marker-alt"></i>'}
-    </span>
-    <h3>${siteName}</h3>
-    <span class="popup-tier-badge ${siteTier}">
-      ${siteTier === 'vip' ? '<i class="fas fa-crown"></i> VIP' :
-        siteTier === 'platinum' ? '<i class="fas fa-medal"></i> Platinum' :
-        siteTier === 'gold' ? '<i class="fas fa-award"></i> Gold' :
-        '<i class="fas fa-certificate"></i> Silver'}
-    </span>
-  </div>`;
-
-  // VIP sites get detailed statistics
-  if (siteTier === 'vip') {
-    html += `<div class="popup-stats-grid">`;
-    // Core information
-    html += buildStatCard('fa-chart-area', formatNumber(squareFeet) + ' sq ft', 'Area');
-    
-    // VIP-specific information
-    if (staff) html += buildStatCard('fa-user', staff, 'Staff');
-    if (chemicals) html += buildStatCard('fa-flask', chemicals, 'Chemicals');
-    if (wasteVehicles) html += buildStatCard('fa-truck', wasteVehicles, 'Waste Veh');
-    if (machines) html += buildStatCard('fa-cogs', machines, 'Machines');
-    html += `</div>`;
-  } else {
-    // Non-VIP layout
-    html += `<p><strong>Square Feet:</strong> ${formatNumber(squareFeet)} sq ft</p>`;
-  }
-  
-  // Add address for all sites
-  if (properties.address) {
-    html += `<div class="popup-address"><i class="fas fa-map-marker-alt"></i> ${properties.address}</div>`;
-  }
-
-  html += `</div>`;
-  
-  return html;
-}
-
-// Helper function to format numbers with commas
-function formatNumber(num) {
-  if (!num) return 'N/A';
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-// Helper function to fit map bounds to a source
-function fitBoundsToSource(sourceName) {
-  const sourceFeatures = map.querySourceFeatures(sourceName);
-  
-  if (sourceFeatures.length === 0) {
-    // Fallback to Hyderabad center if no features
-    map.flyTo({
-      center: [78.4867, 17.3850],
-      zoom: 11
-    });
-    return;
-  }
-  
-  const bounds = new mapboxgl.LngLatBounds();
-  
-  sourceFeatures.forEach(feature => {
-    if (feature.geometry && feature.geometry.type === 'Point') {
-      bounds.extend(feature.geometry.coordinates);
-    }
-  });
-  
-  map.fitBounds(bounds, {
-    padding: { top: 100, bottom: 100, left: 350, right: 50 },
-    maxZoom: 14,
-    duration: 1000
-  });
-}
-
-  
-    // Generate sample data if fetch fails
-    function generateSampleData() {
-      const sampleData = [
-        { siteName: "Saifabad PS", latitude: 17.4010, longitude: 78.4730, type: "hyderabad-police", tier: "vip", squareFeet: 12500, address: "5-8-207/2, Saifabad, Hyderabad-500004" },
-        { siteName: "Begumpet PS", latitude: 17.4440, longitude: 78.4680, type: "hyderabad-police", tier: "vip", squareFeet: 10200, address: "Behind Shoppers Stop, Begumpet, Hyderabad-500016" },
-        { siteName: "Charminar PS", latitude: 17.3616, longitude: 78.4747, type: "hyderabad-police", tier: "vip", squareFeet: 15800, address: "Near Charminar Bus Stand, Hyderabad-500002" },
-        { siteName: "Jubilee Hills PS", latitude: 17.4319, longitude: 78.4073, type: "hyderabad-police", tier: "platinum", squareFeet: 11600, address: "Road No. 10, Jubilee Hills, Hyderabad-500033" },
-        { siteName: "Gachibowli PS", latitude: 17.4438, longitude: 78.3515, type: "cyberabad-police", tier: "platinum", squareFeet: 9800, address: "Financial District, Gachibowli, Hyderabad-500032" },
-        { siteName: "Kukatpally PS", latitude: 17.4849, longitude: 78.4117, type: "cyberabad-police", tier: "gold", squareFeet: 13200, address: "Near JNTU, Kukatpally, Hyderabad-500085" },
-        { siteName: "Uppal PS", latitude: 17.4034, longitude: 78.5592, type: "hyderabad-police", tier: "gold", squareFeet: 8700, address: "Uppal X Roads, Hyderabad-500039" },
-        { siteName: "Miyapur PS", latitude: 17.4990, longitude: 78.3720, type: "cyberabad-police", tier: "silver", squareFeet: 7800, address: "Miyapur X Roads, Hyderabad-500049" },
-        { siteName: "Madhapur PS", latitude: 17.4500, longitude: 78.3900, type: "cyberabad-police", tier: "silver", squareFeet: 9500, address: "Near Cyber Towers, Madhapur, Hyderabad-500081" },
-        { siteName: "LB Nagar PS", latitude: 17.3521, longitude: 78.5472, type: "hyderabad-police", tier: "silver", squareFeet: 8200, address: "LB Nagar Circle, Hyderabad-500074" }
-      ];
-      return sampleData;
-    }
-
-    // Enrich sites with VIP data
-function enrichWithVIPData(data) {
-  data.forEach(site => {
-    // Check if site is VIP tier
-    if (site.tier === 'vip') {
-      // Get site name without "PS" suffix for matching, with fallback for undefined siteName
-      const baseName = site.siteName ? site.siteName.replace(/\s*PS\s*$/, '') : 'Unknown';
-      
-      // Add VIP data if available, or generate sample data
-      if (sampleVIPData[baseName]) {
-        Object.assign(site, sampleVIPData[baseName]);
-      } else {
-        // Generate random data if no sample data exists
-        site.staff = Math.floor(Math.random() * 30) + 20;
-        site.supervisors = Math.floor(Math.random() * 5) + 2;
-        site.managers = Math.floor(Math.random() * 2) + 1;
-        site.area = site.squareFeet ? site.squareFeet + " sq ft" : Math.floor(Math.random() * 8000 + 7000) + " sq ft";
-        site.chemicals = Math.floor(Math.random() * 10) + 5;
-        site.wasteVehicles = Math.floor(Math.random() * 4) + 1;
-        site.machines = Math.floor(Math.random() * 10) + 5;
       }
-    }
-  });
-}
-   
-
-
-      // VIP sites get detailed statistics
-      if (item.tier === 'vip') {
-        html += `<div class="popup-stats-grid">`;
-        html += buildStatCard('fa-user', item.staff || 'N/A', 'Staff');
-        html += buildStatCard('fa-user-tie', item.supervisors || 'N/A', 'Supervisors');
-        html += buildStatCard('fa-users-cog', item.managers || 'N/A', 'Managers');
-        html += buildStatCard('fa-chart-area', item.area || item.squareFeet + ' sq ft' || 'N/A', 'Area');
-        html += buildStatCard('fa-flask', item.chemicals || 'N/A', 'Chemicals');
-        html += buildStatCard('fa-truck', item.wasteVehicles || 'N/A', 'Waste Veh');
-        html += buildStatCard('fa-cogs', item.machines || 'N/A', 'Machines');
+  
+      // Convert array => GeoJSON, set up clustering layers
+      function buildGeoJSONClusters(arrayData) {
+        // Convert to GeoJSON
+        const geojsonData = {
+          type: 'FeatureCollection',
+          features: arrayData.map(item => ({
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [parseFloat(item.longitude), parseFloat(item.latitude)]
+            },
+            properties: { ...item }
+          }))
+        };
+  
+        // Add source
+        map.addSource('facilities', {
+          type: 'geojson',
+          data: geojsonData,
+          cluster: true,
+          clusterMaxZoom: 14,
+          clusterRadius: 50,
+          clusterProperties: {
+            hyderabad_count: ['+', ['case', ['==', ['get', 'type'], 'hyderabad-police'], 1, 0]],
+            cyberabad_count: ['+', ['case', ['==', ['get', 'type'], 'cyberabad-police'], 1, 0]],
+            vip_count: ['+', ['case', ['==', ['get', 'tier'], 'vip'], 1, 0]],
+            platinum_count: ['+', ['case', ['==', ['get', 'tier'], 'platinum'], 1, 0]],
+            gold_count: ['+', ['case', ['==', ['get', 'tier'], 'gold'], 1, 0]],
+            silver_count: ['+', ['case', ['==', ['get', 'tier'], 'silver'], 1, 0]]
+          }
+        });
+  
+        // Clusters
+        map.addLayer({
+          id: 'clusters',
+          type: 'circle',
+          source: 'facilities',
+          filter: ['has', 'point_count'],
+          paint: {
+            'circle-radius': [
+              'step', ['get', 'point_count'],
+              20, 5, 25, 10, 30, 20, 35
+            ],
+            'circle-color': [
+              'case',
+              ['>', ['get', 'hyderabad_count'], ['get', 'cyberabad_count']],
+              'var(--hyderabad-color)',
+              'var(--cyberabad-color)'
+            ],
+            'circle-stroke-width': 2,
+            'circle-stroke-color': '#ffffff'
+          }
+        });
+  
+        // Cluster count
+        map.addLayer({
+          id: 'cluster-count',
+          type: 'symbol',
+          source: 'facilities',
+          filter: ['has', 'point_count'],
+          layout: {
+            'text-field': '{point_count_abbreviated}',
+            'text-size': 14,
+            'text-font': ['DIN Pro Medium', 'Arial Unicode MS Bold']
+          },
+          paint: {
+            'text-color': '#ffffff'
+          }
+        });
+  
+        // Unclustered points
+        map.addLayer({
+          id: 'unclustered-point',
+          type: 'circle',
+          source: 'facilities',
+          filter: ['!', ['has', 'point_count']],
+          paint: {
+            'circle-radius': 12,
+            'circle-color': [
+              'match',
+              ['get', 'type'],
+              'hyderabad-police', 'var(--hyderabad-color)',
+              'cyberabad-police', 'var(--cyberabad-color)',
+              '#ccc'
+            ],
+            'circle-stroke-width': 2,
+            'circle-stroke-color': '#ffffff'
+          }
+        });
+  
+        // Unclustered labels
+        map.addLayer({
+          id: 'unclustered-label',
+          type: 'symbol',
+          source: 'facilities',
+          filter: ['!', ['has', 'point_count']],
+          layout: {
+            'text-field': [
+              'match',
+              ['get', 'type'],
+              'hyderabad-police', 'H',
+              'cyberabad-police', 'C',
+              'X'
+            ],
+            'text-size': 10,
+            'text-font': ['DIN Pro Bold', 'Arial Unicode MS Bold']
+          },
+          paint: {
+            'text-color': '#ffffff'
+          }
+        });
+  
+        // Tier indicator ring
+        map.addLayer({
+          id: 'tier-indicator',
+          type: 'circle',
+          source: 'facilities',
+          filter: ['!', ['has', 'point_count']],
+          paint: {
+            'circle-radius': 6,
+            'circle-color': [
+              'match',
+              ['get', 'tier'],
+              'vip', 'var(--vip-color)',
+              'platinum', 'var(--platinum-color)',
+              'gold', 'var(--gold-color)',
+              'silver', 'var(--silver-color)',
+              '#ccc'
+            ],
+            'circle-stroke-width': 1,
+            'circle-stroke-color': '#ffffff',
+            'circle-translate': [10, -10]
+          }
+        });
+  
+        setupMapInteraction();
+        updateStats(arrayData);
+        fitBoundsToSource('facilities');
+      }
+  
+      // Map interactions (click cluster => popup; click point => popup)
+      function setupMapInteraction() {
+        // Click cluster
+        map.on('click', 'clusters', (e) => {
+          const features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
+          if (!features.length) return;
+          const clusterId = features[0].properties.cluster_id;
+          map.getSource('facilities').getClusterExpansionZoom(clusterId, (err, zoom) => {
+            if (err) return;
+            const coords = features[0].geometry.coordinates.slice();
+            const props = features[0].properties;
+            const popupContent = `
+              <div class="custom-popup">
+                <h3>Cluster Details</h3>
+                <div class="popup-stats-grid">
+                  ${buildStatCard('fa-shield-alt', props.hyderabad_count || 0, 'Hyderabad')}
+                  ${buildStatCard('fa-laptop-code', props.cyberabad_count || 0, 'Cyberabad')}
+                  ${buildStatCard('fa-crown', props.vip_count || 0, 'VIP')}
+                  ${buildStatCard('fa-medal', props.platinum_count || 0, 'Platinum')}
+                  ${buildStatCard('fa-award', props.gold_count || 0, 'Gold')}
+                  ${buildStatCard('fa-certificate', props.silver_count || 0, 'Silver')}
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                  <button id="zoom-to-cluster" style="background-color: var(--primary-light); color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
+                    <i class="fas fa-search-plus"></i> Zoom In
+                  </button>
+                </div>
+              </div>
+            `;
+            if (currentPopup) currentPopup.remove();
+            currentPopup = new mapboxgl.Popup({ offset: 25, closeButton: true, maxWidth: '350px' })
+              .setLngLat(coords)
+              .setHTML(popupContent)
+              .addTo(map);
+  
+            setTimeout(() => {
+              const zoomBtn = document.getElementById('zoom-to-cluster');
+              if (zoomBtn) {
+                zoomBtn.addEventListener('click', () => {
+                  currentPopup.remove();
+                  map.flyTo({ center: coords, zoom: zoom + 1, duration: 1000 });
+                });
+              }
+            }, 50);
+          });
+        });
+        map.on('mouseenter', 'clusters', () => { map.getCanvas().style.cursor = 'pointer'; });
+        map.on('mouseleave', 'clusters', () => { map.getCanvas().style.cursor = ''; });
+  
+        // Click unclustered point
+        map.on('click', 'unclustered-point', (e) => {
+          const features = map.queryRenderedFeatures(e.point, { layers: ['unclustered-point'] });
+          if (!features.length) return;
+          const props = features[0].properties;
+          const coords = features[0].geometry.coordinates.slice();
+          const popupContent = createFacilityPopupHTML(props);
+          if (currentPopup) currentPopup.remove();
+          currentPopup = new mapboxgl.Popup({ offset: 25, closeButton: true, closeOnClick: true, maxWidth: '350px' })
+            .setLngLat(coords)
+            .setHTML(popupContent)
+            .addTo(map);
+        });
+        map.on('mouseenter', 'unclustered-point', () => { map.getCanvas().style.cursor = 'pointer'; });
+        map.on('mouseleave', 'unclustered-point', () => { map.getCanvas().style.cursor = ''; });
+      }
+  
+      // Build popup HTML
+      function createFacilityPopupHTML(props) {
+        const sqFt = parseInt(props.squareFeet) || 0;
+        const staff = parseInt(props.staff) || 0;
+        const chemicals = parseInt(props.chemicals) || 0;
+        const wasteVehicles = parseInt(props.wasteVehicles) || 0;
+        const machines = parseInt(props.machines) || 0;
+        const siteName = props.siteName || 'Unknown Site';
+        const siteType = props.type || 'unknown';
+        const siteTier = props.tier || 'unknown';
+  
+        let html = `<div class="custom-popup">`;
+        html += `
+          <div class="popup-header-info">
+            <span class="site-type-icon ${
+              siteType === 'hyderabad-police' ? 'type-hyderabad-police' :
+              siteType === 'cyberabad-police' ? 'type-cyberabad-police' : ''
+            }">
+              ${
+                siteType === 'hyderabad-police' ? '<i class="fas fa-shield-alt"></i>' :
+                siteType === 'cyberabad-police' ? '<i class="fas fa-laptop-code"></i>' :
+                '<i class="fas fa-map-marker-alt"></i>'
+              }
+            </span>
+            <h3>${siteName}</h3>
+            <span class="popup-tier-badge ${siteTier}">
+              ${
+                siteTier === 'vip' ? '<i class="fas fa-crown"></i> VIP' :
+                siteTier === 'platinum' ? '<i class="fas fa-medal"></i> Platinum' :
+                siteTier === 'gold' ? '<i class="fas fa-award"></i> Gold' :
+                '<i class="fas fa-certificate"></i> Silver'
+              }
+            </span>
+          </div>
+        `;
+        // If VIP, show details
+        if (siteTier === 'vip') {
+          html += `<div class="popup-stats-grid">`;
+          html += buildStatCard('fa-chart-area', formatNumber(sqFt)+' sq ft', 'Area');
+          if (staff) html += buildStatCard('fa-user', staff, 'Staff');
+          if (chemicals) html += buildStatCard('fa-flask', chemicals, 'Chemicals');
+          if (wasteVehicles) html += buildStatCard('fa-truck', wasteVehicles, 'Waste Veh');
+          if (machines) html += buildStatCard('fa-cogs', machines, 'Machines');
+          html += `</div>`;
+        } else {
+          html += `<p><strong>Square Feet:</strong> ${formatNumber(sqFt)} sq ft</p>`;
+        }
+        // Address
+        if (props.address) {
+          html += `<div class="popup-address"><i class="fas fa-map-marker-alt"></i> ${props.address}</div>`;
+        }
         html += `</div>`;
-      } else {
-        // Non-VIP layout
-        html += `<p><strong>Square Feet:</strong> ${item.squareFeet || 'N/A'}</p>`;
+        return html;
       }
-      
-      // Add address for all sites
-      if (item.address) {
-        html += `<div class="popup-address"><i class="fas fa-map-marker-alt"></i> ${item.address}</div>`;
+  
+      // Build a stat card
+      function buildStatCard(iconClass, value, label) {
+        return `
+          <div class="popup-stat-card">
+            <div class="popup-stat-icon"><i class="fas ${iconClass}"></i></div>
+            <div class="popup-stat-value">${value}</div>
+            <div class="popup-stat-label">${label}</div>
+          </div>
+        `;
       }
-
-      html += `</div>`;
-
-      // Create and show popup
-      currentPopup = new mapboxgl.Popup({
-        offset: 25,
-        closeButton: true,
-        closeOnClick: true,
-        maxWidth: '350px'
-      })
-        .setLngLat(coordinates)
-        .setHTML(html)
-        .addTo(map);
-    }
-
-    // Build HTML for a stat card
-    function buildStatCard(iconClass, value, label) {
-      return `
-        <div class="popup-stat-card">
-          <div class="popup-stat-icon"><i class="fas ${iconClass}"></i></div>
-          <div class="popup-stat-value">${value}</div>
-          <div class="popup-stat-label">${label}</div>
-        </div>
-      `;
-    }
-
-    // Update statistics in sidebar
-    function updateStats(data) {
-      if (!data || !Array.isArray(data)) {
-        statsContainer.innerHTML = '<p>No statistics available</p>';
-        return;
+  
+      function formatNumber(num) {
+        if (!num) return 'N/A';
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       }
-      
-      // Count by type
-      const typeCount = {
-        'hyderabad-police': 0,
-        'cyberabad-police': 0
-      };
-      
-      // Count by tier
-      const tierCount = {
-        'vip': 0,
-        'platinum': 0,
-        'gold': 0,
-        'silver': 0
-      };
-      
-      // Calculate stats
-      data.forEach(item => {
-        if (item.type) typeCount[item.type] = (typeCount[item.type] || 0) + 1;
-        if (item.tier) tierCount[item.tier] = (tierCount[item.tier] || 0) + 1;
-      });
-      
-      // Generate HTML
-      let html = `
-        <div style="font-size: 14px; line-height: 1.6;">
-          <p><strong>Total Facilities:</strong> ${data.length}</p>
-          <p><strong>Types:</strong> 
-            Hyderabad (${typeCount['hyderabad-police'] || 0}), 
-            Cyberabad (${typeCount['cyberabad-police'] || 0})
-          </p>
-          <p><strong>Categories:</strong><br>
-            <span style="color: var(--vip-color);"><i class="fas fa-crown"></i> VIP:</span> ${tierCount['vip'] || 0}<br>
-            <span style="color: #6c757d;"><i class="fas fa-medal"></i> Platinum:</span> ${tierCount['platinum'] || 0}<br>
-            <span style="color: #6c757d;"><i class="fas fa-award"></i> Gold:</span> ${tierCount['gold'] || 0}<br>
-            <span style="color: #6c757d;"><i class="fas fa-certificate"></i> Silver:</span> ${tierCount['silver'] || 0}
-          </p>
-        </div>
-      `;
-      
-      statsContainer.innerHTML = html;
-    }
-
-    // Show status message
-    function showStatus(message, type = 'info') {
-      statusText.textContent = message;
-      statusIndicator.className = 'status-indicator';
-      
-      if (type === 'error') {
-        statusIndicator.classList.add('error');
-        statusIndicator.querySelector('i').className = 'fas fa-exclamation-circle';
-      } else if (type === 'loading') {
-        statusIndicator.querySelector('i').className = 'fas fa-spinner fa-spin';
-      } else {
-        statusIndicator.querySelector('i').className = 'fas fa-check-circle';
-      }
-      
-      statusIndicator.classList.add('visible');
-      
-      // Hide after 5 seconds unless it's a loading message
-      if (type !== 'loading') {
-        setTimeout(() => {
-          statusIndicator.classList.remove('visible');
-        }, 5000);
-      }
-    }
-
-    // Fit map to visible markers
-    function fitMapToMarkers() {
-      if (visibleMarkers.length === 0) return;
-      
-      const bounds = new mapboxgl.LngLatBounds();
-      
-      visibleMarkers.forEach(marker => {
-        bounds.extend(marker.getLngLat());
-      });
-      
-      map.fitBounds(bounds, {
-        padding: 50,
-        maxZoom: 15,
-        duration: 1000
-      });
-    }
-
-    // Sidebar toggle functionality
-    sidebarTgl.addEventListener('click', () => {
-      sidebar.classList.toggle('collapsed');
-      const icon = sidebarTgl.querySelector('i');
-      if (sidebar.classList.contains('collapsed')) {
-        icon.classList.remove('fa-chevron-left');
-        icon.classList.add('fa-chevron-right');
-      } else {
-        icon.classList.remove('fa-chevron-right');
-        icon.classList.add('fa-chevron-left');
-      }
-    });
-
-    // Filter functionality
-    const checkboxes = document.querySelectorAll('.checkbox-container input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', () => {
-        applyFilters();
-      });
-    });
-    
-    function applyFilters() {
-      const activeTypes = [];
-      const activeTiers = [];
-      
-      // Get selected filter values
-      checkboxes.forEach(cb => {
-        if (cb.checked) {
-          if (cb.dataset.type) activeTypes.push(cb.dataset.type);
-          if (cb.dataset.tier) activeTiers.push(cb.dataset.tier);
+  
+      // Fit bounds to all source points
+      function fitBoundsToSource(sourceName) {
+        const sourceFeatures = map.querySourceFeatures(sourceName);
+        if (!sourceFeatures.length) {
+          map.flyTo({ center: [78.4867, 17.3850], zoom: 11 });
+          return;
         }
-      });
-      
-      // Reset visible markers array
-      visibleMarkers = [];
-      
-      // Apply filters to markers
-      markers.forEach((marker, index) => {
-        const item = rawData[index];
-        
-        // Check if marker should be visible
-        const typeMatch = activeTypes.includes(item.type);
-        const tierMatch = activeTiers.includes(item.tier);
-        
-        if (typeMatch && tierMatch) {
-          marker.getElement().style.display = 'flex';
-          visibleMarkers.push(marker);
-        } else {
-          marker.getElement().style.display = 'none';
-        }
-      });
-      
-      // Fit map to visible markers
-      if (visibleMarkers.length > 0) {
-        fitMapToMarkers();
-      }
-      
-      // Update status
-      showStatus(`Showing ${visibleMarkers.length} of ${markers.length} facilities`, 'info');
-    }
-
-    // Search functionality
-    searchBar.addEventListener('input', () => {
-      const query = searchBar.value.trim().toLowerCase();
-      
-      // Reset visible markers
-      visibleMarkers = [];
-      
-      // Filter markers by search query
-      markers.forEach((marker, index) => {
-        const item = rawData[index];
-        const name = (item.siteName || '').toLowerCase();
-        const address = (item.address || '').toLowerCase();
-        
-        // Check filter checkboxes first
-        const typeCheckbox = document.querySelector(`input[data-type="${item.type}"]`);
-        const tierCheckbox = document.querySelector(`input[data-tier="${item.tier}"]`);
-        const typeChecked = typeCheckbox ? typeCheckbox.checked : true;
-        const tierChecked = tierCheckbox ? tierCheckbox.checked : true;
-        
-        if (
-          (query === '' || name.includes(query) || address.includes(query)) && 
-          typeChecked && 
-          tierChecked
-        ) {
-          marker.getElement().style.display = 'flex';
-          visibleMarkers.push(marker);
-        } else {
-          marker.getElement().style.display = 'none';
-        }
-      });
-      
-      // Update status
-      showStatus(`Found ${visibleMarkers.length} matches`, 'info');
-      
-      // If single result, zoom to it
-      if (visibleMarkers.length === 1) {
-        map.flyTo({
-          center: visibleMarkers[0].getLngLat(),
-          zoom: 15,
+        const bounds = new mapboxgl.LngLatBounds();
+        sourceFeatures.forEach(f => {
+          if (f.geometry && f.geometry.type === 'Point') {
+            bounds.extend(f.geometry.coordinates);
+          }
+        });
+        map.fitBounds(bounds, {
+          padding: { top: 100, bottom: 100, left: 350, right: 50 },
+          maxZoom: 14,
           duration: 1000
         });
-      } 
-      // If multiple results, fit to bounds
-      else if (visibleMarkers.length > 1) {
-        fitMapToMarkers();
       }
-    });
-  </script>
-</body>
-</html>
+  
+      // Generate fallback sample data
+      function generateSampleData() {
+        return [
+          { siteName: "Saifabad PS", latitude: 17.4010, longitude: 78.4730, type: "hyderabad-police", tier: "vip", squareFeet: 12500, address: "5-8-207/2, Saifabad, Hyderabad-500004" },
+          { siteName: "Begumpet PS", latitude: 17.4440, longitude: 78.4680, type: "hyderabad-police", tier: "vip", squareFeet: 10200, address: "Behind Shoppers Stop, Begumpet, Hyderabad-500016" },
+          { siteName: "Charminar PS", latitude: 17.3616, longitude: 78.4747, type: "hyderabad-police", tier: "vip", squareFeet: 15800, address: "Near Charminar Bus Stand, Hyderabad-500002" },
+          { siteName: "Jubilee Hills PS", latitude: 17.4319, longitude: 78.4073, type: "hyderabad-police", tier: "platinum", squareFeet: 11600, address: "Road No. 10, Jubilee Hills, Hyderabad-500033" },
+          { siteName: "Gachibowli PS", latitude: 17.4438, longitude: 78.3515, type: "cyberabad-police", tier: "platinum", squareFeet: 9800, address: "Financial District, Gachibowli, Hyderabad-500032" },
+          { siteName: "Kukatpally PS", latitude: 17.4849, longitude: 78.4117, type: "cyberabad-police", tier: "gold", squareFeet: 13200, address: "Near JNTU, Kukatpally, Hyderabad-500085" },
+          { siteName: "Uppal PS", latitude: 17.4034, longitude: 78.5592, type: "hyderabad-police", tier: "gold", squareFeet: 8700, address: "Uppal X Roads, Hyderabad-500039" },
+          { siteName: "Miyapur PS", latitude: 17.4990, longitude: 78.3720, type: "cyberabad-police", tier: "silver", squareFeet: 7800, address: "Miyapur X Roads, Hyderabad-500049" },
+          { siteName: "Madhapur PS", latitude: 17.4500, longitude: 78.3900, type: "cyberabad-police", tier: "silver", squareFeet: 9500, address: "Near Cyber Towers, Madhapur, Hyderabad-500081" },
+          { siteName: "LB Nagar PS", latitude: 17.3521, longitude: 78.5472, type: "hyderabad-police", tier: "silver", squareFeet: 8200, address: "LB Nagar Circle, Hyderabad-500074" }
+        ];
+      }
+  
+      // Update statistics
+      function updateStats(data) {
+        if (!data || !Array.isArray(data)) {
+          statsContainer.innerHTML = '<p>No statistics available</p>';
+          return;
+        }
+        const typeCount = { 'hyderabad-police': 0, 'cyberabad-police': 0 };
+        const tierCount = { vip: 0, platinum: 0, gold: 0, silver: 0 };
+        data.forEach(item => {
+          if (item.type) typeCount[item.type] = (typeCount[item.type] || 0) + 1;
+          if (item.tier) tierCount[item.tier] = (tierCount[item.tier] || 0) + 1;
+        });
+        const html = `
+          <div style="font-size: 14px; line-height: 1.6;">
+            <p><strong>Total Facilities:</strong> ${data.length}</p>
+            <p><strong>Types:</strong>
+              Hyderabad (${typeCount['hyderabad-police'] || 0}),
+              Cyberabad (${typeCount['cyberabad-police'] || 0})
+            </p>
+            <p><strong>Categories:</strong><br>
+              <span style="color: var(--vip-color);"><i class="fas fa-crown"></i> VIP:</span> ${tierCount['vip'] || 0}<br>
+              <span style="color: #6c757d;"><i class="fas fa-medal"></i> Platinum:</span> ${tierCount['platinum'] || 0}<br>
+              <span style="color: #6c757d;"><i class="fas fa-award"></i> Gold:</span> ${tierCount['gold'] || 0}<br>
+              <span style="color: #6c757d;"><i class="fas fa-certificate"></i> Silver:</span> ${tierCount['silver'] || 0}
+            </p>
+          </div>
+        `;
+        statsContainer.innerHTML = html;
+      }
+  
+      // Show a status message
+      function showStatus(message, type = 'info') {
+        statusText.textContent = message;
+        statusIndicator.className = 'status-indicator';
+        if (type === 'error') {
+          statusIndicator.classList.add('error');
+          statusIndicator.querySelector('i').className = 'fas fa-exclamation-circle';
+        } else if (type === 'loading') {
+          statusIndicator.querySelector('i').className = 'fas fa-spinner fa-spin';
+        } else {
+          statusIndicator.querySelector('i').className = 'fas fa-check-circle';
+        }
+        statusIndicator.classList.add('visible');
+        if (type !== 'loading') {
+          setTimeout(() => {
+            statusIndicator.classList.remove('visible');
+          }, 5000);
+        }
+      }
+  
+      // Sidebar toggle
+      sidebarTgl.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        const icon = sidebarTgl.querySelector('i');
+        if (sidebar.classList.contains('collapsed')) {
+          icon.classList.remove('fa-chevron-left');
+          icon.classList.add('fa-chevron-right');
+        } else {
+          icon.classList.remove('fa-chevron-right');
+          icon.classList.add('fa-chevron-left');
+        }
+      });
+  
+      // We’re not using markers array because we rely on Mapbox’s cluster approach
+      // But you can add additional logic for filtering if needed
+  
+      // Simple search could be implemented with your data source, but requires reloading or re-filtering layers
+      // For advanced filtering in cluster-based approaches, you'd manage a separate unclustered source or re-generate the cluster source with filters
+  
+    </script>
+  </body>
+  </html>
+  
