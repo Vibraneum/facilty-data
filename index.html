@@ -1008,11 +1008,14 @@ function fetchDataAndBuildLayers() {
       // [Same code as above for creating layers with the sample data]
     });
 }
-    // Add this function to set up map interactions
+  //from heree
+// Set up map interactions for clusters and individual points
 function setupMapInteraction() {
   // Click handler for clusters
   map.on('click', 'clusters', (e) => {
     const features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
+    if (!features || features.length === 0) return;
+    
     const clusterId = features[0].properties.cluster_id;
     
     // Get cluster expansion info
@@ -1051,7 +1054,9 @@ function setupMapInteraction() {
       `;
       
       // Create and show popup
-      const popup = new mapboxgl.Popup({
+      if (currentPopup) currentPopup.remove();
+      
+      currentPopup = new mapboxgl.Popup({
         offset: 25,
         closeButton: true,
         closeOnClick: false,
@@ -1068,7 +1073,7 @@ function setupMapInteraction() {
           map.flyTo({
             center: coordinates,
             zoom: zoom + 1
-          });
+      });
         });
       });
     });
@@ -1086,6 +1091,8 @@ function setupMapInteraction() {
   // Click handler for individual points
   map.on('click', 'unclustered-point', (e) => {
     const features = map.queryRenderedFeatures(e.point, { layers: ['unclustered-point'] });
+    if (!features || features.length === 0) return;
+    
     const properties = features[0].properties;
     const coordinates = features[0].geometry.coordinates.slice();
     
@@ -1118,6 +1125,14 @@ function setupMapInteraction() {
 
 // Create HTML for facility popup
 function createFacilityPopupHTML(properties) {
+  // Parse string properties - JSON properties get stringified when in GeoJSON layers
+  // Try to parse any necessary numeric properties
+  const squareFeet = parseInt(properties.squareFeet) || 0;
+  const staff = parseInt(properties.staff) || 0;
+  const chemicals = parseInt(properties.chemicals) || 0;
+  const wasteVehicles = parseInt(properties.wasteVehicles) || 0;
+  const machines = parseInt(properties.machines) || 0;
+  
   // Format facility name
   const siteName = properties.siteName || 'Unknown Site';
   const siteType = properties.type || 'unknown';
@@ -1150,17 +1165,17 @@ function createFacilityPopupHTML(properties) {
   if (siteTier === 'vip') {
     html += `<div class="popup-stats-grid">`;
     // Core information
-    html += buildStatCard('fa-chart-area', formatNumber(properties.squareFeet) + ' sq ft', 'Area');
+    html += buildStatCard('fa-chart-area', formatNumber(squareFeet) + ' sq ft', 'Area');
     
     // VIP-specific information
-    if (properties.staff) html += buildStatCard('fa-user', properties.staff, 'Staff');
-    if (properties.chemicals) html += buildStatCard('fa-flask', properties.chemicals, 'Chemicals');
-    if (properties.wasteVehicles) html += buildStatCard('fa-truck', properties.wasteVehicles, 'Waste Veh');
-    if (properties.machines) html += buildStatCard('fa-cogs', properties.machines, 'Machines');
+    if (staff) html += buildStatCard('fa-user', staff, 'Staff');
+    if (chemicals) html += buildStatCard('fa-flask', chemicals, 'Chemicals');
+    if (wasteVehicles) html += buildStatCard('fa-truck', wasteVehicles, 'Waste Veh');
+    if (machines) html += buildStatCard('fa-cogs', machines, 'Machines');
     html += `</div>`;
   } else {
     // Non-VIP layout
-    html += `<p><strong>Square Feet:</strong> ${formatNumber(properties.squareFeet)} sq ft</p>`;
+    html += `<p><strong>Square Feet:</strong> ${formatNumber(squareFeet)} sq ft</p>`;
   }
   
   // Add address for all sites
@@ -1195,14 +1210,15 @@ function fitBoundsToSource(sourceName) {
   const bounds = new mapboxgl.LngLatBounds();
   
   sourceFeatures.forEach(feature => {
-    if (feature.geometry.type === 'Point') {
+    if (feature.geometry && feature.geometry.type === 'Point') {
       bounds.extend(feature.geometry.coordinates);
     }
   });
   
   map.fitBounds(bounds, {
-    padding: 50,
-    maxZoom: 14
+    padding: { top: 100, bottom: 100, left: 350, right: 50 },
+    maxZoom: 14,
+    duration: 1000
   });
 }
       
@@ -1243,6 +1259,225 @@ function fitBoundsToSource(sourceName) {
       showStatus(`Failed to fetch facilities.json: ${error.message}. Using sample data.`, 'error');
     });
 }
+
+// Set up map interactions for clusters and individual points
+function setupMapInteraction() {
+  // Click handler for clusters
+  map.on('click', 'clusters', (e) => {
+    const features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
+    if (!features || features.length === 0) return;
+    
+    const clusterId = features[0].properties.cluster_id;
+    
+    // Get cluster expansion info
+    map.getSource('facilities').getClusterExpansionZoom(clusterId, (err, zoom) => {
+      if (err) return;
+      
+      // Get cluster center
+      const coordinates = features[0].geometry.coordinates.slice();
+      
+      // Create cluster popup content
+      const hyderabadCount = features[0].properties.hyderabad_count || 0;
+      const cyberabadCount = features[0].properties.cyberabad_count || 0;
+      const vipCount = features[0].properties.vip_count || 0;
+      const platinumCount = features[0].properties.platinum_count || 0;
+      const goldCount = features[0].properties.gold_count || 0;
+      const silverCount = features[0].properties.silver_count || 0;
+      
+      const popupContent = `
+        <div class="custom-popup">
+          <h3>Cluster Details</h3>
+          <div class="popup-stats-grid">
+            ${buildStatCard('fa-shield-alt', hyderabadCount, 'Hyderabad')}
+            ${buildStatCard('fa-laptop-code', cyberabadCount, 'Cyberabad')}
+            ${buildStatCard('fa-crown', vipCount, 'VIP')}
+            ${buildStatCard('fa-medal', platinumCount, 'Platinum')}
+            ${buildStatCard('fa-award', goldCount, 'Gold')}
+            ${buildStatCard('fa-certificate', silverCount, 'Silver')}
+          </div>
+          <div style="text-align: center; margin-top: 10px;">
+            <button id="zoom-to-cluster" style="background-color: var(--primary-light); color: white; 
+                   border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
+              <i class="fas fa-search-plus"></i> Zoom In
+            </button>
+          </div>
+        </div>
+      `;
+      
+      // Create and show popup
+      if (currentPopup) currentPopup.remove();
+      
+      currentPopup = new mapboxgl.Popup({
+        offset: 25,
+        closeButton: true,
+        closeOnClick: false,
+        maxWidth: '350px'
+      })
+        .setLngLat(coordinates)
+        .setHTML(popupContent)
+        .addTo(map);
+      
+      // Add zoom button click handler
+      setTimeout(() => {
+        const zoomButton = document.getElementById('zoom-to-cluster');
+        if (zoomButton) {
+          zoomButton.addEventListener('click', () => {
+            currentPopup.remove();
+            map.flyTo({
+              center: coordinates,
+              zoom: zoom + 1,
+              duration: 1000
+            });
+          });
+        }
+      }, 100);
+    });
+  });
+  
+  // Hover effects for clusters
+  map.on('mouseenter', 'clusters', () => {
+    map.getCanvas().style.cursor = 'pointer';
+  });
+  
+  map.on('mouseleave', 'clusters', () => {
+    map.getCanvas().style.cursor = '';
+  });
+  
+  // Click handler for individual points
+  map.on('click', 'unclustered-point', (e) => {
+    const features = map.queryRenderedFeatures(e.point, { layers: ['unclustered-point'] });
+    if (!features || features.length === 0) return;
+    
+    const properties = features[0].properties;
+    const coordinates = features[0].geometry.coordinates.slice();
+    
+    // Format popup content based on site data
+    const popupContent = createFacilityPopupHTML(properties);
+    
+    // Create popup
+    if (currentPopup) currentPopup.remove();
+    
+    currentPopup = new mapboxgl.Popup({
+      offset: 25,
+      closeButton: true,
+      closeOnClick: true,
+      maxWidth: '350px'
+    })
+      .setLngLat(coordinates)
+      .setHTML(popupContent)
+      .addTo(map);
+  });
+  
+  // Hover effects for points
+  map.on('mouseenter', 'unclustered-point', () => {
+    map.getCanvas().style.cursor = 'pointer';
+  });
+  
+  map.on('mouseleave', 'unclustered-point', () => {
+    map.getCanvas().style.cursor = '';
+  });
+}
+
+// Create HTML for facility popup
+function createFacilityPopupHTML(properties) {
+  // Parse string properties - JSON properties get stringified when in GeoJSON layers
+  // Try to parse any necessary numeric properties
+  const squareFeet = parseInt(properties.squareFeet) || 0;
+  const staff = parseInt(properties.staff) || 0;
+  const chemicals = parseInt(properties.chemicals) || 0;
+  const wasteVehicles = parseInt(properties.wasteVehicles) || 0;
+  const machines = parseInt(properties.machines) || 0;
+  
+  // Format facility name
+  const siteName = properties.siteName || 'Unknown Site';
+  const siteType = properties.type || 'unknown';
+  const siteTier = properties.tier || 'unknown';
+  
+  // Start building popup HTML
+  let html = `<div class="custom-popup">`;
+  
+  // Header with site type icon and tier badge
+  html += `
+  <div class="popup-header-info">
+    <span class="site-type-icon ${
+      siteType === 'hyderabad-police' ? 'type-hyderabad-police' :
+      siteType === 'cyberabad-police' ? 'type-cyberabad-police' : ''
+    }">
+      ${siteType === 'hyderabad-police' ? '<i class="fas fa-shield-alt"></i>' :
+        siteType === 'cyberabad-police' ? '<i class="fas fa-laptop-code"></i>' :
+        '<i class="fas fa-map-marker-alt"></i>'}
+    </span>
+    <h3>${siteName}</h3>
+    <span class="popup-tier-badge ${siteTier}">
+      ${siteTier === 'vip' ? '<i class="fas fa-crown"></i> VIP' :
+        siteTier === 'platinum' ? '<i class="fas fa-medal"></i> Platinum' :
+        siteTier === 'gold' ? '<i class="fas fa-award"></i> Gold' :
+        '<i class="fas fa-certificate"></i> Silver'}
+    </span>
+  </div>`;
+
+  // VIP sites get detailed statistics
+  if (siteTier === 'vip') {
+    html += `<div class="popup-stats-grid">`;
+    // Core information
+    html += buildStatCard('fa-chart-area', formatNumber(squareFeet) + ' sq ft', 'Area');
+    
+    // VIP-specific information
+    if (staff) html += buildStatCard('fa-user', staff, 'Staff');
+    if (chemicals) html += buildStatCard('fa-flask', chemicals, 'Chemicals');
+    if (wasteVehicles) html += buildStatCard('fa-truck', wasteVehicles, 'Waste Veh');
+    if (machines) html += buildStatCard('fa-cogs', machines, 'Machines');
+    html += `</div>`;
+  } else {
+    // Non-VIP layout
+    html += `<p><strong>Square Feet:</strong> ${formatNumber(squareFeet)} sq ft</p>`;
+  }
+  
+  // Add address for all sites
+  if (properties.address) {
+    html += `<div class="popup-address"><i class="fas fa-map-marker-alt"></i> ${properties.address}</div>`;
+  }
+
+  html += `</div>`;
+  
+  return html;
+}
+
+// Helper function to format numbers with commas
+function formatNumber(num) {
+  if (!num) return 'N/A';
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// Helper function to fit map bounds to a source
+function fitBoundsToSource(sourceName) {
+  const sourceFeatures = map.querySourceFeatures(sourceName);
+  
+  if (sourceFeatures.length === 0) {
+    // Fallback to Hyderabad center if no features
+    map.flyTo({
+      center: [78.4867, 17.3850],
+      zoom: 11
+    });
+    return;
+  }
+  
+  const bounds = new mapboxgl.LngLatBounds();
+  
+  sourceFeatures.forEach(feature => {
+    if (feature.geometry && feature.geometry.type === 'Point') {
+      bounds.extend(feature.geometry.coordinates);
+    }
+  });
+  
+  map.fitBounds(bounds, {
+    padding: { top: 100, bottom: 100, left: 350, right: 50 },
+    maxZoom: 14,
+    duration: 1000
+  });
+}
+
+  
     // Generate sample data if fetch fails
     function generateSampleData() {
       const sampleData = [
@@ -1285,79 +1520,7 @@ function enrichWithVIPData(data) {
   });
 }
    
-    // Create custom markers for each facility
-    function createMarkers(data) {
-      // Clear existing markers
-      markers.forEach(marker => marker.remove());
-      markers = [];
-      visibleMarkers = [];
-      
-      data.forEach(item => {
-        // Parse coordinates
-        const lat = parseFloat(item.latitude);
-        const lng = parseFloat(item.longitude);
-        
-        // Skip if invalid coordinates
-        if (isNaN(lat) || isNaN(lng)) {
-          console.warn('Invalid coordinates for:', item.siteName);
-          return;
-        }
-        
-        // Create custom marker element
-        const el = document.createElement('div');
-        el.className = `custom-marker ${item.type} ${item.tier}`;
-        
-        // Add icon based on type
-        const iconClass = item.type === 'hyderabad-police' ? 'fa-shield-alt' : 'fa-laptop-code';
-        el.innerHTML = `<i class="fas ${iconClass}"></i>`;
-        
-        // Create marker
-        const marker = new mapboxgl.Marker(el)
-          .setLngLat([lng, lat])
-          .addTo(map);
-        
-        // Add click handler
-        marker.getElement().addEventListener('click', () => {
-          openFacilityPopup(item, [lng, lat]);
-        });
-        
-        // Store marker references
-        markers.push(marker);
-        visibleMarkers.push(marker);
-      });
-      
-      // Fit map to markers if any exist
-      if (markers.length > 0) {
-        fitMapToMarkers();
-      }
-    }
 
-    // Open popup with facility details
-    function openFacilityPopup(item, coordinates) {
-      if (currentPopup) currentPopup.remove();
-      
-      // Create HTML content for popup
-      let html = `<div class="custom-popup">`;
-      
-      // Header with site type icon and tier badge
-      html += `
-      <div class="popup-header-info">
-        <span class="site-type-icon ${
-          item.type === 'hyderabad-police' ? 'type-hyderabad-police' :
-          item.type === 'cyberabad-police' ? 'type-cyberabad-police' : ''
-        }">
-          ${item.type === 'hyderabad-police' ? '<i class="fas fa-shield-alt"></i>' :
-            item.type === 'cyberabad-police' ? '<i class="fas fa-laptop-code"></i>' :
-            '<i class="fas fa-map-marker-alt"></i>'}
-        </span>
-        <h3>${item.siteName || 'Unknown Site'}</h3>
-        <span class="popup-tier-badge ${item.tier}">
-          ${item.tier === 'vip' ? '<i class="fas fa-crown"></i> VIP' :
-            item.tier === 'platinum' ? '<i class="fas fa-medal"></i> Platinum' :
-            item.tier === 'gold' ? '<i class="fas fa-award"></i> Gold' :
-            '<i class="fas fa-certificate"></i> Silver'}
-        </span>
-      </div>`;
 
       // VIP sites get detailed statistics
       if (item.tier === 'vip') {
