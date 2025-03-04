@@ -768,22 +768,25 @@
 function fetchDataAndBuildLayers() {
   showStatus('Loading facility data...', 'loading');
   
-  fetch('facilities.json') // Updated to relative path for GitHub Pages
+  fetch('facilities.json') // Relative path for GitHub Pages
     .then(response => {
-      console.log('Fetch response status:', response.status);
+      console.log('Fetch response:', {
+        status: response.status,
+        url: response.url,
+        headers: response.headers
+      });
       if (!response.ok) {
-        throw new Error('Network response was not ok: ' + response.status);
+        throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
       }
       return response.json();
     })
     .then(data => {
-      console.log('Data fetched successfully:', data);
-      rawData = data;  // store raw data
-
-      // If data is empty or not an array, use sample data for demo
+      console.log('Parsed JSON data:', data);
       if (!Array.isArray(data) || data.length === 0) {
         console.warn('No data or invalid data structure, using sample data');
         rawData = generateSampleData();
+      } else {
+        rawData = data;  // store raw data
       }
 
       // Add VIP data to relevant sites
@@ -799,13 +802,13 @@ function fetchDataAndBuildLayers() {
       loader.style.display = 'none';
       
       // Show success status
-      showStatus('Data loaded successfully (' + rawData.length + ' facilities)', 'success');
+      showStatus(`Data loaded successfully (${rawData.length} facilities)`, 'success');
     })
     .catch(error => {
-      console.error('Error fetching the data:', error);
+      console.error('Fetch error details:', error);
       
       // Use sample data if fetch fails
-      console.log('Using sample data instead');
+      console.log('Falling back to sample data');
       rawData = generateSampleData();
       
       // Add VIP data to relevant sites
@@ -820,12 +823,10 @@ function fetchDataAndBuildLayers() {
       // Hide loader
       loader.style.display = 'none';
       
-      // Show error status
-      showStatus('Using sample data (fetch failed)', 'error');
+      // Show error status with detailed message
+      showStatus(`Failed to fetch facilities.json: ${error.message}. Using sample data.`, 'error');
     });
 }
-    
-
     // Generate sample data if fetch fails
     function generateSampleData() {
       const sampleData = [
