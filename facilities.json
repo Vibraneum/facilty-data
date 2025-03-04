@@ -1,2526 +1,2584 @@
 [
   {
     "type": "hyderabad-police",
-    "name": "OFFICE OF THE COMMISSIONER OF POLICE(OLD), BASHEERBAGH, HYD.",
-    "lat": 17.4005,
-    "lng": 78.471474,
+    "siteName": "OFFICE OF THE COMMISSIONER OF POLICE(OLD), BASHEERBAGH, HYD.",
+    "latitude": 17.4005,
+    "longitude": 78.471474,
     "tier": "vip",
     "address": "OFFICE OF THE COMMISSIONER OF POLICE(OLD)",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "hyderabad-police",
-    "name": "DCP, NORTH ZONE",
-    "lat": 17.443378,
-    "lng": 78.500772,
+    "siteName": "DCP, NORTH ZONE",
+    "latitude": 17.443378,
+    "longitude": 78.500772,
     "tier": "platinum",
     "address": "DCP",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "DCP NORTH ZONE",
-    "lat": 17.443378,
-    "lng": 78.500772,
+    "siteName": "DCP NORTH ZONE",
+    "latitude": 17.443378,
+    "longitude": 78.500772,
     "tier": "platinum",
     "address": "DCP NORTH ZONE",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP, BEGUMPET DIVN",
-    "lat": 17.44552,
-    "lng": 78.475375,
+    "siteName": "ACP, BEGUMPET DIVN",
+    "latitude": 17.44552,
+    "longitude": 78.475375,
     "tier": "gold",
     "address": "ACP",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "BEGUMPET PS",
-    "lat": 17.444056,
-    "lng": 78.475034,
+    "siteName": "BEGUMPET PS",
+    "latitude": 17.444056,
+    "longitude": 78.475034,
     "tier": "gold",
     "address": "BEGUMPET PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "WPS BEGUMPET",
-    "lat": 17.444026,
-    "lng": 78.477528,
+    "siteName": "WPS BEGUMPET",
+    "latitude": 17.444026,
+    "longitude": 78.477528,
     "tier": "gold",
     "address": "WPS BEGUMPET",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "BOWENPALLY PS",
-    "lat": 17.464856,
-    "lng": 78.473018,
+    "siteName": "BOWENPALLY PS",
+    "latitude": 17.464856,
+    "longitude": 78.473018,
     "tier": "platinum",
     "address": "BOWENPALLY PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRIMULGHERRY PS",
-    "lat": 17.480245,
-    "lng": 78.511452,
+    "siteName": "TRIMULGHERRY PS",
+    "latitude": 17.480245,
+    "longitude": 78.511452,
     "tier": "gold",
     "address": "TRIMULGHERRY PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "BOLLARUM PS",
-    "lat": 17.517953,
-    "lng": 78.519652,
+    "siteName": "BOLLARUM PS",
+    "latitude": 17.517953,
+    "longitude": 78.519652,
     "tier": "platinum",
     "address": "BOLLARUM PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP, GOPALPURAM DIVISION",
-    "lat": 17.443397,
-    "lng": 78.500784,
+    "siteName": "ACP, GOPALPURAM DIVISION",
+    "latitude": 17.443397,
+    "longitude": 78.500784,
     "tier": "silver",
     "address": "ACP",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "GOPALPURAM PS",
-    "lat": 17.435484,
-    "lng": 78.502003,
+    "siteName": "GOPALPURAM PS",
+    "latitude": 17.435484,
+    "longitude": 78.502003,
     "tier": "gold",
     "address": "GOPALPURAM PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "CHILKALGUDA PS",
-    "lat": 17.430728,
-    "lng": 78.513276,
+    "siteName": "CHILKALGUDA PS",
+    "latitude": 17.430728,
+    "longitude": 78.513276,
     "tier": "gold",
     "address": "CHILKALGUDA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TUKARAMGATE PS",
-    "lat": 17.444978,
-    "lng": 78.517512,
+    "siteName": "TUKARAMGATE PS",
+    "latitude": 17.444978,
+    "longitude": 78.517512,
     "tier": "gold",
     "address": "TUKARAMGATE PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "LALAGUDA PS",
-    "lat": 17.434637,
-    "lng": 78.527926,
+    "siteName": "LALAGUDA PS",
+    "latitude": 17.434637,
+    "longitude": 78.527926,
     "tier": "gold",
     "address": "LALAGUDA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP, MAHANKALI DIVN",
-    "lat": 17.43597,
-    "lng": 78.491053,
+    "siteName": "ACP, MAHANKALI DIVN",
+    "latitude": 17.43597,
+    "longitude": 78.491053,
     "tier": "gold",
     "address": "ACP",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "MAHANKALI PS",
-    "lat": 17.436109,
-    "lng": 78.490974,
+    "siteName": "MAHANKALI PS",
+    "latitude": 17.436109,
+    "longitude": 78.490974,
     "tier": "gold",
     "address": "MAHANKALI PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "MARKET PS",
-    "lat": 17.434286,
-    "lng": 78.498309,
+    "siteName": "MARKET PS",
+    "latitude": 17.434286,
+    "longitude": 78.498309,
     "tier": "gold",
     "address": "MARKET PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "KARKHANA PS",
-    "lat": 17.459258,
-    "lng": 78.500168,
+    "siteName": "KARKHANA PS",
+    "latitude": 17.459258,
+    "longitude": 78.500168,
     "tier": "platinum",
     "address": "KARKHANA PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "DCP, EAST ZONE",
-    "lat": 17.386185,
-    "lng": 78.516851,
+    "siteName": "DCP, EAST ZONE",
+    "latitude": 17.386185,
+    "longitude": 78.516851,
     "tier": "gold",
     "address": "DCP",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP, SULTANBAZAR DIVN",
-    "lat": 17.388197,
-    "lng": 78.476499,
+    "siteName": "ACP, SULTANBAZAR DIVN",
+    "latitude": 17.388197,
+    "longitude": 78.476499,
     "tier": "silver",
     "address": "ACP",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "SULTANBAZAR PS",
-    "lat": 17.388586,
-    "lng": 78.487356,
+    "siteName": "SULTANBAZAR PS",
+    "latitude": 17.388586,
+    "longitude": 78.487356,
     "tier": "gold",
     "address": "SULTANBAZAR PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "AFZALGUNJ PS",
-    "lat": 17.372543,
-    "lng": 78.475785,
+    "siteName": "AFZALGUNJ PS",
+    "latitude": 17.372543,
+    "longitude": 78.475785,
     "tier": "gold",
     "address": "AFZALGUNJ PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "CHADERGHAT PS",
-    "lat": 17.378141,
-    "lng": 78.491931,
+    "siteName": "CHADERGHAT PS",
+    "latitude": 17.378141,
+    "longitude": 78.491931,
     "tier": "silver",
     "address": "CHADERGHAT PS",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP, KACHIGUDA DIVN",
-    "lat": 17.388208,
-    "lng": 78.476509,
+    "siteName": "ACP, KACHIGUDA DIVN",
+    "latitude": 17.388208,
+    "longitude": 78.476509,
     "tier": "silver",
     "address": "ACP",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "KACHIGUDA PS",
-    "lat": 17.389211,
-    "lng": 78.497451,
+    "siteName": "KACHIGUDA PS",
+    "latitude": 17.389211,
+    "longitude": 78.497451,
     "tier": "gold",
     "address": "KACHIGUDA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "NALLAKUNTA PS",
-    "lat": 17.4075,
-    "lng": 78.513265,
+    "siteName": "NALLAKUNTA PS",
+    "latitude": 17.4075,
+    "longitude": 78.513265,
     "tier": "gold",
     "address": "NALLAKUNTA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "OSMANIA UNIVERSITY PS",
-    "lat": 17.421432,
-    "lng": 78.525894,
+    "siteName": "OSMANIA UNIVERSITY PS",
+    "latitude": 17.421432,
+    "longitude": 78.525894,
     "tier": "gold",
     "address": "OSMANIA UNIVERSITY PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP MALAKPET",
-    "lat": 17.367863,
-    "lng": 78.486063,
+    "siteName": "ACP MALAKPET",
+    "latitude": 17.367863,
+    "longitude": 78.486063,
     "tier": "silver",
     "address": "ACP MALAKPET",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "MALAKPET PS",
-    "lat": 17.370658,
-    "lng": 78.512244,
+    "siteName": "MALAKPET PS",
+    "latitude": 17.370658,
+    "longitude": 78.512244,
     "tier": "gold",
     "address": "MALAKPET PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "SAIDABAD PS",
-    "lat": 17.362009,
-    "lng": 78.50896,
+    "siteName": "SAIDABAD PS",
+    "latitude": 17.362009,
+    "longitude": 78.50896,
     "tier": "platinum",
     "address": "SAIDABAD PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "AMBERPET PS",
-    "lat": 17.390056,
-    "lng": 78.516949,
+    "siteName": "AMBERPET PS",
+    "latitude": 17.390056,
+    "longitude": 78.516949,
     "tier": "gold",
     "address": "AMBERPET PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "DCP, WEST ZONE",
-    "lat": 17.40064,
-    "lng": 78.458966,
+    "siteName": "DCP, WEST ZONE",
+    "latitude": 17.40064,
+    "longitude": 78.458966,
     "tier": "platinum",
     "address": "DCP",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP, ASIFNAGAR DIVN",
-    "lat": 17.389415,
-    "lng": 78.452222,
+    "siteName": "ACP, ASIFNAGAR DIVN",
+    "latitude": 17.389415,
+    "longitude": 78.452222,
     "tier": "silver",
     "address": "ACP",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "ASIFNAGAR PS",
-    "lat": 17.389415,
-    "lng": 78.452363,
+    "siteName": "ASIFNAGAR PS",
+    "latitude": 17.389415,
+    "longitude": 78.452363,
     "tier": "gold",
     "address": "ASIFNAGAR PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "GOLCONDA PS",
-    "lat": 17.390131,
-    "lng": 78.403708,
+    "siteName": "GOLCONDA PS",
+    "latitude": 17.390131,
+    "longitude": 78.403708,
     "tier": "gold",
     "address": "GOLCONDA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "HUMAYUN NAGAR PS",
-    "lat": 17.395623,
-    "lng": 78.442248,
+    "siteName": "HUMAYUN NAGAR PS",
+    "latitude": 17.395623,
+    "longitude": 78.442248,
     "tier": "platinum",
     "address": "HUMAYUN NAGAR PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "LANGER HOUSE PS",
-    "lat": 17.378072,
-    "lng": 78.42189,
+    "siteName": "LANGER HOUSE PS",
+    "latitude": 17.378072,
+    "longitude": 78.42189,
     "tier": "silver",
     "address": "LANGER HOUSE PS",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "TAPPACHABUTRA PS",
-    "lat": 17.374909,
-    "lng": 78.448415,
+    "siteName": "TAPPACHABUTRA PS",
+    "latitude": 17.374909,
+    "longitude": 78.448415,
     "tier": "gold",
     "address": "TAPPACHABUTRA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "BANJARA HILLS PS",
-    "lat": 17.422093,
-    "lng": 78.436496,
+    "siteName": "BANJARA HILLS PS",
+    "latitude": 17.422093,
+    "longitude": 78.436496,
     "tier": "platinum",
     "address": "BANJARA HILLS PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "JUBILEE HILLS PS",
-    "lat": 17.430597,
-    "lng": 78.409063,
+    "siteName": "JUBILEE HILLS PS",
+    "latitude": 17.430597,
+    "longitude": 78.409063,
     "tier": "platinum",
     "address": "JUBILEE HILLS PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP GOSHAMAHAL DIVN",
-    "lat": 17.377379,
-    "lng": 78.470612,
+    "siteName": "ACP GOSHAMAHAL DIVN",
+    "latitude": 17.377379,
+    "longitude": 78.470612,
     "tier": "silver",
     "address": "ACP GOSHAMAHAL DIVN",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "GOSHAMAHAL STADIUM",
-    "lat": 17.379279,
-    "lng": 78.469564,
+    "siteName": "GOSHAMAHAL STADIUM",
+    "latitude": 17.379279,
+    "longitude": 78.469564,
     "tier": "gold",
     "address": "GOSHAMAHAL STADIUM",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "SHAHINAYATHGUNJ PS",
-    "lat": 17.376434,
-    "lng": 78.469606,
+    "siteName": "SHAHINAYATHGUNJ PS",
+    "latitude": 17.376434,
+    "longitude": 78.469606,
     "tier": "platinum",
     "address": "SHAHINAYATHGUNJ PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "MANGALHAT PS",
-    "lat": 17.378413,
-    "lng": 78.460817,
+    "siteName": "MANGALHAT PS",
+    "latitude": 17.378413,
+    "longitude": 78.460817,
     "tier": "gold",
     "address": "MANGALHAT PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "HABEEBNAGAR PS",
-    "lat": 17.389884,
-    "lng": 78.462838,
+    "siteName": "HABEEBNAGAR PS",
+    "latitude": 17.389884,
+    "longitude": 78.462838,
     "tier": "gold",
     "address": "HABEEBNAGAR PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "KULSUMPURA PS",
-    "lat": 17.369388,
-    "lng": 78.447466,
+    "siteName": "KULSUMPURA PS",
+    "latitude": 17.369388,
+    "longitude": 78.447466,
     "tier": "gold",
     "address": "KULSUMPURA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP,PUNJAGUTTA",
-    "lat": 17.426186,
-    "lng": 78.452437,
+    "siteName": "ACP,PUNJAGUTTA",
+    "latitude": 17.426186,
+    "longitude": 78.452437,
     "tier": "silver",
     "address": "ACP",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "PUNJAGUTTA PS",
-    "lat": 17.426021,
-    "lng": 78.452564,
+    "siteName": "PUNJAGUTTA PS",
+    "latitude": 17.426021,
+    "longitude": 78.452564,
     "tier": "platinum",
     "address": "PUNJAGUTTA PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "S.R.NAGAR PS",
-    "lat": 17.440183,
-    "lng": 78.44567,
+    "siteName": "S.R.NAGAR PS",
+    "latitude": 17.440183,
+    "longitude": 78.44567,
     "tier": "platinum",
     "address": "S.R.NAGAR PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP, CHIKKADPALLY DIVN",
-    "lat": 17.406201,
-    "lng": 78.493701,
+    "siteName": "ACP, CHIKKADPALLY DIVN",
+    "latitude": 17.406201,
+    "longitude": 78.493701,
     "tier": "gold",
     "address": "ACP",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "CHIKKADPALLY PS",
-    "lat": 17.406201,
-    "lng": 78.493701,
+    "siteName": "CHIKKADPALLY PS",
+    "latitude": 17.406201,
+    "longitude": 78.493701,
     "tier": "gold",
     "address": "CHIKKADPALLY PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "MUSHEERABAD PS",
-    "lat": 17.41927,
-    "lng": 78.500329,
+    "siteName": "MUSHEERABAD PS",
+    "latitude": 17.41927,
+    "longitude": 78.500329,
     "tier": "gold",
     "address": "MUSHEERABAD PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "GANDHINAGAR PS",
-    "lat": 17.430587,
-    "lng": 78.496967,
+    "siteName": "GANDHINAGAR PS",
+    "latitude": 17.430587,
+    "longitude": 78.496967,
     "tier": "gold",
     "address": "GANDHINAGAR PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP, SAIFABAD DIVN",
-    "lat": 17.411064,
-    "lng": 78.464769,
+    "siteName": "ACP, SAIFABAD DIVN",
+    "latitude": 17.411064,
+    "longitude": 78.464769,
     "tier": "silver",
     "address": "ACP",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "SAIFABAD PS",
-    "lat": 17.411155,
-    "lng": 78.464652,
+    "siteName": "SAIFABAD PS",
+    "latitude": 17.411155,
+    "longitude": 78.464652,
     "tier": "gold",
     "address": "SAIFABAD PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "NAMPALLY PS",
-    "lat": 17.400033,
-    "lng": 78.460317,
+    "siteName": "NAMPALLY PS",
+    "latitude": 17.400033,
+    "longitude": 78.460317,
     "tier": "platinum",
     "address": "NAMPALLY PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "NARAYANGUDA PS",
-    "lat": 17.397764,
-    "lng": 78.489904,
+    "siteName": "NARAYANGUDA PS",
+    "latitude": 17.397764,
+    "longitude": 78.489904,
     "tier": "platinum",
     "address": "NARAYANGUDA PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "BEGUMBAZAR PS",
-    "lat": 17.382797,
-    "lng": 78.47049,
+    "siteName": "BEGUMBAZAR PS",
+    "latitude": 17.382797,
+    "longitude": 78.47049,
     "tier": "gold",
     "address": "BEGUMBAZAR PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "RAMGOPALPET PS",
-    "lat": 17.440422,
-    "lng": 78.479141,
+    "siteName": "RAMGOPALPET PS",
+    "latitude": 17.440422,
+    "longitude": 78.479141,
     "tier": "gold",
     "address": "RAMGOPALPET PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP, ABIDS DIVN",
-    "lat": 17.388869,
-    "lng": 78.475689,
+    "siteName": "ACP, ABIDS DIVN",
+    "latitude": 17.388869,
+    "longitude": 78.475689,
     "tier": "silver",
     "address": "ACP",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "ABIDS PS",
-    "lat": 17.388869,
-    "lng": 78.475689,
+    "siteName": "ABIDS PS",
+    "latitude": 17.388869,
+    "longitude": 78.475689,
     "tier": "gold",
     "address": "ABIDS PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "DCP,SOUTH ZONE OFFICE/OLD OFFICE BUILDING",
-    "lat": 17.367192,
-    "lng": 78.479148,
+    "siteName": "DCP,SOUTH ZONE OFFICE/OLD OFFICE BUILDING",
+    "latitude": 17.367192,
+    "longitude": 78.479148,
     "tier": "vip",
     "address": "DCP",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "hyderabad-police",
-    "name": "SOUTH ZONE TASK FORCE",
-    "lat": 17.367093,
-    "lng": 78.479892,
+    "siteName": "SOUTH ZONE TASK FORCE",
+    "latitude": 17.367093,
+    "longitude": 78.479892,
     "tier": "gold",
     "address": "SOUTH ZONE TASK FORCE",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "CHARMINAR PS/ACP OFFICE",
-    "lat": 17.362044,
-    "lng": 78.474352,
+    "siteName": "CHARMINAR PS/ACP OFFICE",
+    "latitude": 17.362044,
+    "longitude": 78.474352,
     "tier": "platinum",
     "address": "CHARMINAR PS/ACP OFFICE",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "HUSSAINIALAM PS",
-    "lat": 17.358145,
-    "lng": 78.463889,
+    "siteName": "HUSSAINIALAM PS",
+    "latitude": 17.358145,
+    "longitude": 78.463889,
     "tier": "gold",
     "address": "HUSSAINIALAM PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "KAMATIPURA PS",
-    "lat": 17.355971,
-    "lng": 78.460181,
+    "siteName": "KAMATIPURA PS",
+    "latitude": 17.355971,
+    "longitude": 78.460181,
     "tier": "gold",
     "address": "KAMATIPURA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "KALAPATHER PS",
-    "lat": 17.345669,
-    "lng": 78.454391,
+    "siteName": "KALAPATHER PS",
+    "latitude": 17.345669,
+    "longitude": 78.454391,
     "tier": "gold",
     "address": "KALAPATHER PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "BAHADURPURA PS",
-    "lat": 17.358584,
-    "lng": 78.455357,
+    "siteName": "BAHADURPURA PS",
+    "latitude": 17.358584,
+    "longitude": 78.455357,
     "tier": "gold",
     "address": "BAHADURPURA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "WPS SOUTH ZONE",
-    "lat": 17.377517,
-    "lng": 78.470879,
+    "siteName": "WPS SOUTH ZONE",
+    "latitude": 17.377517,
+    "longitude": 78.470879,
     "tier": "gold",
     "address": "WPS SOUTH ZONE",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP FALAKNUMA DVIN",
-    "lat": 17.334745,
-    "lng": 78.468349,
+    "siteName": "ACP FALAKNUMA DVIN",
+    "latitude": 17.334745,
+    "longitude": 78.468349,
     "tier": "gold",
     "address": "ACP FALAKNUMA DVIN",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "FALAKNUMA PS",
-    "lat": 17.334759,
-    "lng": 78.468349,
+    "siteName": "FALAKNUMA PS",
+    "latitude": 17.334759,
+    "longitude": 78.468349,
     "tier": "gold",
     "address": "FALAKNUMA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "CHANDRYANGUTTA PS",
-    "lat": 17.32502,
-    "lng": 78.479875,
+    "siteName": "CHANDRYANGUTTA PS",
+    "latitude": 17.32502,
+    "longitude": 78.479875,
     "tier": "gold",
     "address": "CHANDRYANGUTTA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "CHATRINAKA PS",
-    "lat": 17.339911,
-    "lng": 78.480002,
+    "siteName": "CHATRINAKA PS",
+    "latitude": 17.339911,
+    "longitude": 78.480002,
     "tier": "gold",
     "address": "CHATRINAKA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "SHAHALIBANDA PS",
-    "lat": 17.344586,
-    "lng": 78.468847,
+    "siteName": "SHAHALIBANDA PS",
+    "latitude": 17.344586,
+    "longitude": 78.468847,
     "tier": "gold",
     "address": "SHAHALIBANDA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "MIRCHOWK PS",
-    "lat": 17.363651,
-    "lng": 78.480366,
+    "siteName": "MIRCHOWK PS",
+    "latitude": 17.363651,
+    "longitude": 78.480366,
     "tier": "gold",
     "address": "MIRCHOWK PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "REIN BAZAR PS",
-    "lat": 17.361797,
-    "lng": 78.488017,
+    "siteName": "REIN BAZAR PS",
+    "latitude": 17.361797,
+    "longitude": 78.488017,
     "tier": "gold",
     "address": "REIN BAZAR PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "MOGHALPURA PS",
-    "lat": 17.350714,
-    "lng": 78.479001,
+    "siteName": "MOGHALPURA PS",
+    "latitude": 17.350714,
+    "longitude": 78.479001,
     "tier": "gold",
     "address": "MOGHALPURA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "DABEERPURA PS",
-    "lat": 17.366666,
-    "lng": 78.489287,
+    "siteName": "DABEERPURA PS",
+    "latitude": 17.366666,
+    "longitude": 78.489287,
     "tier": "gold",
     "address": "DABEERPURA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP, SANTOSHNAGAR DIVN",
-    "lat": 17.349069,
-    "lng": 78.49746,
+    "siteName": "ACP, SANTOSHNAGAR DIVN",
+    "latitude": 17.349069,
+    "longitude": 78.49746,
     "tier": "gold",
     "address": "ACP",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "SANTOSHNAGAR PS",
-    "lat": 17.346859,
-    "lng": 78.504814,
+    "siteName": "SANTOSHNAGAR PS",
+    "latitude": 17.346859,
+    "longitude": 78.504814,
     "tier": "gold",
     "address": "SANTOSHNAGAR PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "MADANAPET PS",
-    "lat": 17.358132,
-    "lng": 78.499973,
+    "siteName": "MADANAPET PS",
+    "latitude": 17.358132,
+    "longitude": 78.499973,
     "tier": "gold",
     "address": "MADANAPET PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "BHAVANI NAGAR PS",
-    "lat": 17.361797,
-    "lng": 78.488017,
+    "siteName": "BHAVANI NAGAR PS",
+    "latitude": 17.361797,
+    "longitude": 78.488017,
     "tier": "gold",
     "address": "BHAVANI NAGAR PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "KANCHANBAGH PS",
-    "lat": 17.333723,
-    "lng": 78.508366,
+    "siteName": "KANCHANBAGH PS",
+    "latitude": 17.333723,
+    "longitude": 78.508366,
     "tier": "gold",
     "address": "KANCHANBAGH PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "DCP, TASK FORCE",
-    "lat": 17.442636,
-    "lng": 78.495058,
+    "siteName": "DCP, TASK FORCE",
+    "latitude": 17.442636,
+    "longitude": 78.495058,
     "tier": "platinum",
     "address": "DCP",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "DCP TASK FORCE OFFICE",
-    "lat": 17.442553,
-    "lng": 78.495061,
+    "siteName": "DCP TASK FORCE OFFICE",
+    "latitude": 17.442553,
+    "longitude": 78.495061,
     "tier": "silver",
     "address": "DCP TASK FORCE OFFICE",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP, TRAFFIC II CENTRAL ZONE",
-    "lat": 17.411064,
-    "lng": 78.464769,
+    "siteName": "ACP, TRAFFIC II CENTRAL ZONE",
+    "latitude": 17.411064,
+    "longitude": 78.464769,
     "tier": "gold",
     "address": "ACP",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC COMPLEX",
-    "lat": 17.400797,
-    "lng": 78.470888,
+    "siteName": "TRAFFIC COMPLEX",
+    "latitude": 17.400797,
+    "longitude": 78.470888,
     "tier": "vip",
     "address": "TRAFFIC COMPLEX",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS MAHANKALI",
-    "lat": 17.431151,
-    "lng": 78.492491,
+    "siteName": "TRAFFIC PS MAHANKALI",
+    "latitude": 17.431151,
+    "longitude": 78.492491,
     "tier": "gold",
     "address": "TRAFFIC PS MAHANKALI",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS GOPALPURAM",
-    "lat": 17.436843,
-    "lng": 78.504505,
+    "siteName": "TRAFFIC PS GOPALPURAM",
+    "latitude": 17.436843,
+    "longitude": 78.504505,
     "tier": "gold",
     "address": "TRAFFIC PS GOPALPURAM",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS TRIMULGHERRY",
-    "lat": 17.472104,
-    "lng": 78.509885,
+    "siteName": "TRAFFIC PS TRIMULGHERRY",
+    "latitude": 17.472104,
+    "longitude": 78.509885,
     "tier": "gold",
     "address": "TRAFFIC PS TRIMULGHERRY",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS BEGUMPET",
-    "lat": 17.443784,
-    "lng": 78.478417,
+    "siteName": "TRAFFIC PS BEGUMPET",
+    "latitude": 17.443784,
+    "longitude": 78.478417,
     "tier": "gold",
     "address": "TRAFFIC PS BEGUMPET",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS PANJAGUTTA",
-    "lat": 17.426522,
-    "lng": 78.45239,
+    "siteName": "TRAFFIC PS PANJAGUTTA",
+    "latitude": 17.426522,
+    "longitude": 78.45239,
     "tier": "gold",
     "address": "TRAFFIC PS PANJAGUTTA",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS SR NAGAR",
-    "lat": 17.44147,
-    "lng": 78.447777,
+    "siteName": "TRAFFIC PS SR NAGAR",
+    "latitude": 17.44147,
+    "longitude": 78.447777,
     "tier": "gold",
     "address": "TRAFFIC PS SR NAGAR",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS BANJARA HILLS",
-    "lat": 17.417206,
-    "lng": 78.453157,
+    "siteName": "TRAFFIC PS BANJARA HILLS",
+    "latitude": 17.417206,
+    "longitude": 78.453157,
     "tier": "gold",
     "address": "TRAFFIC PS BANJARA HILLS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "SB WEST ZONE HYD",
-    "lat": 17.359437,
-    "lng": 78.525558,
+    "siteName": "SB WEST ZONE HYD",
+    "latitude": 17.359437,
+    "longitude": 78.525558,
     "tier": "silver",
     "address": "SB WEST ZONE HYD",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS JUBILLEE HILLS",
-    "lat": 17.43742,
-    "lng": 78.416021,
+    "siteName": "TRAFFIC PS JUBILLEE HILLS",
+    "latitude": 17.43742,
+    "longitude": 78.416021,
     "tier": "gold",
     "address": "TRAFFIC PS JUBILLEE HILLS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS CHIKKADPALLI",
-    "lat": 17.41244,
-    "lng": 78.497876,
+    "siteName": "TRAFFIC PS CHIKKADPALLI",
+    "latitude": 17.41244,
+    "longitude": 78.497876,
     "tier": "gold",
     "address": "TRAFFIC PS CHIKKADPALLI",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS SAIFABAD/PV CELL",
-    "lat": 17.411064,
-    "lng": 78.464769,
+    "siteName": "TRAFFIC PS SAIFABAD/PV CELL",
+    "latitude": 17.411064,
+    "longitude": 78.464769,
     "tier": "gold",
     "address": "TRAFFIC PS SAIFABAD/PV CELL",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS ABIDS",
-    "lat": 17.389147,
-    "lng": 78.473824,
+    "siteName": "TRAFFIC PS ABIDS",
+    "latitude": 17.389147,
+    "longitude": 78.473824,
     "tier": "gold",
     "address": "TRAFFIC PS ABIDS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS GOSHAMAHAL",
-    "lat": 17.381325,
-    "lng": 78.471735,
+    "siteName": "TRAFFIC PS GOSHAMAHAL",
+    "latitude": 17.381325,
+    "longitude": 78.471735,
     "tier": "vip",
     "address": "TRAFFIC PS GOSHAMAHAL",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS NAMPALLY",
-    "lat": 17.400651,
-    "lng": 78.458907,
+    "siteName": "TRAFFIC PS NAMPALLY",
+    "latitude": 17.400651,
+    "longitude": 78.458907,
     "tier": "gold",
     "address": "TRAFFIC PS NAMPALLY",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS ASIFNAGAR",
-    "lat": 17.39888,
-    "lng": 78.458203,
+    "siteName": "TRAFFIC PS ASIFNAGAR",
+    "latitude": 17.39888,
+    "longitude": 78.458203,
     "tier": "silver",
     "address": "TRAFFIC PS ASIFNAGAR",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS CHARMINAR",
-    "lat": 17.361849,
-    "lng": 78.475197,
+    "siteName": "TRAFFIC PS CHARMINAR",
+    "latitude": 17.361849,
+    "longitude": 78.475197,
     "tier": "platinum",
     "address": "TRAFFIC PS CHARMINAR",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS FALAKNUMA",
-    "lat": 17.334745,
-    "lng": 78.468349,
+    "siteName": "TRAFFIC PS FALAKNUMA",
+    "latitude": 17.334745,
+    "longitude": 78.468349,
     "tier": "gold",
     "address": "TRAFFIC PS FALAKNUMA",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS MIRCHOWK",
-    "lat": 17.381891,
-    "lng": 78.501289,
+    "siteName": "TRAFFIC PS MIRCHOWK",
+    "latitude": 17.381891,
+    "longitude": 78.501289,
     "tier": "gold",
     "address": "TRAFFIC PS MIRCHOWK",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS KACHIGUDA",
-    "lat": 17.392488,
-    "lng": 78.489411,
+    "siteName": "TRAFFIC PS KACHIGUDA",
+    "latitude": 17.392488,
+    "longitude": 78.489411,
     "tier": "gold",
     "address": "TRAFFIC PS KACHIGUDA",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP TRAFFIC V EAST ZONE",
-    "lat": 17.390553,
-    "lng": 78.485489,
+    "siteName": "ACP TRAFFIC V EAST ZONE",
+    "latitude": 17.390553,
+    "longitude": 78.485489,
     "tier": "silver",
     "address": "ACP TRAFFIC V EAST ZONE",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP TRAFFIC IV CENTRAL & WEST ZONE",
-    "lat": 17.377247,
-    "lng": 78.470134,
+    "siteName": "ACP TRAFFIC IV CENTRAL & WEST ZONE",
+    "latitude": 17.377247,
+    "longitude": 78.470134,
     "tier": "gold",
     "address": "ACP TRAFFIC IV CENTRAL & WEST ZONE",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS SULTANBAZAR",
-    "lat": 17.382372,
-    "lng": 78.481807,
+    "siteName": "TRAFFIC PS SULTANBAZAR",
+    "latitude": 17.382372,
+    "longitude": 78.481807,
     "tier": "gold",
     "address": "TRAFFIC PS SULTANBAZAR",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS MALAKPET",
-    "lat": 17.370562,
-    "lng": 78.511399,
+    "siteName": "TRAFFIC PS MALAKPET",
+    "latitude": 17.370562,
+    "longitude": 78.511399,
     "tier": "gold",
     "address": "TRAFFIC PS MALAKPET",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS TOLICHOWKI",
-    "lat": 17.389907,
-    "lng": 78.405718,
+    "siteName": "TRAFFIC PS TOLICHOWKI",
+    "latitude": 17.389907,
+    "longitude": 78.405718,
     "tier": "silver",
     "address": "TRAFFIC PS TOLICHOWKI",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS MARREDPALLY",
-    "lat": 17.461674,
-    "lng": 78.500564,
+    "siteName": "TRAFFIC PS MARREDPALLY",
+    "latitude": 17.461674,
+    "longitude": 78.500564,
     "tier": "silver",
     "address": "TRAFFIC PS MARREDPALLY",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS NALLAKUNTA",
-    "lat": 17.421432,
-    "lng": 78.525894,
+    "siteName": "TRAFFIC PS NALLAKUNTA",
+    "latitude": 17.421432,
+    "longitude": 78.525894,
     "tier": "gold",
     "address": "TRAFFIC PS NALLAKUNTA",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS NARAYANGUDA",
-    "lat": 17.394628,
-    "lng": 78.485091,
+    "siteName": "TRAFFIC PS NARAYANGUDA",
+    "latitude": 17.394628,
+    "longitude": 78.485091,
     "tier": "gold",
     "address": "TRAFFIC PS NARAYANGUDA",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TTI GOSHAMAHAL & BEGUMPET",
-    "lat": 17.377133,
-    "lng": 78.470407,
+    "siteName": "TTI GOSHAMAHAL & BEGUMPET",
+    "latitude": 17.377133,
+    "longitude": 78.470407,
     "tier": "gold",
     "address": "TTI GOSHAMAHAL & BEGUMPET",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "CITY CRIME STATION, DD 3RD FLOOR",
-    "lat": 17.4005,
-    "lng": 78.471474,
+    "siteName": "CITY CRIME STATION, DD 3RD FLOOR",
+    "latitude": 17.4005,
+    "longitude": 78.471474,
     "tier": "platinum",
     "address": "CITY CRIME STATION",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "CCS DD FIRST FLOOR",
-    "lat": 17.400938,
-    "lng": 78.47167,
+    "siteName": "CCS DD FIRST FLOOR",
+    "latitude": 17.400938,
+    "longitude": 78.47167,
     "tier": "platinum",
     "address": "CCS DD FIRST FLOOR",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "WPS CCS DD",
-    "lat": 17.401154,
-    "lng": 78.471905,
+    "siteName": "WPS CCS DD",
+    "latitude": 17.401154,
+    "longitude": 78.471905,
     "tier": "platinum",
     "address": "WPS CCS DD",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "SIT HYD",
-    "lat": 17.403711,
-    "lng": 78.479465,
+    "siteName": "SIT HYD",
+    "latitude": 17.403711,
+    "longitude": 78.479465,
     "tier": "gold",
     "address": "SIT HYD",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "CITY COMMUNICATIONS, NOWBATHPAHAD",
-    "lat": 17.403771,
-    "lng": 78.469862,
+    "siteName": "CITY COMMUNICATIONS, NOWBATHPAHAD",
+    "latitude": 17.403771,
+    "longitude": 78.469862,
     "tier": "silver",
     "address": "CITY COMMUNICATIONS",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "CITY COMMUNICATIONS, C/Z, QUARTER NO.B8 &B9 AT LAKDIKAPOOL",
-    "lat": 17.402534,
-    "lng": 78.464965,
+    "siteName": "CITY COMMUNICATIONS, C/Z, QUARTER NO.B8 &B9 AT LAKDIKAPOOL",
+    "latitude": 17.402534,
+    "longitude": 78.464965,
     "tier": "gold",
     "address": "CITY COMMUNICATIONS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "CITY SECURITY WING, HYD",
-    "lat": 17.378703,
-    "lng": 78.469905,
+    "siteName": "CITY SECURITY WING, HYD",
+    "latitude": 17.378703,
+    "longitude": 78.469905,
     "tier": "platinum",
     "address": "CITY SECURITY WING",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "HOME GUARD OFFICE",
-    "lat": 17.381153,
-    "lng": 78.471124,
+    "siteName": "HOME GUARD OFFICE",
+    "latitude": 17.381153,
+    "longitude": 78.471124,
     "tier": "gold",
     "address": "HOME GUARD OFFICE",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP, SB AMBERPET, HYD",
-    "lat": 17.38636,
-    "lng": 78.516928,
+    "siteName": "ACP, SB AMBERPET, HYD",
+    "latitude": 17.38636,
+    "longitude": 78.516928,
     "tier": "gold",
     "address": "ACP",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "CAR HQRS, HYD.",
-    "lat": 17.366883,
-    "lng": 78.459921,
+    "siteName": "CAR HQRS, HYD.",
+    "latitude": 17.366883,
+    "longitude": 78.459921,
     "tier": "vip",
     "address": "CAR HQRS",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "hyderabad-police",
-    "name": "POLICE OFFICERS MESS, MASAB TANK",
-    "lat": 17.404632,
-    "lng": 78.450309,
+    "siteName": "POLICE OFFICERS MESS, MASAB TANK",
+    "latitude": 17.404632,
+    "longitude": 78.450309,
     "tier": "vip",
     "address": "POLICE OFFICERS MESS",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "hyderabad-police",
-    "name": "METRO BARRACK,SHAHINAYATHGUNJ",
-    "lat": 17.378703,
-    "lng": 78.469905,
+    "siteName": "METRO BARRACK,SHAHINAYATHGUNJ",
+    "latitude": 17.378703,
+    "longitude": 78.469905,
     "tier": "vip",
     "address": "METRO BARRACK",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "hyderabad-police",
-    "name": "ADDITIONAL TOILETS, HANDWASH AT METRO BARRACK, BEGUMPET",
-    "lat": 17.444634,
-    "lng": 78.463156,
+    "siteName": "ADDITIONAL TOILETS, HANDWASH AT METRO BARRACK, BEGUMPET",
+    "latitude": 17.444634,
+    "longitude": 78.463156,
     "tier": "vip",
     "address": "ADDITIONAL TOILETS",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "hyderabad-police",
-    "name": "ADDITIONAL TOILETS, HANDWASH AT METRO BARRACK, CHELAPURA",
-    "lat": 17.363207,
-    "lng": 78.470703,
+    "siteName": "ADDITIONAL TOILETS, HANDWASH AT METRO BARRACK, CHELAPURA",
+    "latitude": 17.363207,
+    "longitude": 78.470703,
     "tier": "vip",
     "address": "ADDITIONAL TOILETS",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "hyderabad-police",
-    "name": "ADDITIONAL TOILETS, HANDWASH AT METRO BARRACK, SHAHINAYATHGUNJ",
-    "lat": 17.37774,
-    "lng": 78.470785,
+    "siteName": "ADDITIONAL TOILETS, HANDWASH AT METRO BARRACK, SHAHINAYATHGUNJ",
+    "latitude": 17.37774,
+    "longitude": 78.470785,
     "tier": "vip",
     "address": "ADDITIONAL TOILETS",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "hyderabad-police",
-    "name": "CAR HQRS NEW BUIILDING",
-    "lat": 17.386272,
-    "lng": 78.517748,
+    "siteName": "CAR HQRS NEW BUIILDING",
+    "latitude": 17.386272,
+    "longitude": 78.517748,
     "tier": "vip",
     "address": "CAR HQRS NEW BUIILDING",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "hyderabad-police",
-    "name": "METRO BARRACK BEGUMPET",
-    "lat": 17.444589,
-    "lng": 78.475763,
+    "siteName": "METRO BARRACK BEGUMPET",
+    "latitude": 17.444589,
+    "longitude": 78.475763,
     "tier": "vip",
     "address": "METRO BARRACK BEGUMPET",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "hyderabad-police",
-    "name": "METRO BARRACK, CHELAPURA",
-    "lat": 17.363296,
-    "lng": 78.470942,
+    "siteName": "METRO BARRACK, CHELAPURA",
+    "latitude": 17.363296,
+    "longitude": 78.470942,
     "tier": "vip",
     "address": "METRO BARRACK",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "hyderabad-police",
-    "name": "CITY TRAINING CENTRE, HYD",
-    "lat": 17.368472,
-    "lng": 78.468402,
+    "siteName": "CITY TRAINING CENTRE, HYD",
+    "latitude": 17.368472,
+    "longitude": 78.468402,
     "tier": "vip",
     "address": "CITY TRAINING CENTRE",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "hyderabad-police",
-    "name": "TRANSIT HOUSE NEAR OLD CP OFFICE",
-    "lat": 17.422857,
-    "lng": 78.461116,
+    "siteName": "TRANSIT HOUSE NEAR OLD CP OFFICE",
+    "latitude": 17.422857,
+    "longitude": 78.461116,
     "tier": "gold",
     "address": "TRANSIT HOUSE NEAR OLD CP OFFICE",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "SAR CPL AMBERPET, HYD",
-    "lat": 17.387861,
-    "lng": 78.518976,
+    "siteName": "SAR CPL AMBERPET, HYD",
+    "latitude": 17.387861,
+    "longitude": 78.518976,
     "tier": "platinum",
     "address": "SAR CPL AMBERPET",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "DISTRICT POLICE HOSPITAL",
-    "lat": 17.38923,
-    "lng": 78.52371,
+    "siteName": "DISTRICT POLICE HOSPITAL",
+    "latitude": 17.38923,
+    "longitude": 78.52371,
     "tier": "gold",
     "address": "DISTRICT POLICE HOSPITAL",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "ACP SB BEGUMPET",
-    "lat": 17.444783,
-    "lng": 78.476779,
+    "siteName": "ACP SB BEGUMPET",
+    "latitude": 17.444783,
+    "longitude": 78.476779,
     "tier": "gold",
     "address": "ACP SB BEGUMPET",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "ADDL DCP TRAFFIC PS",
-    "lat": 17.443811,
-    "lng": 78.478376,
+    "siteName": "ADDL DCP TRAFFIC PS",
+    "latitude": 17.443811,
+    "longitude": 78.478376,
     "tier": "gold",
     "address": "ADDL DCP TRAFFIC PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "NECKLESS ROAD LAKE PS",
-    "lat": 17.422309,
-    "lng": 78.464885,
+    "siteName": "NECKLESS ROAD LAKE PS",
+    "latitude": 17.422309,
+    "longitude": 78.464885,
     "tier": "gold",
     "address": "NECKLESS ROAD LAKE PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "MASAB TANK PS",
-    "lat": 17.399583,
-    "lng": 78.457763,
+    "siteName": "MASAB TANK PS",
+    "latitude": 17.399583,
+    "longitude": 78.457763,
     "tier": "gold",
     "address": "MASAB TANK PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "I S SADAN PS",
-    "lat": 17.348013,
-    "lng": 78.508161,
+    "siteName": "I S SADAN PS",
+    "latitude": 17.348013,
+    "longitude": 78.508161,
     "tier": "platinum",
     "address": "I S SADAN PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "ICC DCP HOUSE",
-    "lat": 17.414781,
-    "lng": 78.427714,
+    "siteName": "ICC DCP HOUSE",
+    "latitude": 17.414781,
+    "longitude": 78.427714,
     "tier": "gold",
     "address": "ICC DCP HOUSE",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "DCP SOUTH EAST ZONE",
-    "lat": 17.3671,
-    "lng": 78.479317,
+    "siteName": "DCP SOUTH EAST ZONE",
+    "latitude": 17.3671,
+    "longitude": 78.479317,
     "tier": "platinum",
     "address": "DCP SOUTH EAST ZONE",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "KHAIRATABAD",
-    "lat": 17.411064,
-    "lng": 78.464769,
+    "siteName": "KHAIRATABAD",
+    "latitude": 17.411064,
+    "longitude": 78.464769,
     "tier": "gold",
     "address": "KHAIRATABAD",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "BANDLAGUDA PS",
-    "lat": 17.3208,
-    "lng": 78.468183,
+    "siteName": "BANDLAGUDA PS",
+    "latitude": 17.3208,
+    "longitude": 78.468183,
     "tier": "platinum",
     "address": "BANDLAGUDA PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "hyderabad-police",
-    "name": "CHANDRAYANGUTTA TRAFFIC PS",
-    "lat": 17.3208,
-    "lng": 78.468183,
+    "siteName": "CHANDRAYANGUTTA TRAFFIC PS",
+    "latitude": 17.3208,
+    "longitude": 78.468183,
     "tier": "gold",
     "address": "CHANDRAYANGUTTA TRAFFIC PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "DCP,SOUTH EAST ZONE HOUSE",
-    "lat": 17.367078,
-    "lng": 78.479331,
+    "siteName": "DCP,SOUTH EAST ZONE HOUSE",
+    "latitude": 17.367078,
+    "longitude": 78.479331,
     "tier": "gold",
     "address": "DCP",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "DOMALGUDA",
-    "lat": 17.408911,
-    "lng": 78.497405,
+    "siteName": "DOMALGUDA",
+    "latitude": 17.408911,
+    "longitude": 78.497405,
     "tier": "gold",
     "address": "DOMALGUDA",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "GUDIMALKAPUR",
-    "lat": 17.384093,
-    "lng": 78.434329,
+    "siteName": "GUDIMALKAPUR",
+    "latitude": 17.384093,
+    "longitude": 78.434329,
     "tier": "gold",
     "address": "GUDIMALKAPUR",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "hyderabad-police",
-    "name": "TRAFFIC PS AMBERPET",
-    "lat": 17.389737,
-    "lng": 78.516553,
+    "siteName": "TRAFFIC PS AMBERPET",
+    "latitude": 17.389737,
+    "longitude": 78.516553,
     "tier": "silver",
     "address": "TRAFFIC PS AMBERPET",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "VARASIGUDA",
-    "lat": 17.416118,
-    "lng": 78.517589,
+    "siteName": "VARASIGUDA",
+    "latitude": 17.416118,
+    "longitude": 78.517589,
     "tier": "silver",
     "address": "VARASIGUDA",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "SHIKHA GOEL MADAM HOUSE",
-    "lat": 17.411811,
-    "lng": 78.418015,
+    "siteName": "SHIKHA GOEL MADAM HOUSE",
+    "latitude": 17.411811,
+    "longitude": 78.418015,
     "tier": "silver",
     "address": "SHIKHA GOEL MADAM HOUSE",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "SHIKHA GOEL MADAM OFFICE",
-    "lat": 17.399286,
-    "lng": 78.462769,
+    "siteName": "SHIKHA GOEL MADAM OFFICE",
+    "latitude": 17.399286,
+    "longitude": 78.462769,
     "tier": "silver",
     "address": "SHIKHA GOEL MADAM OFFICE",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "PANJAGUTTA",
-    "lat": 17.426075,
-    "lng": 78.452512,
+    "siteName": "PANJAGUTTA",
+    "latitude": 17.426075,
+    "longitude": 78.452512,
     "tier": "silver",
     "address": "PANJAGUTTA",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "LAKDIKAPOOL",
-    "lat": 17.401526,
-    "lng": 78.47039,
+    "siteName": "LAKDIKAPOOL",
+    "latitude": 17.401526,
+    "longitude": 78.47039,
     "tier": "silver",
     "address": "LAKDIKAPOOL",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "PETBASHEERABAD",
-    "lat": 17.522867,
-    "lng": 78.483746,
+    "siteName": "PETBASHEERABAD",
+    "latitude": 17.522867,
+    "longitude": 78.483746,
     "tier": "silver",
     "address": "PETBASHEERABAD",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "UPPAL",
-    "lat": 17.402511,
-    "lng": 78.560316,
+    "siteName": "UPPAL",
+    "latitude": 17.402511,
+    "longitude": 78.560316,
     "tier": "silver",
     "address": "UPPAL",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "L B NAGAR",
-    "lat": 17.34679,
-    "lng": 78.551559,
+    "siteName": "L B NAGAR",
+    "latitude": 17.34679,
+    "longitude": 78.551559,
     "tier": "silver",
     "address": "L B NAGAR",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "AMBERPET",
-    "lat": 17.39002,
-    "lng": 78.516761,
+    "siteName": "AMBERPET",
+    "latitude": 17.39002,
+    "longitude": 78.516761,
     "tier": "silver",
     "address": "AMBERPET",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "MEERPET",
-    "lat": 17.318476,
-    "lng": 78.53359,
+    "siteName": "MEERPET",
+    "latitude": 17.318476,
+    "longitude": 78.53359,
     "tier": "silver",
     "address": "MEERPET",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "PATI SHAREEF",
-    "lat": 17.268224,
-    "lng": 78.543504,
+    "siteName": "PATI SHAREEF",
+    "latitude": 17.268224,
+    "longitude": 78.543504,
     "tier": "silver",
     "address": "PATI SHAREEF",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "RC PURAM",
-    "lat": 17.494088,
-    "lng": 78.316258,
+    "siteName": "RC PURAM",
+    "latitude": 17.494088,
+    "longitude": 78.316258,
     "tier": "silver",
     "address": "RC PURAM",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "CHATRINAKA",
-    "lat": 17.339905,
-    "lng": 78.480204,
+    "siteName": "CHATRINAKA",
+    "latitude": 17.339905,
+    "longitude": 78.480204,
     "tier": "silver",
     "address": "CHATRINAKA",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "NAMPALLY",
-    "lat": 17.400139,
-    "lng": 78.460666,
+    "siteName": "NAMPALLY",
+    "latitude": 17.400139,
+    "longitude": 78.460666,
     "tier": "silver",
     "address": "NAMPALLY",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "GOLKONDA",
-    "lat": 17.390084,
-    "lng": 78.403846,
+    "siteName": "GOLKONDA",
+    "latitude": 17.390084,
+    "longitude": 78.403846,
     "tier": "silver",
     "address": "GOLKONDA",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "BEGUMBAZAR",
-    "lat": 17.382709,
-    "lng": 78.470643,
+    "siteName": "BEGUMBAZAR",
+    "latitude": 17.382709,
+    "longitude": 78.470643,
     "tier": "silver",
     "address": "BEGUMBAZAR",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "BEGUMPET",
-    "lat": 17.444001,
-    "lng": 78.475007,
+    "siteName": "BEGUMPET",
+    "latitude": 17.444001,
+    "longitude": 78.475007,
     "tier": "silver",
     "address": "BEGUMPET",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "ALWAL",
-    "lat": 17.503789,
-    "lng": 78.511733,
+    "siteName": "ALWAL",
+    "latitude": 17.503789,
+    "longitude": 78.511733,
     "tier": "silver",
     "address": "ALWAL",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "KUSHAIGUDA",
-    "lat": 17.472426,
-    "lng": 78.57127,
+    "siteName": "KUSHAIGUDA",
+    "latitude": 17.472426,
+    "longitude": 78.57127,
     "tier": "silver",
     "address": "KUSHAIGUDA",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "JEEDIMETLA",
-    "lat": 17.509181,
-    "lng": 78.448499,
+    "siteName": "JEEDIMETLA",
+    "latitude": 17.509181,
+    "longitude": 78.448499,
     "tier": "silver",
     "address": "JEEDIMETLA",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "MADANNAPET",
-    "lat": 17.358132,
-    "lng": 78.499973,
+    "siteName": "MADANNAPET",
+    "latitude": 17.358132,
+    "longitude": 78.499973,
     "tier": "silver",
     "address": "MADANNAPET",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "SAIDABAD",
-    "lat": 17.362009,
-    "lng": 78.50896,
+    "siteName": "SAIDABAD",
+    "latitude": 17.362009,
+    "longitude": 78.50896,
     "tier": "silver",
     "address": "SAIDABAD",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "SANTHOSHNAGAR",
-    "lat": 17.341978,
-    "lng": 78.504089,
+    "siteName": "SANTHOSHNAGAR",
+    "latitude": 17.341978,
+    "longitude": 78.504089,
     "tier": "silver",
     "address": "SANTHOSHNAGAR",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "MIRCHOWK",
-    "lat": 17.365003,
-    "lng": 78.481817,
+    "siteName": "MIRCHOWK",
+    "latitude": 17.365003,
+    "longitude": 78.481817,
     "tier": "silver",
     "address": "MIRCHOWK",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "RAJENDRANAGAR",
-    "lat": 17.334088,
-    "lng": 78.409299,
+    "siteName": "RAJENDRANAGAR",
+    "latitude": 17.334088,
+    "longitude": 78.409299,
     "tier": "silver",
     "address": "RAJENDRANAGAR",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "SHAMSHABAD",
-    "lat": 17.210917,
-    "lng": 78.333202,
+    "siteName": "SHAMSHABAD",
+    "latitude": 17.210917,
+    "longitude": 78.333202,
     "tier": "silver",
     "address": "SHAMSHABAD",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "GHATKESAR",
-    "lat": 17.443747,
-    "lng": 78.693919,
+    "siteName": "GHATKESAR",
+    "latitude": 17.443747,
+    "longitude": 78.693919,
     "tier": "silver",
     "address": "GHATKESAR",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "BOWENPALLY",
-    "lat": 17.46456,
-    "lng": 78.472673,
+    "siteName": "BOWENPALLY",
+    "latitude": 17.46456,
+    "longitude": 78.472673,
     "tier": "silver",
     "address": "BOWENPALLY",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "PULLELA GOPICHAND BADMENTAN ACADEMY",
-    "lat": 17.438282,
-    "lng": 78.349104,
+    "siteName": "PULLELA GOPICHAND BADMENTAN ACADEMY",
+    "latitude": 17.438282,
+    "longitude": 78.349104,
     "tier": "silver",
     "address": "PULLELA GOPICHAND BADMENTAN ACADEMY",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "SEC CONTONMENT BOARD",
-    "lat": 17.443719,
-    "lng": 78.500515,
+    "siteName": "SEC CONTONMENT BOARD",
+    "latitude": 17.443719,
+    "longitude": 78.500515,
     "tier": "silver",
     "address": "SEC CONTONMENT BOARD",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "MJ MARKET",
-    "lat": 17.384524,
-    "lng": 78.475099,
+    "siteName": "MJ MARKET",
+    "latitude": 17.384524,
+    "longitude": 78.475099,
     "tier": "silver",
     "address": "MJ MARKET",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "MAREDPALLY PS",
-    "lat": 17.451411,
-    "lng": 78.505428,
+    "siteName": "MAREDPALLY PS",
+    "latitude": 17.451411,
+    "longitude": 78.505428,
     "tier": "silver",
     "address": "MAREDPALLY PS",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "MOINABAD",
-    "lat": 17.331441,
-    "lng": 78.288297,
+    "siteName": "MOINABAD",
+    "latitude": 17.331441,
+    "longitude": 78.288297,
     "tier": "silver",
     "address": "MOINABAD",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "BHUVANGIR",
-    "lat": 17.510543,
-    "lng": 78.888154,
+    "siteName": "BHUVANGIR",
+    "latitude": 17.510543,
+    "longitude": 78.888154,
     "tier": "silver",
     "address": "BHUVANGIR",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "hyderabad-police",
-    "name": "DCP, SOUTH WEST ZONE",
-    "lat": 17.395627,
-    "lng": 78.442185,
+    "siteName": "DCP, SOUTH WEST ZONE",
+    "latitude": 17.395627,
+    "longitude": 78.442185,
     "tier": "gold",
     "address": "DCP",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "CAR HEAD QUARTERS-HOME",
-    "lat": 17.430825,
-    "lng": 78.370362,
+    "siteName": "CAR HEAD QUARTERS-HOME",
+    "latitude": 17.430825,
+    "longitude": 78.370362,
     "tier": "vip",
     "address": "CAR HEAD QUARTERS-HOME",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "CITY TRAINING CENTER",
-    "lat": 17.430825,
-    "lng": 78.370362,
+    "siteName": "CITY TRAINING CENTER",
+    "latitude": 17.430825,
+    "longitude": 78.370362,
     "tier": "vip",
     "address": "CITY TRAINING CENTER",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "MT",
-    "lat": 17.430825,
-    "lng": 78.370362,
+    "siteName": "MT",
+    "latitude": 17.430825,
+    "longitude": 78.370362,
     "tier": "vip",
     "address": "MT",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "DOG CANNEL",
-    "lat": 17.430825,
-    "lng": 78.370362,
+    "siteName": "DOG CANNEL",
+    "latitude": 17.430825,
+    "longitude": 78.370362,
     "tier": "vip",
     "address": "DOG CANNEL",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "EOW-ECONOMIC OFFENCES WING,",
-    "lat": 17.430825,
-    "lng": 78.370362,
+    "siteName": "EOW-ECONOMIC OFFENCES WING,",
+    "latitude": 17.430825,
+    "longitude": 78.370362,
     "tier": "vip",
     "address": "EOW-ECONOMIC OFFENCES WING",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "CYBER CRIME",
-    "lat": 17.430825,
-    "lng": 78.370362,
+    "siteName": "CYBER CRIME",
+    "latitude": 17.430825,
+    "longitude": 78.370362,
     "tier": "vip",
     "address": "CYBER CRIME",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "PSIOC-PUBLIC SAFETY INTEGRATED OPERATION CENTRE",
-    "lat": 17.430825,
-    "lng": 78.370362,
+    "siteName": "PSIOC-PUBLIC SAFETY INTEGRATED OPERATION CENTRE",
+    "latitude": 17.430825,
+    "longitude": 78.370362,
     "tier": "vip",
     "address": "PSIOC-PUBLIC SAFETY INTEGRATED OPERATION CENTRE",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "MAIN OFFICE",
-    "lat": 17.430825,
-    "lng": 78.370362,
+    "siteName": "MAIN OFFICE",
+    "latitude": 17.430825,
+    "longitude": 78.370362,
     "tier": "vip",
     "address": "MAIN OFFICE",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "MAIN OFFICE-GARDEN",
-    "lat": 17.430825,
-    "lng": 78.370362,
+    "siteName": "MAIN OFFICE-GARDEN",
+    "latitude": 17.430825,
+    "longitude": 78.370362,
     "tier": "vip",
     "address": "MAIN OFFICE-GARDEN",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "SAJJANAR SIR HOME",
-    "lat": 17.430825,
-    "lng": 78.370362,
+    "siteName": "SAJJANAR SIR HOME",
+    "latitude": 17.430825,
+    "longitude": 78.370362,
     "tier": "vip",
     "address": "SAJJANAR SIR HOME",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "WELFARE CANTEEN",
-    "lat": 17.430825,
-    "lng": 78.370362,
+    "siteName": "WELFARE CANTEEN",
+    "latitude": 17.430825,
+    "longitude": 78.370362,
     "tier": "vip",
     "address": "WELFARE CANTEEN",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "CP OFFICE CANTEEN",
-    "lat": 17.430825,
-    "lng": 78.370362,
+    "siteName": "CP OFFICE CANTEEN",
+    "latitude": 17.430825,
+    "longitude": 78.370362,
     "tier": "vip",
     "address": "CP OFFICE CANTEEN",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "ATTAPUR OUTPOST (NEW)",
-    "lat": 17.35886085998827,
-    "lng": 78.43519629447795,
+    "siteName": "ATTAPUR OUTPOST (NEW)",
+    "latitude": 17.35886085998827,
+    "longitude": 78.43519629447795,
     "tier": "gold",
     "address": "ATTAPUR OUTPOST (NEW)",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "DCP MADHAPUR DIVISION",
-    "lat": 17.44343443254035,
-    "lng": 78.35368282241573,
+    "siteName": "DCP MADHAPUR DIVISION",
+    "latitude": 17.44343443254035,
+    "longitude": 78.35368282241573,
     "tier": "gold",
     "address": "DCP MADHAPUR DIVISION",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "ACP MADHAPUR DIVISION",
-    "lat": 17.443651640106278,
-    "lng": 78.35358459967706,
+    "siteName": "ACP MADHAPUR DIVISION",
+    "latitude": 17.443651640106278,
+    "longitude": 78.35358459967706,
     "tier": "gold",
     "address": "ACP MADHAPUR DIVISION",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "GACHIBOWLI PS",
-    "lat": 17.443552317598318,
-    "lng": 78.35360728566867,
+    "siteName": "GACHIBOWLI PS",
+    "latitude": 17.443552317598318,
+    "longitude": 78.35360728566867,
     "tier": "gold",
     "address": "GACHIBOWLI PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "WPS IT CORRIDOR",
-    "lat": 17.438561357601856,
-    "lng": 78.3630791409324,
+    "siteName": "WPS IT CORRIDOR",
+    "latitude": 17.438561357601856,
+    "longitude": 78.3630791409324,
     "tier": "gold",
     "address": "WPS IT CORRIDOR",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "ADDL DCP MADHAPUR DIVISION",
-    "lat": 17.443539682365294,
-    "lng": 78.35368980467737,
+    "siteName": "ADDL DCP MADHAPUR DIVISION",
+    "latitude": 17.443539682365294,
+    "longitude": 78.35368980467737,
     "tier": "silver",
     "address": "ADDL DCP MADHAPUR DIVISION",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "GACHIBOWLI TRAFFIC",
-    "lat": 17.44604798051057,
-    "lng": 78.35199289976718,
+    "siteName": "GACHIBOWLI TRAFFIC",
+    "latitude": 17.44604798051057,
+    "longitude": 78.35199289976718,
     "tier": "gold",
     "address": "GACHIBOWLI TRAFFIC",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "MADHAPUR PS",
-    "lat": 17.43986007920617,
-    "lng": 78.39615156819627,
+    "siteName": "MADHAPUR PS",
+    "latitude": 17.43986007920617,
+    "longitude": 78.39615156819627,
     "tier": "platinum",
     "address": "MADHAPUR PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "RAIDURGAM PS",
-    "lat": 17.423294317350905,
-    "lng": 78.38065916447614,
+    "siteName": "RAIDURGAM PS",
+    "latitude": 17.423294317350905,
+    "longitude": 78.38065916447614,
     "tier": "platinum",
     "address": "RAIDURGAM PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "MADHAPUR TRAFFIC PS",
-    "lat": 17.43216826287424,
-    "lng": 78.3785111497832,
+    "siteName": "MADHAPUR TRAFFIC PS",
+    "latitude": 17.43216826287424,
+    "longitude": 78.3785111497832,
     "tier": "gold",
     "address": "MADHAPUR TRAFFIC PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "RAIDURGAM TRAFFIC PS",
-    "lat": 17.42329426441267,
-    "lng": 78.38066110869515,
+    "siteName": "RAIDURGAM TRAFFIC PS",
+    "latitude": 17.42329426441267,
+    "longitude": 78.38066110869515,
     "tier": "gold",
     "address": "RAIDURGAM TRAFFIC PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "GACHIBOWLI TRAFFIC PS",
-    "lat": 17.44604602551853,
-    "lng": 78.3519925468311,
+    "siteName": "GACHIBOWLI TRAFFIC PS",
+    "latitude": 17.44604602551853,
+    "longitude": 78.3519925468311,
     "tier": "gold",
     "address": "GACHIBOWLI TRAFFIC PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "ACP OFFICE MEDCHAL",
-    "lat": 17.634187039476778,
-    "lng": 78.47848786594525,
+    "siteName": "ACP OFFICE MEDCHAL",
+    "latitude": 17.634187039476778,
+    "longitude": 78.47848786594525,
     "tier": "silver",
     "address": "ACP OFFICE MEDCHAL",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "MEDCHAL PS",
-    "lat": 17.630553617108262,
-    "lng": 78.48524903649447,
+    "siteName": "MEDCHAL PS",
+    "latitude": 17.630553617108262,
+    "longitude": 78.48524903649447,
     "tier": "platinum",
     "address": "MEDCHAL PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "PET-BASHEERABAD PS",
-    "lat": 17.523099615549405,
-    "lng": 78.48359697088473,
+    "siteName": "PET-BASHEERABAD PS",
+    "latitude": 17.523099615549405,
+    "longitude": 78.48359697088473,
     "tier": "platinum",
     "address": "PET-BASHEERABAD PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "SHAMIRPET PS",
-    "lat": 17.594201118751524,
-    "lng": 78.56996958035988,
+    "siteName": "SHAMIRPET PS",
+    "latitude": 17.594201118751524,
+    "longitude": 78.56996958035988,
     "tier": "platinum",
     "address": "SHAMIRPET PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "ALWAL PS",
-    "lat": 17.504059713836124,
-    "lng": 78.51151152493564,
+    "siteName": "ALWAL PS",
+    "latitude": 17.504059713836124,
+    "longitude": 78.51151152493564,
     "tier": "platinum",
     "address": "ALWAL PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "GENOME VALLEY PS (NEW)",
-    "lat": 17.66812731621097,
-    "lng": 78.59439797931753,
+    "siteName": "GENOME VALLEY PS (NEW)",
+    "latitude": 17.66812731621097,
+    "longitude": 78.59439797931753,
     "tier": "silver",
     "address": "GENOME VALLEY PS (NEW)",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "MEDCHAL BAROSA",
-    "lat": 17.63411868586656,
-    "lng": 78.47849934123984,
+    "siteName": "MEDCHAL BAROSA",
+    "latitude": 17.63411868586656,
+    "longitude": 78.47849934123984,
     "tier": "gold",
     "address": "MEDCHAL BAROSA",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "SOT MEDCHAL ZONE",
-    "lat": 17.523006745749168,
-    "lng": 78.48419715444344,
+    "siteName": "SOT MEDCHAL ZONE",
+    "latitude": 17.523006745749168,
+    "longitude": 78.48419715444344,
     "tier": "gold",
     "address": "SOT MEDCHAL ZONE",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "ALWAL TRAFFIC",
-    "lat": 17.522879632602212,
-    "lng": 78.48379688586056,
+    "siteName": "ALWAL TRAFFIC",
+    "latitude": 17.522879632602212,
+    "longitude": 78.48379688586056,
     "tier": "gold",
     "address": "ALWAL TRAFFIC",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "MEDCHAL TRAFFIC PS",
-    "lat": 17.630555377070387,
-    "lng": 78.48524782652744,
+    "siteName": "MEDCHAL TRAFFIC PS",
+    "latitude": 17.630555377070387,
+    "longitude": 78.48524782652744,
     "tier": "silver",
     "address": "MEDCHAL TRAFFIC PS",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "DCP RAJENDRANAGAR ZONE",
-    "lat": 17.325878,
-    "lng": 78.410294,
+    "siteName": "DCP RAJENDRANAGAR ZONE",
+    "latitude": 17.325878,
+    "longitude": 78.410294,
     "tier": "platinum",
     "address": "DCP RAJENDRANAGAR ZONE",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "RAJENDRANAGAR PS",
-    "lat": 17.334413773813292,
-    "lng": 78.40972689185826,
+    "siteName": "RAJENDRANAGAR PS",
+    "latitude": 17.334413773813292,
+    "longitude": 78.40972689185826,
     "tier": "platinum",
     "address": "RAJENDRANAGAR PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "KOLLUR PS",
-    "lat": 17.43999,
-    "lng": 78.280247,
+    "siteName": "KOLLUR PS",
+    "latitude": 17.43999,
+    "longitude": 78.280247,
     "tier": "gold",
     "address": "KOLLUR PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "RAJENDRANAGAR TRAFFIC",
-    "lat": 17.323317273290716,
-    "lng": 78.43259493376858,
+    "siteName": "RAJENDRANAGAR TRAFFIC",
+    "latitude": 17.323317273290716,
+    "longitude": 78.43259493376858,
     "tier": "gold",
     "address": "RAJENDRANAGAR TRAFFIC",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "MAILARDEVPALLY PS",
-    "lat": 17.316881555920055,
-    "lng": 78.44217158818634,
+    "siteName": "MAILARDEVPALLY PS",
+    "latitude": 17.316881555920055,
+    "longitude": 78.44217158818634,
     "tier": "platinum",
     "address": "MAILARDEVPALLY PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "SHANKARPALLY PS",
-    "lat": 17.454079449961473,
-    "lng": 78.13121452309356,
+    "siteName": "SHANKARPALLY PS",
+    "latitude": 17.454079449961473,
+    "longitude": 78.13121452309356,
     "tier": "platinum",
     "address": "SHANKARPALLY PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "NARSINGI PS",
-    "lat": 17.384424,
-    "lng": 78.352192,
+    "siteName": "NARSINGI PS",
+    "latitude": 17.384424,
+    "longitude": 78.352192,
     "tier": "platinum",
     "address": "NARSINGI PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "MOKILA PS (NEW)",
-    "lat": 17.417989922313325,
-    "lng": 78.2453470573563,
+    "siteName": "MOKILA PS (NEW)",
+    "latitude": 17.417989922313325,
+    "longitude": 78.2453470573563,
     "tier": "gold",
     "address": "MOKILA PS (NEW)",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "ACP CHEVELLA DIVISION",
-    "lat": 17.311768853905345,
-    "lng": 78.13495795583101,
+    "siteName": "ACP CHEVELLA DIVISION",
+    "latitude": 17.311768853905345,
+    "longitude": 78.13495795583101,
     "tier": "gold",
     "address": "ACP CHEVELLA DIVISION",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "MOINABAD PS",
-    "lat": 17.331463,
-    "lng": 78.288658,
+    "siteName": "MOINABAD PS",
+    "latitude": 17.331463,
+    "longitude": 78.288658,
     "tier": "gold",
     "address": "MOINABAD PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "SHABAD PS",
-    "lat": 17.16109039329299,
-    "lng": 78.1337258109401,
+    "siteName": "SHABAD PS",
+    "latitude": 17.16109039329299,
+    "longitude": 78.1337258109401,
     "tier": "gold",
     "address": "SHABAD PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "CHEVELLA PS",
-    "lat": 17.31397383287178,
-    "lng": 78.13949255635654,
+    "siteName": "CHEVELLA PS",
+    "latitude": 17.31397383287178,
+    "longitude": 78.13949255635654,
     "tier": "platinum",
     "address": "CHEVELLA PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "RAJENDRANAGAR SOT-SPECIAL OPERATIONS TEAM",
-    "lat": 17.333231,
-    "lng": 78.408982,
+    "siteName": "RAJENDRANAGAR SOT-SPECIAL OPERATIONS TEAM",
+    "latitude": 17.333231,
+    "longitude": 78.408982,
     "tier": "gold",
     "address": "RAJENDRANAGAR SOT-SPECIAL OPERATIONS TEAM",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "ADDL.DCP NARSINGI SOT- SPECIAL OPERATIONS TEAM",
-    "lat": 17.384908,
-    "lng": 78.352584,
+    "siteName": "ADDL.DCP NARSINGI SOT- SPECIAL OPERATIONS TEAM",
+    "latitude": 17.384908,
+    "longitude": 78.352584,
     "tier": "gold",
     "address": "ADDL.DCP NARSINGI SOT- SPECIAL OPERATIONS TEAM",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "NARSINGI TRAFFIC PS",
-    "lat": 17.388052,
-    "lng": 78.354675,
+    "siteName": "NARSINGI TRAFFIC PS",
+    "latitude": 17.388052,
+    "longitude": 78.354675,
     "tier": "gold",
     "address": "NARSINGI TRAFFIC PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "SHAMSHABAD",
-    "lat": 17.21098877457586,
-    "lng": 78.3331853955373,
+    "siteName": "SHAMSHABAD",
+    "latitude": 17.21098877457586,
+    "longitude": 78.3331853955373,
     "tier": "gold",
     "address": "SHAMSHABAD",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "CHEVELLA TRAFFIC PS",
-    "lat": 17.313873436349763,
-    "lng": 78.13999641756567,
+    "siteName": "CHEVELLA TRAFFIC PS",
+    "latitude": 17.313873436349763,
+    "longitude": 78.13999641756567,
     "tier": "gold",
     "address": "CHEVELLA TRAFFIC PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "SHAPUR PS",
-    "lat": 17.519384369386948,
-    "lng": 78.44302649716252,
+    "siteName": "SHAPUR PS",
+    "latitude": 17.519384369386948,
+    "longitude": 78.44302649716252,
     "tier": "platinum",
     "address": "SHAPUR PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "RGI AIRPORT PS",
-    "lat": 17.264841897154966,
-    "lng": 78.39071402482593,
+    "siteName": "RGI AIRPORT PS",
+    "latitude": 17.264841897154966,
+    "longitude": 78.39071402482593,
     "tier": "vip",
     "address": "RGI AIRPORT PS",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "KOTHUR PS",
-    "lat": 17.14172330170193,
-    "lng": 78.28488352421861,
+    "siteName": "KOTHUR PS",
+    "latitude": 17.14172330170193,
+    "longitude": 78.28488352421861,
     "tier": "gold",
     "address": "KOTHUR PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "NANDIGAMA PS",
-    "lat": 17.119861093626472,
-    "lng": 78.25477379920743,
+    "siteName": "NANDIGAMA PS",
+    "latitude": 17.119861093626472,
+    "longitude": 78.25477379920743,
     "tier": "gold",
     "address": "NANDIGAMA PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "SHADNAGAR PS",
-    "lat": 17.067899223008556,
-    "lng": 78.20768738792748,
+    "siteName": "SHADNAGAR PS",
+    "latitude": 17.067899223008556,
+    "longitude": 78.20768738792748,
     "tier": "gold",
     "address": "SHADNAGAR PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "SHADNAGAR RURAL PS",
-    "lat": 17.067903931445446,
-    "lng": 78.20768877762303,
+    "siteName": "SHADNAGAR RURAL PS",
+    "latitude": 17.067903931445446,
+    "longitude": 78.20768877762303,
     "tier": "gold",
     "address": "SHADNAGAR RURAL PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "KESHAMPET PS",
-    "lat": 16.95372868387022,
-    "lng": 78.34817755427532,
+    "siteName": "KESHAMPET PS",
+    "latitude": 16.95372868387022,
+    "longitude": 78.34817755427532,
     "tier": "gold",
     "address": "KESHAMPET PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "KONDURG PS",
-    "lat": 17.094301891537455,
-    "lng": 78.03716724077104,
+    "siteName": "KONDURG PS",
+    "latitude": 17.094301891537455,
+    "longitude": 78.03716724077104,
     "tier": "gold",
     "address": "KONDURG PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "CHOWDARIGUDEM PS",
-    "lat": 17.090141627591507,
-    "lng": 77.99652999538233,
+    "siteName": "CHOWDARIGUDEM PS",
+    "latitude": 17.090141627591507,
+    "longitude": 77.99652999538233,
     "tier": "gold",
     "address": "CHOWDARIGUDEM PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "AMANGAL PS",
-    "lat": 16.849942237010143,
-    "lng": 78.53165258319407,
+    "siteName": "AMANGAL PS",
+    "latitude": 16.849942237010143,
+    "longitude": 78.53165258319407,
     "tier": "gold",
     "address": "AMANGAL PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "KADTHAL PS",
-    "lat": 16.99540987846359,
-    "lng": 78.50298828663641,
+    "siteName": "KADTHAL PS",
+    "latitude": 16.99540987846359,
+    "longitude": 78.50298828663641,
     "tier": "platinum",
     "address": "KADTHAL PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "TALAKONDAPALLY PS",
-    "lat": 16.88852490592867,
-    "lng": 78.41279211018994,
+    "siteName": "TALAKONDAPALLY PS",
+    "latitude": 16.88852490592867,
+    "longitude": 78.41279211018994,
     "tier": "gold",
     "address": "TALAKONDAPALLY PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "SHADNAGAR TRAFFIC",
-    "lat": 17.067900232741973,
-    "lng": 78.20768771883077,
+    "siteName": "SHADNAGAR TRAFFIC",
+    "latitude": 17.067900232741973,
+    "longitude": 78.20768771883077,
     "tier": "gold",
     "address": "SHADNAGAR TRAFFIC",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "JAGADGIRIGUTTA PS",
-    "lat": 17.506290613803447,
-    "lng": 78.42264827097613,
+    "siteName": "JAGADGIRIGUTTA PS",
+    "latitude": 17.506290613803447,
+    "longitude": 78.42264827097613,
     "tier": "platinum",
     "address": "JAGADGIRIGUTTA PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "SANATHNAGAR PS",
-    "lat": 17.456299760086086,
-    "lng": 78.44266218925493,
+    "siteName": "SANATHNAGAR PS",
+    "latitude": 17.456299760086086,
+    "longitude": 78.44266218925493,
     "tier": "gold",
     "address": "SANATHNAGAR PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "ACP KUKATPALLY",
-    "lat": 17.506184,
-    "lng": 78.42274,
+    "siteName": "ACP KUKATPALLY",
+    "latitude": 17.506184,
+    "longitude": 78.42274,
     "tier": "gold",
     "address": "ACP KUKATPALLY",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "KUKATPALLY TRAFFIC PS",
-    "lat": 17.480345,
-    "lng": 78.418533,
+    "siteName": "KUKATPALLY TRAFFIC PS",
+    "latitude": 17.480345,
+    "longitude": 78.418533,
     "tier": "gold",
     "address": "KUKATPALLY TRAFFIC PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "KUKATPALLY PS",
-    "lat": 17.481851,
-    "lng": 78.415183,
+    "siteName": "KUKATPALLY PS",
+    "latitude": 17.481851,
+    "longitude": 78.415183,
     "tier": "vip",
     "address": "KUKATPALLY PS",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "KPHB PS",
-    "lat": 17.496702,
-    "lng": 78.395494,
+    "siteName": "KPHB PS",
+    "latitude": 17.496702,
+    "longitude": 78.395494,
     "tier": "silver",
     "address": "KPHB PS",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "BACHUPALLY PS",
-    "lat": 17.539328,
-    "lng": 78.366106,
+    "siteName": "BACHUPALLY PS",
+    "latitude": 17.539328,
+    "longitude": 78.366106,
     "tier": "platinum",
     "address": "BACHUPALLY PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "ALLAPUR PS (NEW)",
-    "lat": 17.459376,
-    "lng": 78.412799,
+    "siteName": "ALLAPUR PS (NEW)",
+    "latitude": 17.459376,
+    "longitude": 78.412799,
     "tier": "gold",
     "address": "ALLAPUR PS (NEW)",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "R.C. PURAM PS",
-    "lat": 17.494227,
-    "lng": 78.31598,
+    "siteName": "R.C. PURAM PS",
+    "latitude": 17.494227,
+    "longitude": 78.31598,
     "tier": "gold",
     "address": "R.C. PURAM PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "CHANDANAGAR PS",
-    "lat": 17.496171,
-    "lng": 78.325001,
+    "siteName": "CHANDANAGAR PS",
+    "latitude": 17.496171,
+    "longitude": 78.325001,
     "tier": "platinum",
     "address": "CHANDANAGAR PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "MIYAPUR PS",
-    "lat": 17.496351423997357,
-    "lng": 78.34757631845173,
+    "siteName": "MIYAPUR PS",
+    "latitude": 17.496351423997357,
+    "longitude": 78.34757631845173,
     "tier": "gold",
     "address": "MIYAPUR PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "KUKATPALLY ACP & ADDL. DCP TRAFFIC",
-    "lat": 17.496702,
-    "lng": 78.395494,
+    "siteName": "KUKATPALLY ACP & ADDL. DCP TRAFFIC",
+    "latitude": 17.496702,
+    "longitude": 78.395494,
     "tier": "silver",
     "address": "KUKATPALLY ACP & ADDL. DCP TRAFFIC",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "KPHB TRAFFIC PS",
-    "lat": 17.496702,
-    "lng": 78.395494,
+    "siteName": "KPHB TRAFFIC PS",
+    "latitude": 17.496702,
+    "longitude": 78.395494,
     "tier": "silver",
     "address": "KPHB TRAFFIC PS",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   },
   {
     "type": "cyberabad-police",
-    "name": "SURARAM PS",
-    "lat": 17.53457133720401,
-    "lng": 78.43475978806191,
+    "siteName": "SURARAM PS",
+    "latitude": 17.53457133720401,
+    "longitude": 78.43475978806191,
     "tier": "gold",
     "address": "SURARAM PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "DUNDIGAL PS",
-    "lat": 17.57972650846449,
-    "lng": 78.42603579792932,
+    "siteName": "DUNDIGAL PS",
+    "latitude": 17.57972650846449,
+    "longitude": 78.42603579792932,
     "tier": "platinum",
     "address": "DUNDIGAL PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "DCP OFFICE BALANAGAR",
-    "lat": 17.51120306236128,
-    "lng": 78.44462288299697,
+    "siteName": "DCP OFFICE BALANAGAR",
+    "latitude": 17.51120306236128,
+    "longitude": 78.44462288299697,
     "tier": "vip",
     "address": "DCP OFFICE BALANAGAR",
-    "size": "40,000 sq.ft.",
+    "squareFeet": 40000,
     "staff": 220,
-    "chemicals": 450
+    "chemicals": 450,
+    "wasteVehicles": 10,
+    "machines": 20
   },
   {
     "type": "cyberabad-police",
-    "name": "BALANAGAR PS",
-    "lat": 17.464513445615953,
-    "lng": 78.4516762309708,
+    "siteName": "BALANAGAR PS",
+    "latitude": 17.464513445615953,
+    "longitude": 78.4516762309708,
     "tier": "platinum",
     "address": "BALANAGAR PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "JEEDIMETLA PS",
-    "lat": 17.509168892497698,
-    "lng": 78.4484655714382,
+    "siteName": "JEEDIMETLA PS",
+    "latitude": 17.509168892497698,
+    "longitude": 78.4484655714382,
     "tier": "platinum",
     "address": "JEEDIMETLA PS",
-    "size": "30,000 sq.ft."
+    "squareFeet": 30000
   },
   {
     "type": "cyberabad-police",
-    "name": "ACP BALANAGAR",
-    "lat": 17.46460929139868,
-    "lng": 78.45147341134073,
+    "siteName": "ACP BALANAGAR",
+    "latitude": 17.46460929139868,
+    "longitude": 78.45147341134073,
     "tier": "gold",
     "address": "ACP BALANAGAR",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "BALANAGAR CCS",
-    "lat": 17.320338,
-    "lng": 78.398378,
+    "siteName": "BALANAGAR CCS",
+    "latitude": 17.320338,
+    "longitude": 78.398378,
     "tier": "gold",
     "address": "BALANAGAR CCS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "ACP BALANAGAR TRAFFIC",
-    "lat": 17.46460586348898,
-    "lng": 78.4514747367843,
+    "siteName": "ACP BALANAGAR TRAFFIC",
+    "latitude": 17.46460586348898,
+    "longitude": 78.4514747367843,
     "tier": "gold",
     "address": "ACP BALANAGAR TRAFFIC",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "BALANAGAR TRAFFIC PS",
-    "lat": 17.481188962586437,
-    "lng": 78.44972175015994,
+    "siteName": "BALANAGAR TRAFFIC PS",
+    "latitude": 17.481188962586437,
+    "longitude": 78.44972175015994,
     "tier": "gold",
     "address": "BALANAGAR TRAFFIC PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "JEEDIMETLA TRAFFIC PS",
-    "lat": 17.53506236274124,
-    "lng": 78.4346786957545,
+    "siteName": "JEEDIMETLA TRAFFIC PS",
+    "latitude": 17.53506236274124,
+    "longitude": 78.4346786957545,
     "tier": "gold",
     "address": "JEEDIMETLA TRAFFIC PS",
-    "size": "20,000 sq.ft."
+    "squareFeet": 20000
   },
   {
     "type": "cyberabad-police",
-    "name": "ACP MIYAPUR",
-    "lat": 17.494227,
-    "lng": 78.31598,
+    "siteName": "ACP MIYAPUR",
+    "latitude": 17.494227,
+    "longitude": 78.31598,
     "tier": "silver",
     "address": "ACP MIYAPUR",
-    "size": "10,000 sq.ft."
+    "squareFeet": 10000
   }
 ]
