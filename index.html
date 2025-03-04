@@ -776,18 +776,18 @@
           </div>
         </div>
       </div>
-      <!-- Fallback button for manual data loading -->
+    <!-- "Load Sample Data" is now "Reload All Data" -->
       <div class="legend-section" style="margin: 20px 0; text-align: center;">
-        <button id="load-sample-data" style="background-color: #ff6b00; color: white; 
+        <button id="load-sample-data" style="background-color: #007bff; color: white; 
                border: none; padding: 12px 15px; border-radius: 4px; cursor: pointer;
                width: 100%; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
                font-size: 14px; display: flex; align-items: center; justify-content: center;
                gap: 8px;">
-          <i class="fas fa-database" style="font-size: 18px;"></i> 
-          <span>LOAD SAMPLE DATA</span>
+          <i class="fas fa-sync-alt" style="font-size: 18px;"></i> 
+          <span>RELOAD ALL DATA</span>
         </button>
         <div style="font-size: 12px; margin-top: 5px; color: #555;">
-          Click this if no markers appear
+          Shows all 274 facilities
         </div>
       </div>
       
@@ -859,35 +859,12 @@
     const statusText = document.getElementById('status-text');
     const statsContainer = document.getElementById('stats-container');
 
+    // Initialize with NO failsafe timer
     let rawData = null;        // store fetched JSON
     let currentPopup = null;   // track open popup
     let markers = [];          // store all markers
     let visibleMarkers = [];   // track which markers are visible
     let mapInitialized = false; // track if map is fully initialized
-
-    // Sample VIP data to ensure proper display
-    const sampleVIPData = {
-      "Saifabad": { staff: 45, supervisors: 5, managers: 2, area: "12,500 sq ft", chemicals: 12, wasteVehicles: 4, machines: 15 },
-      "Begumpet": { staff: 38, supervisors: 4, managers: 1, area: "10,200 sq ft", chemicals: 9, wasteVehicles: 3, machines: 12 },
-      "Charminar": { staff: 52, supervisors: 6, managers: 2, area: "15,800 sq ft", chemicals: 15, wasteVehicles: 5, machines: 18 },
-      "Jubilee Hills": { staff: 41, supervisors: 5, managers: 2, area: "11,600 sq ft", chemicals: 11, wasteVehicles: 4, machines: 14 },
-      "Gachibowli": { staff: 35, supervisors: 3, managers: 1, area: "9,800 sq ft", chemicals: 8, wasteVehicles: 3, machines: 10 },
-      "Kukatpally": { staff: 47, supervisors: 5, managers: 2, area: "13,200 sq ft", chemicals: 13, wasteVehicles: 4, machines: 16 }
-    };
-    
-    // Immediately start a failsafe timer
-    console.log('Starting failsafe timer...');
-    const failsafeTimer = setTimeout(() => {
-      console.log('⚠️ FAILSAFE TRIGGERED - Loading emergency data');
-      if (!mapInitialized || !markers.length) {
-        // Use emergency data directly
-        rawData = EMERGENCY_DATA;
-        createDirectMarkers(EMERGENCY_DATA);
-        updateStats(EMERGENCY_DATA);
-        loader.style.display = 'none';
-        showStatus('Data loaded using emergency fallback', 'success');
-      }
-    }, 5000); // 5 second failsafe
 
     // Make sure mapboxgl is defined
     if (typeof mapboxgl === 'undefined') {
@@ -1432,6 +1409,7 @@
         });
     }
 
+    // Function to add map layers with direct color values (not CSS variables)
     function addMapLayers() {
       // Add a layer for the clusters
       map.addLayer({
@@ -1452,12 +1430,12 @@
             20,   // If point_count >= 20
             35    // radius = 35px
           ],
-          // Color circles based on cluster composition
+          // Color circles based on cluster composition - USING DIRECT HEX COLORS
           'circle-color': [
             'case',
             ['>', ['get', 'hyderabad_count'], ['get', 'cyberabad_count']], 
-            'var(--hyderabad-color)',  // More Hyderabad police
-            'var(--cyberabad-color)'   // More or equal Cyberabad police
+            '#3366cc',  // More Hyderabad police - direct color
+            '#0099c6'   // More or equal Cyberabad police - direct color
           ],
           'circle-stroke-width': 2,
           'circle-stroke-color': '#ffffff'
@@ -1480,7 +1458,7 @@
         }
       });
       
-      // Create a layer for individual points
+      // Create a layer for individual points - USING DIRECT HEX COLORS
       map.addLayer({
         id: 'unclustered-point',
         type: 'circle',
@@ -1491,9 +1469,9 @@
           'circle-color': [
             'match',
             ['get', 'type'],
-            'hyderabad-police', 'var(--hyderabad-color)',
-            'cyberabad-police', 'var(--cyberabad-color)',
-            '#ccc'  // fallback color
+            'hyderabad-police', '#3366cc',  // Direct color
+            'cyberabad-police', '#0099c6',  // Direct color
+            '#cccccc'  // fallback color
           ],
           'circle-stroke-width': 2,
           'circle-stroke-color': '#ffffff'
@@ -1522,7 +1500,7 @@
         }
       });
       
-      // Add a second ring to show tier color for individual points
+      // Add a second ring to show tier color - USING DIRECT HEX COLORS
       map.addLayer({
         id: 'tier-indicator',
         type: 'circle',
@@ -1533,11 +1511,11 @@
           'circle-color': [
             'match',
             ['get', 'tier'],
-            'vip', 'var(--vip-color)',
-            'platinum', 'var(--platinum-color)',
-            'gold', 'var(--gold-color)',
-            'silver', 'var(--silver-color)',
-            '#ccc'  // fallback color
+            'vip', '#ff4500',       // Direct color
+            'platinum', '#e5e4e2',  // Direct color
+            'gold', '#ffd700',      // Direct color
+            'silver', '#c0c0c0',    // Direct color
+            '#cccccc'  // fallback color
           ],
           'circle-stroke-width': 1,
           'circle-stroke-color': '#ffffff',
@@ -1903,32 +1881,15 @@
       }
     }
 
-    // Sample data button with reliability enhancements
+    // Sample data button now loads the full dataset directly
     document.getElementById('load-sample-data').addEventListener('click', () => {
-      console.log('Manual sample data loading requested');
+      console.log('Loading full dataset directly...');
       
       // Show loading status
-      showStatus('Loading sample data...', 'loading');
+      showStatus('Loading all facilities...', 'loading');
       
-      // Directly use emergency data
-      rawData = EMERGENCY_DATA;
-      
-      try {
-        // Force create markers
-        if (createDirectMarkers(EMERGENCY_DATA)) {
-          // Update stats and status
-          updateStats(EMERGENCY_DATA);
-          showStatus('Police stations loaded successfully!', 'success');
-        } else {
-          throw new Error('Failed to create markers');
-        }
-        
-        // Hide loader
-        loader.style.display = 'none';
-      } catch (error) {
-        console.error('Error loading sample data:', error);
-        showStatus('Error loading sample data. Please check console.', 'error');
-      }
+      // Directly trigger data loading again
+      fetchFacilityData();
     });
     
     // Sidebar toggle functionality
@@ -1952,13 +1913,6 @@
     });
 
     // Filter functionality
-    const checkboxes = document.querySelectorAll('.checkbox-container input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', () => {
-        applyFilters();
-      });
-    });
-
     function applyFilters() {
       const activeTypes = [];
       const activeTiers = [];
@@ -1971,50 +1925,51 @@
         }
       });
       
-      // Create a combined filter expression for the map
-      const typeFilter = ['in', ['get', 'type'], ...activeTypes];
-      const tierFilter = ['in', ['get', 'tier'], ...activeTiers];
+      // Direct filtering of markers instead of using MapBox filters
+      markers.forEach((marker, index) => {
+        if (!rawData || index >= rawData.length) return;
+        
+        const item = rawData[index];
+        const typeMatch = activeTypes.includes(item.type);
+        const tierMatch = activeTiers.includes(item.tier);
+        
+        if (typeMatch && tierMatch) {
+          marker.getElement().style.display = 'flex';
+          if (!visibleMarkers.includes(marker)) {
+            visibleMarkers.push(marker);
+          }
+        } else {
+          marker.getElement().style.display = 'none';
+          const idx = visibleMarkers.indexOf(marker);
+          if (idx !== -1) {
+            visibleMarkers.splice(idx, 1);
+          }
+        }
+      });
       
-      // Apply filters to map layers for unclustered points
-      const combinedFilter = ['all', typeFilter, tierFilter];
-      
-      map.setFilter('unclustered-point', ['all', ['!', ['has', 'point_count']], ...combinedFilter]);
-      map.setFilter('unclustered-label', ['all', ['!', ['has', 'point_count']], ...combinedFilter]);
-      map.setFilter('tier-indicator', ['all', ['!', ['has', 'point_count']], ...combinedFilter]);
-      
-      // Update source data to reflect filtered items
-      // This will rebuild clusters based on filtered data
-      const filteredData = {
-        type: 'FeatureCollection',
-        features: rawData
-          .filter(item => activeTypes.includes(item.type) && activeTiers.includes(item.tier))
-          .map(item => ({
-            type: 'Feature',
-            geometry: {
-              type: 'Point',
-              coordinates: [parseFloat(item.longitude), parseFloat(item.latitude)]
-            },
-            properties: { ...item }
-          }))
-      };
-      
-      map.getSource('facilities').setData(filteredData);
-      
-      // Show status message with count of visible features
-      showStatus(`Showing ${filteredData.features.length} of ${rawData.length} facilities`, 'info');
+      showStatus(`Showing ${visibleMarkers.length} of ${markers.length} facilities`, 'info');
     }
+
+    // Filter checkboxes
+    const checkboxes = document.querySelectorAll('.checkbox-container input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        applyFilters();
+      });
+    });
 
     // Search functionality
     searchBar.addEventListener('input', () => {
       const query = searchBar.value.trim().toLowerCase();
       
+      // Reset if empty query
       if (query === '') {
-        // If search is cleared, reset to showing all filtered facilities
+        // Make all markers visible (subject to filters)
         applyFilters();
         return;
       }
       
-      // Filter by search query plus active checkboxes
+      // Get active filters
       const activeTypes = [];
       const activeTiers = [];
       
@@ -2025,46 +1980,48 @@
         }
       });
       
-      const filteredData = {
-        type: 'FeatureCollection',
-        features: rawData
-          .filter(item => {
-            const nameMatch = item.siteName && item.siteName.toLowerCase().includes(query);
-            const addressMatch = item.address && item.address.toLowerCase().includes(query);
-            const typeMatch = activeTypes.includes(item.type);
-            const tierMatch = activeTiers.includes(item.tier);
-            
-            return (nameMatch || addressMatch) && typeMatch && tierMatch;
-          })
-          .map(item => ({
-            type: 'Feature',
-            geometry: {
-              type: 'Point',
-              coordinates: [parseFloat(item.longitude), parseFloat(item.latitude)]
-            },
-            properties: { ...item }
-          }))
-      };
+      // Clear visible markers array
+      visibleMarkers = [];
       
-      map.getSource('facilities').setData(filteredData);
+      // Filter markers directly
+      markers.forEach((marker, index) => {
+        if (!rawData || index >= rawData.length) return;
+        
+        const item = rawData[index];
+        const nameMatch = item.siteName && item.siteName.toLowerCase().includes(query);
+        const addressMatch = item.address && item.address.toLowerCase().includes(query);
+        const typeMatch = activeTypes.includes(item.type);
+        const tierMatch = activeTiers.includes(item.tier);
+        
+        if ((nameMatch || addressMatch) && typeMatch && tierMatch) {
+          marker.getElement().style.display = 'flex';
+          visibleMarkers.push(marker);
+        } else {
+          marker.getElement().style.display = 'none';
+        }
+      });
       
       // Update status
-      showStatus(`Found ${filteredData.features.length} matches`, 'info');
+      showStatus(`Found ${visibleMarkers.length} matches`, 'info');
       
       // If single result, zoom to it
-      if (filteredData.features.length === 1) {
-        const feature = filteredData.features[0];
-        map.flyTo({
-          center: feature.geometry.coordinates,
-          zoom: 15,
-          duration: 1000
-        });
+      if (visibleMarkers.length === 1) {
+        const markerIndex = markers.indexOf(visibleMarkers[0]);
+        if (markerIndex !== -1 && rawData && markerIndex < rawData.length) {
+          const item = rawData[markerIndex];
+          map.flyTo({
+            center: [parseFloat(item.longitude), parseFloat(item.latitude)],
+            zoom: 15,
+            duration: 1000
+          });
+        }
       } 
       // If multiple results but not too many, fit bounds
-      else if (filteredData.features.length > 1 && filteredData.features.length < 50) {
+      else if (visibleMarkers.length > 1 && visibleMarkers.length < 50) {
         const bounds = new mapboxgl.LngLatBounds();
-        filteredData.features.forEach(feature => {
-          bounds.extend(feature.geometry.coordinates);
+        
+        visibleMarkers.forEach(marker => {
+          bounds.extend(marker.getLngLat());
         });
         
         map.fitBounds(bounds, {
