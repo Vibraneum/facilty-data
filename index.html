@@ -5,9 +5,9 @@
   <title>Ixora Facility Management - Police Stations Hyderabad</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- MAPBOX GL JS -->
-  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
-  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <!-- MAPBOX GL JS - Updated to specific working version -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
 
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
@@ -733,6 +733,14 @@
           <span>Cyberabad Police</span>
         </div>
       </div>
+      <!-- Fallback button for manual data loading -->
+      <div class="legend-section" style="margin-top: 15px; text-align: center;">
+        <button id="load-sample-data" style="background-color: var(--primary-light); color: white; 
+               border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
+          <i class="fas fa-database"></i> Load Sample Data
+        </button>
+      </div>
+      
       <div class="legend-section">
         <h3>Site Categories</h3>
         <div class="legend-tier-item">
@@ -801,10 +809,18 @@
       "Kukatpally": { staff: 47, supervisors: 5, managers: 2, area: "13,200 sq ft", chemicals: 13, wasteVehicles: 4, machines: 16 }
     };
 
-    map.on('load', () => {
-      console.log('Map has loaded. Fetching data...');
-      
-      // Add navigation controls with improved positioning
+    // Make sure mapboxgl is defined
+    if (typeof mapboxgl === 'undefined') {
+      console.error('Mapbox GL JS is not loaded. Check your internet connection or try a different browser.');
+      alert('Mapbox GL JS failed to load. Please check your internet connection and reload the page.');
+    }
+
+    // Handle potential map initialization errors
+    try {
+      map.on('load', () => {
+        console.log('Map has loaded. Fetching data...');
+        
+        // Add navigation controls with improved positioning
       map.addControl(new mapboxgl.NavigationControl(), 'top-right');
       
       // Add fullscreen control
@@ -822,21 +838,242 @@
       
       // Fetch data
       fetchDataAndBuildLayers();
-    });
+      });
+    } catch (error) {
+      console.error('Error initializing map:', error);
+      alert('Failed to initialize the map. Please try refreshing the page.');
+    }
 
     // Update your fetchDataAndBuildLayers function to use proper GeoJSON source and layers
+    // Function to try multiple URLs in sequence
+    function fetchWithFallback(urls, index) {
+      if (index >= urls.length) {
+        // If we've tried all URLs, use sample data
+        console.error('All URLs failed, using sample data');
+        processData(generateSampleData());
+        return;
+      }
+      
+      console.log(`Trying URL ${index + 1}/${urls.length}: ${urls[index]}`);
+      
+      fetch(urls[index], {
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        console.log('Response received, parsing JSON...');
+        return response.json();
+      })
+      .then(data => {
+        console.log('JSON parsed successfully');
+        processData(data);
+      })
+      .catch(error => {
+        console.error(`Failed to fetch from ${urls[index]}:`, error);
+        // Try the next URL
+        fetchWithFallback(urls, index + 1);
+      });
+    }
+    
+    // Process the data once we have it
+    function processData(data) {
+      console.log('Processing data:', data ? (Array.isArray(data) ? data.length + ' items' : 'object') : 'null');
+      
+      // If data is in unexpected format, transform it
+      if (data && typeof data === 'object' && !Array.isArray(data)) {
+        console.log('Converting object to array');
+        // Handle case where data is an object instead of array
+        if (data.facilities && Array.isArray(data.facilities)) {
+          data = data.facilities;
+        } else {
+          // Try to extract array if data is wrapped in another property
+          for (const key in data) {
+            if (Array.isArray(data[key])) {
+              console.log(`Found array in property ${key}`);
+              data = data[key];
+              break;
+            }
+          }
+        }
+      }
+      
+      // Fallback if data is empty or not an array
+      if (!data || !Array.isArray(data) || data.length === 0) {
+        console.warn('Invalid or empty data, using sample data');
+        data = generateSampleData();
+      }
+      
+      rawData = data;
+      
+      // Enrich with VIP data
+      enrichWithVIPData(rawData);
+      
+      // Convert to GeoJSON
+      const geojsonData = {
+        type: 'FeatureCollection',
+        features: rawData.map(item => ({
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [parseFloat(item.longitude), parseFloat(item.latitude)]
+          },
+          properties: { ...item }
+        }))
+      };
+      
+      // Add the source and layers
+      try {
+        // Add the facilities source
+        map.addSource('facilities', {
+          type: 'geojson',
+          data: geojsonData,
+          cluster: true,
+          clusterMaxZoom: 14,
+          clusterRadius: 50,
+          clusterProperties: {
+            // Count sites by type
+            hyderabad_count: ['+', ['case', ['==', ['get', 'type'], 'hyderabad-police'], 1, 0]],
+            cyberabad_count: ['+', ['case', ['==', ['get', 'type'], 'cyberabad-police'], 1, 0]],
+            // Count sites by tier
+            vip_count: ['+', ['case', ['==', ['get', 'tier'], 'vip'], 1, 0]],
+            platinum_count: ['+', ['case', ['==', ['get', 'tier'], 'platinum'], 1, 0]],
+            gold_count: ['+', ['case', ['==', ['get', 'tier'], 'gold'], 1, 0]],
+            silver_count: ['+', ['case', ['==', ['get', 'tier'], 'silver'], 1, 0]]
+          }
+        });
+        
+        // Add the layers
+        addMapLayers();
+        
+        // Setup map interactions
+        setupMapInteraction();
+        
+        // Fit map to the points
+        fitBoundsToSource('facilities');
+      } catch (error) {
+        console.error('Error setting up map source/layers:', error);
+        createDirectMarkers(rawData);
+      }
+      
+      // Update stats and hide loader
+      updateStats(rawData);
+      loader.style.display = 'none';
+      
+      // Show success message
+      showStatus(`Data loaded successfully (${rawData.length} facilities)`, 'success');
+    }
+    
+    // Create direct markers as a fallback approach
+    function createDirectMarkers(data) {
+      console.log('Creating direct markers for facilities');
+      
+      // Remove any existing markers
+      markers.forEach(marker => marker.remove());
+      markers = [];
+      visibleMarkers = [];
+      
+      // Create a marker for each facility
+      data.forEach(item => {
+        try {
+          const el = document.createElement('div');
+          el.className = `custom-marker ${item.type} ${item.tier}`;
+          el.innerHTML = item.type === 'hyderabad-police' ? 'H' : 'C';
+          
+          const marker = new mapboxgl.Marker(el)
+            .setLngLat([parseFloat(item.longitude), parseFloat(item.latitude)])
+            .addTo(map);
+          
+          marker.getElement().addEventListener('click', () => {
+            if (currentPopup) currentPopup.remove();
+            
+            const popupContent = createFacilityPopupHTML(item);
+            
+            currentPopup = new mapboxgl.Popup({
+              offset: 25,
+              closeButton: true,
+              closeOnClick: true,
+              maxWidth: '350px'
+            })
+              .setLngLat([parseFloat(item.longitude), parseFloat(item.latitude)])
+              .setHTML(popupContent)
+              .addTo(map);
+          });
+          
+          markers.push(marker);
+          visibleMarkers.push(marker);
+        } catch (e) {
+          console.error(`Error creating marker for ${item.siteName}:`, e);
+        }
+      });
+      
+      // Fit map to markers
+      if (markers.length > 0) {
+        const bounds = new mapboxgl.LngLatBounds();
+        data.forEach(item => {
+          bounds.extend([parseFloat(item.longitude), parseFloat(item.latitude)]);
+        });
+        
+        map.fitBounds(bounds, {
+          padding: { top: 100, bottom: 100, left: 350, right: 50 },
+          maxZoom: 14,
+          duration: 1000
+        });
+      }
+    }
+    
     function fetchDataAndBuildLayers() {
       showStatus('Loading facility data...', 'loading');
+      console.log('Fetching facility data...');
       
-      fetch('https://raw.githubusercontent.com/Vibraneum/facilty-data/main/facilities.json')
+      // URLs to try in sequence
+      const urls = [
+        'https://raw.githubusercontent.com/Vibraneum/facilty-data/main/facilities.json',
+        // Add alternate URLs here as fallbacks
+        './facilities.json' // Local file - include this if you've saved it locally
+      ];
+      
+      // Try fetching from the first URL, then fall back to others if needed
+      fetchWithFallback(urls, 0)
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
+          console.log('Response received, parsing JSON...');
           return response.json();
         })
         .then(data => {
+          console.log('JSON parsed successfully');
+          
+          // If data is in unexpected format, transform it
+          if (data && typeof data === 'object' && !Array.isArray(data)) {
+            console.log('Converting object to array');
+            // Handle case where data is an object instead of array
+            if (data.facilities && Array.isArray(data.facilities)) {
+              return data.facilities;
+            }
+            // Try to extract array if data is wrapped in another property
+            for (const key in data) {
+              if (Array.isArray(data[key])) {
+                console.log(`Found array in property ${key}`);
+                return data[key];
+              }
+            }
+          }
+          return data;
+        })
+        .then(data => {
+          console.log('Data loaded successfully:', data.length, 'facilities');
           rawData = data;
+          
+          // Fallback if data is empty
+          if (!data || data.length === 0) {
+            console.warn('No facilities found in JSON, using sample data');
+            rawData = generateSampleData();
+          }
           
           // Convert array data to GeoJSON format
           const geojsonData = {
@@ -893,6 +1130,7 @@
         })
         .catch(error => {
           console.error('Fetch error:', error);
+          console.log('Falling back to sample data');
           
           // Use sample data if fetch fails
           rawData = generateSampleData();
@@ -900,45 +1138,124 @@
           // Enrich with VIP data
           enrichWithVIPData(rawData);
           
-          // Convert to GeoJSON
-          const geojsonData = {
-            type: 'FeatureCollection',
-            features: rawData.map(item => ({
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: [parseFloat(item.longitude), parseFloat(item.latitude)]
-              },
-              properties: {
-                ...item
-              }
-            }))
-          };
-          
-          // Add the facilities source with sample data
-          map.addSource('facilities', {
-            type: 'geojson',
-            data: geojsonData,
-            cluster: true,
-            clusterMaxZoom: 14,
-            clusterRadius: 50,
-            clusterProperties: {
-              // Count sites by type
-              hyderabad_count: ['+', ['case', ['==', ['get', 'type'], 'hyderabad-police'], 1, 0]],
-              cyberabad_count: ['+', ['case', ['==', ['get', 'type'], 'cyberabad-police'], 1, 0]],
-              // Count sites by tier
-              vip_count: ['+', ['case', ['==', ['get', 'tier'], 'vip'], 1, 0]],
-              platinum_count: ['+', ['case', ['==', ['get', 'tier'], 'platinum'], 1, 0]],
-              gold_count: ['+', ['case', ['==', ['get', 'tier'], 'gold'], 1, 0]],
-              silver_count: ['+', ['case', ['==', ['get', 'tier'], 'silver'], 1, 0]]
+          // Create direct markers instead of using GeoJSON source
+          try {
+            console.log('Creating markers directly for each facility');
+            
+            // Remove any existing markers
+            markers.forEach(marker => marker.remove());
+            markers = [];
+            visibleMarkers = [];
+            
+            // Create a marker for each facility
+            rawData.forEach(item => {
+              console.log(`Creating marker for ${item.siteName} at ${item.latitude}, ${item.longitude}`);
+              
+              // Create marker element
+              const el = document.createElement('div');
+              el.className = `custom-marker ${item.type} ${item.tier}`;
+              el.innerHTML = item.type === 'hyderabad-police' ? 'H' : 'C';
+              
+              // Create and store the marker
+              const marker = new mapboxgl.Marker(el)
+                .setLngLat([parseFloat(item.longitude), parseFloat(item.latitude)])
+                .addTo(map);
+              
+              // Add click handler
+              marker.getElement().addEventListener('click', () => {
+                if (currentPopup) currentPopup.remove();
+                
+                // Create popup HTML
+                const popupContent = createFacilityPopupHTML(item);
+                
+                currentPopup = new mapboxgl.Popup({
+                  offset: 25,
+                  closeButton: true,
+                  closeOnClick: true,
+                  maxWidth: '350px'
+                })
+                  .setLngLat([parseFloat(item.longitude), parseFloat(item.latitude)])
+                  .setHTML(popupContent)
+                  .addTo(map);
+              });
+              
+              // Store marker
+              markers.push(marker);
+              visibleMarkers.push(marker);
+            });
+            
+            // Update stats and hide loader
+            updateStats(rawData);
+            loader.style.display = 'none';
+            
+            // Show status
+            showStatus(`Showing ${rawData.length} facilities (using fallback method)`, 'info');
+            
+            // Fit map to markers
+            const bounds = new mapboxgl.LngLatBounds();
+            rawData.forEach(item => {
+              bounds.extend([parseFloat(item.longitude), parseFloat(item.latitude)]);
+            });
+            
+            map.fitBounds(bounds, {
+              padding: { top: 100, bottom: 100, left: 350, right: 50 },
+              maxZoom: 14,
+              duration: 1000
+            });
+            
+          } catch (markerError) {
+            console.error('Error creating markers:', markerError);
+            
+            // Ultimate fallback - use GeoJSON source
+            console.log('Fallback to GeoJSON source');
+            
+            try {
+              // Convert to GeoJSON
+              const geojsonData = {
+                type: 'FeatureCollection',
+                features: rawData.map(item => ({
+                  type: 'Feature',
+                  geometry: {
+                    type: 'Point',
+                    coordinates: [parseFloat(item.longitude), parseFloat(item.latitude)]
+                  },
+                  properties: {
+                    ...item
+                  }
+                }))
+              };
+              
+              console.log('Created GeoJSON data:', geojsonData);
+              
+              // Add the facilities source with sample data
+              map.addSource('facilities', {
+                type: 'geojson',
+                data: geojsonData,
+                cluster: true,
+                clusterMaxZoom: 14,
+                clusterRadius: 50,
+                clusterProperties: {
+                  // Count sites by type
+                  hyderabad_count: ['+', ['case', ['==', ['get', 'type'], 'hyderabad-police'], 1, 0]],
+                  cyberabad_count: ['+', ['case', ['==', ['get', 'type'], 'cyberabad-police'], 1, 0]],
+                  // Count sites by tier
+                  vip_count: ['+', ['case', ['==', ['get', 'tier'], 'vip'], 1, 0]],
+                  platinum_count: ['+', ['case', ['==', ['get', 'tier'], 'platinum'], 1, 0]],
+                  gold_count: ['+', ['case', ['==', ['get', 'tier'], 'gold'], 1, 0]],
+                  silver_count: ['+', ['case', ['==', ['get', 'tier'], 'silver'], 1, 0]]
+                }
+              });
+              
+              // Add layers
+              addMapLayers();
+              
+              // Setup click events
+              setupMapInteraction();
+            } catch (geoJsonError) {
+              console.error('Error with GeoJSON approach:', geoJsonError);
+              showStatus(`Failed to display facilities: ${geoJsonError.message}`, 'error');
             }
-          });
-          
-          // Add layers
-          addMapLayers();
-          
-          // Setup click events
-          setupMapInteraction();
+          }
           
           // Update stats and hide loader
           updateStats(rawData);
@@ -946,9 +1263,6 @@
           
           // Show error status with detailed message
           showStatus(`Failed to fetch facilities.json: ${error.message}. Using sample data.`, 'error');
-          
-          // Fit map to all points
-          fitBoundsToSource('facilities');
         });
     }
 
@@ -1291,6 +1605,7 @@
 
     // Generate sample data if fetch fails
     function generateSampleData() {
+      console.log('Generating sample data');
       const sampleData = [
         { siteName: "Saifabad PS", latitude: 17.4010, longitude: 78.4730, type: "hyderabad-police", tier: "vip", squareFeet: 12500, address: "5-8-207/2, Saifabad, Hyderabad-500004" },
         { siteName: "Begumpet PS", latitude: 17.4440, longitude: 78.4680, type: "hyderabad-police", tier: "vip", squareFeet: 10200, address: "Behind Shoppers Stop, Begumpet, Hyderabad-500016" },
@@ -1303,8 +1618,25 @@
         { siteName: "Madhapur PS", latitude: 17.4500, longitude: 78.3900, type: "cyberabad-police", tier: "silver", squareFeet: 9500, address: "Near Cyber Towers, Madhapur, Hyderabad-500081" },
         { siteName: "LB Nagar PS", latitude: 17.3521, longitude: 78.5472, type: "hyderabad-police", tier: "silver", squareFeet: 8200, address: "LB Nagar Circle, Hyderabad-500074" }
       ];
+      
+      // Log the sample data for verification
+      console.log('Sample data generated:', sampleData.length, 'facilities');
       return sampleData;
     }
+    
+    // Add hardcoded sample data to ensure visualization works regardless of API
+    const hardcodedFacilities = [
+      { siteName: "Saifabad PS", latitude: 17.4010, longitude: 78.4730, type: "hyderabad-police", tier: "vip", squareFeet: 12500, address: "5-8-207/2, Saifabad, Hyderabad-500004", staff: 45, chemicals: 12, wasteVehicles: 4, machines: 15 },
+      { siteName: "Begumpet PS", latitude: 17.4440, longitude: 78.4680, type: "hyderabad-police", tier: "vip", squareFeet: 10200, address: "Behind Shoppers Stop, Begumpet, Hyderabad-500016", staff: 38, chemicals: 9, wasteVehicles: 3, machines: 12 },
+      { siteName: "Charminar PS", latitude: 17.3616, longitude: 78.4747, type: "hyderabad-police", tier: "vip", squareFeet: 15800, address: "Near Charminar Bus Stand, Hyderabad-500002", staff: 52, chemicals: 15, wasteVehicles: 5, machines: 18 },
+      { siteName: "Jubilee Hills PS", latitude: 17.4319, longitude: 78.4073, type: "hyderabad-police", tier: "platinum", squareFeet: 11600, address: "Road No. 10, Jubilee Hills, Hyderabad-500033" },
+      { siteName: "Gachibowli PS", latitude: 17.4438, longitude: 78.3515, type: "cyberabad-police", tier: "platinum", squareFeet: 9800, address: "Financial District, Gachibowli, Hyderabad-500032" },
+      { siteName: "Kukatpally PS", latitude: 17.4849, longitude: 78.4117, type: "cyberabad-police", tier: "gold", squareFeet: 13200, address: "Near JNTU, Kukatpally, Hyderabad-500085" },
+      { siteName: "Uppal PS", latitude: 17.4034, longitude: 78.5592, type: "hyderabad-police", tier: "gold", squareFeet: 8700, address: "Uppal X Roads, Hyderabad-500039" },
+      { siteName: "Miyapur PS", latitude: 17.4990, longitude: 78.3720, type: "cyberabad-police", tier: "silver", squareFeet: 7800, address: "Miyapur X Roads, Hyderabad-500049" },
+      { siteName: "Madhapur PS", latitude: 17.4500, longitude: 78.3900, type: "cyberabad-police", tier: "silver", squareFeet: 9500, address: "Near Cyber Towers, Madhapur, Hyderabad-500081" },
+      { siteName: "LB Nagar PS", latitude: 17.3521, longitude: 78.5472, type: "hyderabad-police", tier: "silver", squareFeet: 8200, address: "LB Nagar Circle, Hyderabad-500074" }
+    ];
 
     // Helper function to fit map bounds to a source
     function fitBoundsToSource(sourceName) {
@@ -1405,6 +1737,29 @@
       }
     }
 
+    // Sample data button
+    document.getElementById('load-sample-data').addEventListener('click', () => {
+      console.log('Manual sample data loading triggered');
+      
+      // Clear any existing data
+      if (map.getSource('facilities')) {
+        map.removeLayer('tier-indicator');
+        map.removeLayer('unclustered-label');
+        map.removeLayer('unclustered-point');
+        map.removeLayer('cluster-count');
+        map.removeLayer('clusters');
+        map.removeSource('facilities');
+      }
+      
+      // Remove any direct markers
+      markers.forEach(marker => marker.remove());
+      markers = [];
+      visibleMarkers = [];
+      
+      // Process the hardcoded data
+      processData(hardcodedFacilities);
+    });
+    
     // Sidebar toggle functionality
     sidebarTgl.addEventListener('click', () => {
       sidebar.classList.toggle('collapsed');
