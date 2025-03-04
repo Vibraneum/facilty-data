@@ -40,6 +40,19 @@
     "squareFeet": 20000
   },
   {
+    "type": "private-fm-clients",
+    "siteName": "Pullela Gopichand Badminton Academy",
+    "latitude": 17.438295,
+    "longitude": 78.349139,
+    "tier": "platinum",
+    "address": "Pullela Gopichand Badminton Academy, Hyderabad",
+    "squareFeet": 30000,
+    "staff": 30,
+    "chemicals": 9,
+    "wasteVehicles": 0,
+    "machines": 4
+},
+  {
     "type": "hyderabad-police",
     "siteName": "BEGUMPET PS",
     "latitude": 17.444056,
