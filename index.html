@@ -115,7 +115,7 @@
     .sidebar-toggle {
       position: absolute;
       top: 10px;
-      right: 10px;
+      right: -32px;
       width: 32px;
       height: 32px;
       background-color: var(--primary-light);
@@ -126,14 +126,15 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      z-index: 10;
+      z-index: 2000;
       transition: transform 0.2s ease;
     }
     .sidebar-toggle:hover {
       transform: scale(1.1);
     }
     .sidebar.collapsed {
-      transform: translateX(-340px);
+      transform: translateX(-280px) !important;
+      min-width: 20px !important;
     }
 
     .filter-section {
@@ -163,6 +164,7 @@
       align-items: center;
       gap: 10px;
       transition: transform 0.2s ease;
+      margin-bottom: 6px;
     }
     .checkbox-item:hover {
       transform: translateX(5px);
@@ -171,6 +173,8 @@
       position: relative;
       display: flex;
       align-items: center;
+      justify-content: center;
+      cursor: pointer;
     }
     .custom-checkbox input {
       position: absolute;
@@ -233,6 +237,7 @@
       top: 50%;
       transform: translateY(-50%);
       color: var(--secondary-color);
+      pointer-events: none;
     }
 
     /* Legend styles - improved positioning and interaction */
@@ -334,12 +339,12 @@
       transform: scale(1.1);
     }
 
-    .type-hyderabad-police { background-color: var(--hyderabad-color); }
-    .type-cyberabad-police { background-color: var(--cyberabad-color); }
-    .tier-vip { background: linear-gradient(135deg, var(--vip-color), #ff6347); color: white; }
-    .tier-platinum { background: linear-gradient(135deg, var(--platinum-color), #ffffff); color: #333; }
-    .tier-gold { background: linear-gradient(135deg, var(--gold-color), #FFF7CC); color: #333; }
-    .tier-silver { background: linear-gradient(135deg, var(--silver-color), #E6E6E6); color: #333; }
+    .type-hyderabad-police { background-color: #3366cc; }
+    .type-cyberabad-police { background-color: #0099c6; }
+    .tier-vip { background: linear-gradient(135deg, #ff4500, #ff6347); color: white; }
+    .tier-platinum { background: linear-gradient(135deg, #e5e4e2, #ffffff); color: #333; }
+    .tier-gold { background: linear-gradient(135deg, #ffd700, #FFF7CC); color: #333; }
+    .tier-silver { background: linear-gradient(135deg, #c0c0c0, #E6E6E6); color: #333; }
 
     /* Improve map controls positioning to avoid overlap with legend */
     .mapboxgl-ctrl-top-right {
@@ -351,25 +356,31 @@
       bottom: 20px !important;
       right: 20px !important;
     }
+    
     /* VIP Popup styling */
     .custom-popup {
       max-width: 350px;
-      background: var(--card-bg);
+      width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      background: #ffffff;
       padding: 20px;
-      border-radius: var(--border-radius);
-      box-shadow: var(--card-shadow);
-      color: var(--dark-color);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      color: #212529;
     }
+    
     .custom-popup h3 {
       margin: 0 0 12px 0;
-      color: var(--dark-color);
+      color: #212529;
       font-size: 18px;
-      border-bottom: 2px solid var(--primary-light);
+      border-bottom: 2px solid #007bff;
       padding-bottom: 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+    
     .site-type-icon {
       display: inline-flex;
       align-items: center;
@@ -383,48 +394,54 @@
       font-size: 18px;
       box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     }
+    
     .popup-stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
       margin-top: 15px;
     }
+    
     .popup-stat-card {
-      background-color: rgba(var(--primary-light-rgb), 0.1);
-      border-radius: var(--border-radius);
+      background-color: rgba(0, 123, 255, 0.1);
+      border-radius: 8px;
       padding: 12px;
       text-align: center;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      border: 1px solid rgba(var(--primary-light-rgb), 0.2);
+      border: 1px solid rgba(0, 123, 255, 0.2);
     }
+    
     .popup-stat-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
+    
     .popup-stat-icon {
       font-size: 18px;
       margin-bottom: 8px;
-      color: var(--primary-light);
+      color: #007bff;
     }
+    
     .popup-stat-value {
       font-size: 18px;
       font-weight: bold;
-      color: var(--dark-color);
+      color: #212529;
     }
+    
     .popup-stat-label {
       font-size: 12px;
-      color: var(--secondary-color);
+      color: #6c757d;
       margin-top: 3px;
     }
     
     .popup-header-info {
       display: flex;
       align-items: center;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
     }
     
     .popup-tier-badge {
-      background-color: var(--light-color);
+      background-color: #f8f9fa;
       border-radius: 20px;
       padding: 3px 8px;
       font-size: 12px;
@@ -436,36 +453,37 @@
     }
     
     .popup-tier-badge.vip {
-      background-color: var(--vip-color);
+      background-color: #ff4500;
       color: white;
     }
     
     .popup-tier-badge.platinum {
-      background-color: var(--platinum-color);
+      background-color: #e5e4e2;
       color: #333;
     }
     
     .popup-tier-badge.gold {
-      background-color: var(--gold-color);
+      background-color: #ffd700;
       color: #333;
     }
     
     .popup-tier-badge.silver {
-      background-color: var(--silver-color);
+      background-color: #c0c0c0;
       color: #333;
     }
 
     .popup-address {
-      background-color: rgba(var(--primary-light-rgb), 0.05);
+      background-color: rgba(0, 123, 255, 0.05);
       padding: 12px;
-      border-radius: var(--border-radius);
+      border-radius: 8px;
       margin-top: 10px;
       font-size: 14px;
-      border-left: 3px solid var(--primary-light);
+      border-left: 3px solid #007bff;
+      word-wrap: break-word;
     }
     
     .popup-address i {
-      color: var(--primary-light);
+      color: #007bff;
       margin-right: 5px;
     }
 
@@ -485,14 +503,14 @@
     .loader {
       width: 48px;
       height: 48px;
-      border: 5px solid var(--primary-light);
+      border: 5px solid #007bff;
       border-bottom-color: transparent;
       border-radius: 50%;
       animation: rotation 1s linear infinite;
       margin-bottom: 15px;
     }
     .loader-text {
-      color: var(--primary-color);
+      color: #0056b3;
       font-size: 18px;
       font-weight: 500;
     }
@@ -501,12 +519,14 @@
       100% { transform: rotate(360deg); }
     }
     
-     /* Custom Mapbox marker styles - Enhanced for visibility*/
-
+    /* Custom Mapbox marker styles - Enhanced for visibility */
     .mapboxgl-marker {
       transition: transform 0.3s ease;
       z-index: 100 !important; /* Ensure markers are above other map elements */
+      pointer-events: auto !important;
+      cursor: pointer !important;
     }
+    
     .mapboxgl-marker:hover {
       transform: scale(1.2);
       z-index: 200 !important;
@@ -516,9 +536,9 @@
       width: 40px; /* Larger size */
       height: 40px;
       border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
       color: white;
       font-weight: bold;
       font-size: 18px; /* Larger text */
@@ -581,9 +601,9 @@
       bottom: 20px;
       left: 20px;
       padding: 10px 15px;
-      background-color: var(--card-bg);
-      border-radius: var(--border-radius);
-      box-shadow: var(--card-shadow);
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       font-size: 14px;
       display: flex;
       align-items: center;
@@ -601,11 +621,18 @@
     }
     
     .status-indicator i {
-      color: var(--success-color);
+      color: #28a745;
     }
     
     .status-indicator.error i {
-      color: var(--danger-color);
+      color: #dc3545;
+    }
+    
+    /* Ensure popups have appropriate styling */
+    .mapboxgl-popup-content {
+      padding: 0 !important;
+      overflow: hidden !important;
+      max-width: 350px !important;
     }
 
     /* Responsive & smaller screens */
@@ -631,7 +658,7 @@
         height: 30px;
       }
       .sidebar.collapsed {
-        transform: translateX(-240px);
+        transform: translateX(-240px) !important;
       }
     }
   </style>
@@ -822,9 +849,7 @@
     <div id="map"></div>
   </div>
 
-
-<!-- Replace the entire script section in your HTML with this -->
-<script>
+  <script>
     // Use your actual Mapbox token
     mapboxgl.accessToken = 'pk.eyJ1IjoidmVkYW50aG5hdGgiLCJhIjoiY203c3lsOWZyMGs4MzJpcmJoZTY1Ync4bSJ9.Hx83V0-qM8JOmh4y_SSXCw';
 
@@ -1515,33 +1540,8 @@
       });
     }
 
-    // Create HTML for facility popup
+    // Create HTML for facility popup with improved formatting
     function createFacilityPopupHTML(properties) {
-
-  // Start building popup HTML with explicit width and word wrapping
-  let html = `<div class="custom-popup" style="width: 100%; max-width: 350px; word-wrap: break-word;">`;
-  
-  // Improved header with inline styles
-  html += `
-  <div class="popup-header-info" style="display: flex; align-items: center; margin-bottom: 10px;">
-    <!-- [improved markup with inline styles] -->
-  </div>`;
-
-  // Improved VIP stats grid with consistent styling
-  if (siteTier === 'vip') {
-    html += `<div class="popup-stats-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px;">`;
-    // ... [stat cards]
-  }
-  
-  // Improved address display
-  if (props.address) {
-    html += `<div class="popup-address" style="background-color: rgba(0, 123, 255, 0.05); padding: 12px; border-radius: 8px; margin-top: 10px; font-size: 14px; border-left: 3px solid #007bff; word-wrap: break-word;">
-      <!-- [address content] -->
-    </div>`;
-  }
-  // ... [rest of code]
-}
-
       // Parse string properties - JSON properties get stringified when in GeoJSON layers
       let props = properties;
       
@@ -1565,23 +1565,29 @@
       const siteType = props.type || 'unknown';
       const siteTier = props.tier || 'unknown';
       
-      // Start building popup HTML
-      let html = `<div class="custom-popup">`;
+      // Start building popup HTML with improved formatting
+      let html = `<div class="custom-popup" style="width: 100%; max-width: 350px; word-wrap: break-word;">`;
       
       // Header with site type icon and tier badge
       html += `
-      <div class="popup-header-info">
-        <span class="site-type-icon ${
-          siteType === 'hyderabad-police' ? 'type-hyderabad-police' :
-          siteType === 'cyberabad-police' ? 'type-cyberabad-police' : ''
+      <div class="popup-header-info" style="display: flex; align-items: center; margin-bottom: 10px;">
+        <span class="site-type-icon" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; color: white; margin-right: 10px; flex-shrink: 0; font-size: 18px; box-shadow: 0 3px 6px rgba(0,0,0,0.2); background-color: ${
+          siteType === 'hyderabad-police' ? '#3366cc' :
+          siteType === 'cyberabad-police' ? '#0099c6' : '#cccccc'
         }">
-          // from here buddy
-          ${siteType === 'hyderabad-police' ? '<i class="fas fa-shield-alt"></i>' :
+   ${siteType === 'hyderabad-police' ? '<i class="fas fa-shield-alt"></i>' :
             siteType === 'cyberabad-police' ? '<i class="fas fa-laptop-code"></i>' :
             '<i class="fas fa-map-marker-alt"></i>'}
         </span>
-        <h3>${siteName}</h3>
-        <span class="popup-tier-badge ${siteTier}">
+        <h3 style="margin: 0; font-size: 16px; flex-grow: 1; overflow: hidden; text-overflow: ellipsis;">${siteName}</h3>
+        <span class="popup-tier-badge" style="background-color: ${
+          siteTier === 'vip' ? '#ff4500' :
+          siteTier === 'platinum' ? '#e5e4e2' :
+          siteTier === 'gold' ? '#ffd700' :
+          siteTier === 'silver' ? '#c0c0c0' : '#f8f9fa'
+        }; color: ${
+          siteTier === 'vip' ? 'white' : '#333'
+        }; border-radius: 20px; padding: 3px 8px; font-size: 12px; font-weight: bold; display: inline-flex; align-items: center; gap: 4px; margin-left: auto;">
           ${siteTier === 'vip' ? '<i class="fas fa-crown"></i> VIP' :
             siteTier === 'platinum' ? '<i class="fas fa-medal"></i> Platinum' :
             siteTier === 'gold' ? '<i class="fas fa-award"></i> Gold' :
@@ -1589,9 +1595,9 @@
         </span>
       </div>`;
 
-      // VIP sites get detailed statistics
+      // VIP sites get detailed statistics with improved formatting
       if (siteTier === 'vip') {
-        html += `<div class="popup-stats-grid">`;
+        html += `<div class="popup-stats-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px;">`;
         // Core information
         html += buildStatCard('fa-chart-area', formatNumber(squareFeet) + ' sq ft', 'Area');
         
@@ -1603,26 +1609,28 @@
         html += `</div>`;
       } else {
         // Non-VIP layout
-        html += `<p><strong>Square Feet:</strong> ${formatNumber(squareFeet)} sq ft</p>`;
+        html += `<p style="margin: 10px 0;"><strong>Square Feet:</strong> ${formatNumber(squareFeet)} sq ft</p>`;
       }
       
-      // Add address for all sites
+      // Add address for all sites with improved word wrapping
       if (props.address) {
-        html += `<div class="popup-address"><i class="fas fa-map-marker-alt"></i> ${props.address}</div>`;
+        html += `<div class="popup-address" style="background-color: rgba(0, 123, 255, 0.05); padding: 12px; border-radius: 8px; margin-top: 10px; font-size: 14px; border-left: 3px solid #007bff; word-wrap: break-word;">
+          <i class="fas fa-map-marker-alt" style="color: #007bff; margin-right: 5px;"></i> ${props.address}
+        </div>`;
       }
 
       html += `</div>`;
       
       return html;
-    
+    }
 
-    // Build HTML for a stat card
+    // Build HTML for a stat card with improved styling
     function buildStatCard(iconClass, value, label) {
       return `
-        <div class="popup-stat-card">
-          <div class="popup-stat-icon"><i class="fas ${iconClass}"></i></div>
-          <div class="popup-stat-value">${value}</div>
-          <div class="popup-stat-label">${label}</div>
+        <div class="popup-stat-card" style="background-color: rgba(0, 123, 255, 0.1); border-radius: 8px; padding: 12px; text-align: center; border: 1px solid rgba(0, 123, 255, 0.2);">
+          <div class="popup-stat-icon" style="font-size: 18px; margin-bottom: 8px; color: #007bff;"><i class="fas ${iconClass}"></i></div>
+          <div class="popup-stat-value" style="font-size: 16px; font-weight: bold; color: #212529;">${value}</div>
+          <div class="popup-stat-label" style="font-size: 12px; color: #6c757d; margin-top: 3px;">${label}</div>
         </div>
       `;
     }
@@ -1792,27 +1800,24 @@
       fetchFacilityData();
     });
     
-    // Sidebar toggle functionality
+    // Fixed: Sidebar toggle functionality
     sidebarTgl.addEventListener('click', () => {
       sidebar.classList.toggle('collapsed');
       const icon = sidebarTgl.querySelector('i');
+      
       if (sidebar.classList.contains('collapsed')) {
         icon.classList.remove('fa-chevron-left');
         icon.classList.add('fa-chevron-right');
+        sidebar.style.transform = 'translateX(-280px)';
+        sidebar.style.minWidth = '20px'; // Ensure a small portion remains visible
       } else {
         icon.classList.remove('fa-chevron-right');
         icon.classList.add('fa-chevron-left');
+        sidebar.style.transform = 'translateX(0)';
       }
-      // In the toggle event listener
-if (sidebar.classList.contains('collapsed')) {
-  sidebar.style.transform = 'translateX(-280px)';
-  sidebar.style.minWidth = '20px'; // Ensure a small portion remains visible
-} else {
-  sidebar.style.transform = 'translateX(0)';
-}
     });
 
-    // Filter functionality
+    // Improved Filter functionality
     function applyFilters() {
       const activeTypes = [];
       const activeTiers = [];
@@ -1825,25 +1830,12 @@ if (sidebar.classList.contains('collapsed')) {
         }
       });
       
-      // Try using MapBox filters first
-      try {
-        if (map.getLayer('unclustered-point')) {
-          // Build filter expressions
-          const typeFilter = ['any', ...activeTypes.map(type => ['==', ['get', 'type'], type])];
-          const tierFilter = ['any', ...activeTiers.map(tier => ['==', ['get', 'tier'], tier])];
-          
-          // Apply filter to unclustered points
-          map.setFilter('unclustered-point', ['all', ['!', ['has', 'point_count']], typeFilter, tierFilter]);
-          map.setFilter('unclustered-label', ['all', ['!', ['has', 'point_count']], typeFilter, tierFilter]);
-          map.setFilter('tier-indicator', ['all', ['!', ['has', 'point_count']], typeFilter, tierFilter]);
-          
-          console.log('Applied MapBox filters for types:', activeTypes, 'and tiers:', activeTiers);
-        }
-      } catch (e) {
-        console.error('Error applying MapBox filters:', e);
-      }
+      console.log('Applying filters:', 'Types:', activeTypes, 'Tiers:', activeTiers);
       
-      // Also apply direct filtering to markers as fallback
+      // Reset visible markers count
+      visibleMarkers = [];
+      
+      // Apply direct filtering to markers
       markers.forEach((marker, index) => {
         if (!rawData || index >= rawData.length) return;
         
@@ -1852,19 +1844,14 @@ if (sidebar.classList.contains('collapsed')) {
         const tierMatch = activeTiers.includes(item.tier);
         
         if (typeMatch && tierMatch) {
-          marker.getElement().style.display = 'block';
-          if (!visibleMarkers.includes(marker)) {
-            visibleMarkers.push(marker);
-          }
+          marker.getElement().style.display = '';
+          visibleMarkers.push(marker);
         } else {
           marker.getElement().style.display = 'none';
-          const idx = visibleMarkers.indexOf(marker);
-          if (idx !== -1) {
-            visibleMarkers.splice(idx, 1);
-          }
         }
       });
       
+      console.log(`Filter applied: ${visibleMarkers.length} of ${markers.length} markers visible`);
       showStatus(`Showing ${visibleMarkers.length} of ${markers.length} facilities`, 'info');
     }
 
@@ -1875,30 +1862,19 @@ if (sidebar.classList.contains('collapsed')) {
         applyFilters();
       });
     });
-     // Fixed search functionality
-    // Search functionality
+
+    // Fixed Search functionality
     searchBar.addEventListener('input', () => {
       const query = searchBar.value.trim().toLowerCase();
-      console.log(`Searching for "${query}" among ${markers.length} markers`);
-  
-  let matchCount = 0;
-  markers.forEach((marker, index) => {
-    // ... [improved matching logic]
-    if ((nameMatch || addressMatch) && typeMatch && tierMatch) {
-      matchCount++;
-      marker.getElement().style.display = ''; // Using empty string is more reliable
-      visibleMarkers.push(marker);
-    }
-  });
- 
-  showStatus(`Found ${visibleMarkers.length} matches for "${query}"`, 'info');
-
+      
       // Reset if empty query
       if (query === '') {
         // Make all markers visible (subject to filters)
         applyFilters();
         return;
       }
+      
+      console.log(`Searching for "${query}" among ${markers.length} markers`);
       
       // Get active filters
       const activeTypes = [];
@@ -1914,7 +1890,8 @@ if (sidebar.classList.contains('collapsed')) {
       // Clear visible markers array
       visibleMarkers = [];
       
-      // Filter markers directly
+      // Filter markers directly with improved matching
+      let matchCount = 0;
       markers.forEach((marker, index) => {
         if (!rawData || index >= rawData.length) return;
         
@@ -1925,15 +1902,18 @@ if (sidebar.classList.contains('collapsed')) {
         const tierMatch = activeTiers.includes(item.tier);
         
         if ((nameMatch || addressMatch) && typeMatch && tierMatch) {
-          marker.getElement().style.display = 'block';
+          matchCount++;
+          marker.getElement().style.display = ''; // Using empty string is more reliable
           visibleMarkers.push(marker);
         } else {
           marker.getElement().style.display = 'none';
         }
       });
       
+      console.log(`Found ${matchCount} matches for "${query}"`);
+      
       // Update status
-      showStatus(`Found ${visibleMarkers.length} matches`, 'info');
+      showStatus(`Found ${visibleMarkers.length} matches for "${query}"`, 'info');
       
       // If single result, zoom to it
       if (visibleMarkers.length === 1) {
@@ -1955,11 +1935,13 @@ if (sidebar.classList.contains('collapsed')) {
           bounds.extend(marker.getLngLat());
         });
         
-        map.fitBounds(bounds, {
-          padding: { top: 100, bottom: 100, left: 350, right: 50 },
-          maxZoom: 14,
-          duration: 1000
-        });
+        if (!bounds.isEmpty()) {
+          map.fitBounds(bounds, {
+            padding: { top: 100, bottom: 100, left: 350, right: 50 },
+            maxZoom: 14,
+            duration: 1000
+          });
+        }
       }
     });
 
