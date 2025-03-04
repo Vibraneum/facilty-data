@@ -765,66 +765,66 @@
       fetchDataAndBuildLayers();
     });
 
-    // Fetch data from GitHub
-    function fetchDataAndBuildLayers() {
-      showStatus('Loading facility data...', 'loading');
+function fetchDataAndBuildLayers() {
+  showStatus('Loading facility data...', 'loading');
+  
+  fetch('facilities.json') // Updated to relative path for GitHub Pages
+    .then(response => {
+      console.log('Fetch response status:', response.status);
+      if (!response.ok) {
+        throw new Error('Network response was not ok: ' + response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Data fetched successfully:', data);
+      rawData = data;  // store raw data
+
+      // If data is empty or not an array, use sample data for demo
+      if (!Array.isArray(data) || data.length === 0) {
+        console.warn('No data or invalid data structure, using sample data');
+        rawData = generateSampleData();
+      }
+
+      // Add VIP data to relevant sites
+      enrichWithVIPData(rawData);
       
-      fetch('https://raw.githubusercontent.com/Vibraneum/facilty-data/refs/heads/main/facilities.json')
-        .then(response => {
-          console.log('Fetch response status:', response.status);
-          if (!response.ok) {
-            throw new Error('Network response was not ok: ' + response.status);
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log('Data fetched successfully:', data);
-          rawData = data;  // store raw data
-
-          // If data is empty or not an array, use sample data for demo
-          if (!Array.isArray(data) || data.length === 0) {
-            console.warn('No data or invalid data structure, using sample data');
-            rawData = generateSampleData();
-          }
-
-          // Add VIP data to relevant sites
-          enrichWithVIPData(rawData);
-          
-          // Create markers for each facility
-          createMarkers(rawData);
-          
-          // Update stats in sidebar
-          updateStats(rawData);
-          
-          // Hide loader
-          loader.style.display = 'none';
-          
-          // Show success status
-          showStatus('Data loaded successfully (' + rawData.length + ' facilities)', 'success');
-        })
-        .catch(error => {
-          console.error('Error fetching the data:', error);
-          
-          // Use sample data if fetch fails
-          console.log('Using sample data instead');
-          rawData = generateSampleData();
-          
-          // Add VIP data to relevant sites
-          enrichWithVIPData(rawData);
-          
-          // Create markers
-          createMarkers(rawData);
-          
-          // Update stats
-          updateStats(rawData);
-          
-          // Hide loader
-          loader.style.display = 'none';
-          
-          // Show error status
-          showStatus('Using sample data (fetch failed)', 'error');
-        });
-    }
+      // Create markers for each facility
+      createMarkers(rawData);
+      
+      // Update stats in sidebar
+      updateStats(rawData);
+      
+      // Hide loader
+      loader.style.display = 'none';
+      
+      // Show success status
+      showStatus('Data loaded successfully (' + rawData.length + ' facilities)', 'success');
+    })
+    .catch(error => {
+      console.error('Error fetching the data:', error);
+      
+      // Use sample data if fetch fails
+      console.log('Using sample data instead');
+      rawData = generateSampleData();
+      
+      // Add VIP data to relevant sites
+      enrichWithVIPData(rawData);
+      
+      // Create markers
+      createMarkers(rawData);
+      
+      // Update stats
+      updateStats(rawData);
+      
+      // Hide loader
+      loader.style.display = 'none';
+      
+      // Show error status
+      showStatus('Using sample data (fetch failed)', 'error');
+    });
+}
+    
 
     // Generate sample data if fetch fails
     function generateSampleData() {
