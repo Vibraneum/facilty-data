@@ -740,11 +740,18 @@
         </div>
       </div>
       <!-- Fallback button for manual data loading -->
-      <div class="legend-section" style="margin-top: 15px; text-align: center;">
-        <button id="load-sample-data" style="background-color: var(--primary-light); color: white; 
-               border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
-          <i class="fas fa-database"></i> Load Sample Data
+      <div class="legend-section" style="margin: 20px 0; text-align: center;">
+        <button id="load-sample-data" style="background-color: #ff6b00; color: white; 
+               border: none; padding: 12px 15px; border-radius: 4px; cursor: pointer;
+               width: 100%; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+               font-size: 14px; display: flex; align-items: center; justify-content: center;
+               gap: 8px;">
+          <i class="fas fa-database" style="font-size: 18px;"></i> 
+          <span>LOAD SAMPLE DATA</span>
         </button>
+        <div style="font-size: 12px; margin-top: 5px; color: #555;">
+          Click this if no markers appear
+        </div>
       </div>
       
       <div class="legend-section">
@@ -831,6 +838,15 @@
       console.error('Mapbox GL JS is not loaded. Check your internet connection or try a different browser.');
       alert('Mapbox GL JS failed to load. Please check your internet connection and reload the page.');
     }
+    
+    // Set a global timeout to ensure we show data even if all fetches fail
+    const globalTimeoutId = setTimeout(() => {
+      console.warn('Global timeout reached, forcing sample data load');
+      // If loader is still visible, it means data hasn't loaded yet
+      if (loader.style.display !== 'none') {
+        document.getElementById('load-sample-data').click();
+      }
+    }, 10000); // 10 second global timeout
 
     // Handle potential map initialization errors
     try {
@@ -888,7 +904,7 @@
     }
 
     // Update your fetchDataAndBuildLayers function to use proper GeoJSON source and layers
-    // Function to try multiple URLs in sequence
+    // Function to try multiple URLs in sequence with timeout
     function fetchWithFallback(urls, index) {
       if (index >= urls.length) {
         // If we've tried all URLs, use sample data
@@ -899,12 +915,22 @@
       
       console.log(`Trying URL ${index + 1}/${urls.length}: ${urls[index]}`);
       
+      // Add a timeout to prevent hanging
+      const timeoutId = setTimeout(() => {
+        console.warn(`Fetch timeout for ${urls[index]}`);
+        // Skip to next URL or use sample data
+        fetchWithFallback(urls, index + 1);
+      }, 5000); // 5 second timeout
+      
       fetch(urls[index], {
         headers: {
           'Accept': 'application/json'
-        }
+        },
+        // Adding the no-cache option to avoid caching issues
+        cache: 'no-cache'
       })
       .then(response => {
+        clearTimeout(timeoutId); // Clear the timeout
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -916,15 +942,19 @@
         processData(data);
       })
       .catch(error => {
+        clearTimeout(timeoutId); // Clear the timeout
         console.error(`Failed to fetch from ${urls[index]}:`, error);
         // Try the next URL
         fetchWithFallback(urls, index + 1);
       });
     }
     
-    // Process the data once we have it
+      // Process the data once we have it
     function processData(data) {
       console.log('Processing data:', data ? (Array.isArray(data) ? data.length + ' items' : 'object') : 'null');
+      
+      // Clear the global timeout since we got data
+      clearTimeout(globalTimeoutId);
       
       // If data is in unexpected format, transform it
       if (data && typeof data === 'object' && !Array.isArray(data)) {
@@ -1841,8 +1871,14 @@
     document.getElementById('load-sample-data').addEventListener('click', () => {
       console.log('Manual sample data loading triggered');
       
+      // Clear the global timeout since this is a manual action
+      clearTimeout(globalTimeoutId);
+      
       // Show loading status
       showStatus('Loading sample data...', 'loading');
+      
+      // Hide the main loader if it's still showing
+      loader.style.display = 'none';
       
       // Clear any existing data layers
       try {
@@ -1869,23 +1905,105 @@
       markers = [];
       visibleMarkers = [];
       
-      // Use setTimeout to ensure UI updates before creating markers
+      // Force the map to Streets style for better visibility
+      try {
+        map.setStyle('mapbox://styles/mapbox/streets-v11');
+      } catch (e) {
+        console.warn('Could not set map style:', e);
+      }
+      
+      // Force-create our hardcoded markers
       setTimeout(() => {
         // Use the direct marker approach rather than GeoJSON
         console.log('Creating markers directly from hardcoded sample data');
         
-        // Enrich VIP data first
-        enrichWithVIPData(hardcodedFacilities);
+        // Set up direct hardcoded police stations just in case JSON handling fails
+        const emergencyData = [
+          { siteName: "Saifabad Police Station", latitude: 17.4010, longitude: 78.4730, type: "hyderabad-police", tier: "vip", squareFeet: 12500, address: "5-8-207/2, Saifabad, Hyderabad-500004", staff: 45, chemicals: 12, wasteVehicles: 4, machines: 15 },
+          { siteName: "Begumpet Police Station", latitude: 17.4440, longitude: 78.4680, type: "hyderabad-police", tier: "vip", squareFeet: 10200, address: "Behind Shoppers Stop, Begumpet, Hyderabad-500016", staff: 38, chemicals: 9, wasteVehicles: 3, machines: 12 },
+          { siteName: "Charminar Police Station", latitude: 17.3616, longitude: 78.4747, type: "hyderabad-police", tier: "vip", squareFeet: 15800, address: "Near Charminar Bus Stand, Hyderabad-500002", staff: 52, chemicals: 15, wasteVehicles: 5, machines: 18 },
+          { siteName: "Jubilee Hills Police Station", latitude: 17.4319, longitude: 78.4073, type: "hyderabad-police", tier: "platinum", squareFeet: 11600, address: "Road No. 10, Jubilee Hills, Hyderabad-500033" },
+          { siteName: "Gachibowli Police Station", latitude: 17.4438, longitude: 78.3515, type: "cyberabad-police", tier: "platinum", squareFeet: 9800, address: "Financial District, Gachibowli, Hyderabad-500032" },
+          { siteName: "Kukatpally Police Station", latitude: 17.4849, longitude: 78.4117, type: "cyberabad-police", tier: "gold", squareFeet: 13200, address: "Near JNTU, Kukatpally, Hyderabad-500085" },
+          { siteName: "Uppal Police Station", latitude: 17.4034, longitude: 78.5592, type: "hyderabad-police", tier: "gold", squareFeet: 8700, address: "Uppal X Roads, Hyderabad-500039" },
+          { siteName: "Miyapur Police Station", latitude: 17.4990, longitude: 78.3720, type: "cyberabad-police", tier: "silver", squareFeet: 7800, address: "Miyapur X Roads, Hyderabad-500049" },
+          { siteName: "Madhapur Police Station", latitude: 17.4500, longitude: 78.3900, type: "cyberabad-police", tier: "silver", squareFeet: 9500, address: "Near Cyber Towers, Madhapur, Hyderabad-500081" },
+          { siteName: "LB Nagar Police Station", latitude: 17.3521, longitude: 78.5472, type: "hyderabad-police", tier: "silver", squareFeet: 8200, address: "LB Nagar Circle, Hyderabad-500074" }
+        ];
         
-        // Use raw data
-        rawData = hardcodedFacilities;
+        // Store raw data
+        rawData = emergencyData;
         
-        // Skip the GeoJSON processing and create markers directly
-        createDirectMarkers(hardcodedFacilities);
+        // Skip GeoJSON and create markers directly
+        for (let i = 0; i < emergencyData.length; i++) {
+          const item = emergencyData[i];
+          const lat = parseFloat(item.latitude);
+          const lng = parseFloat(item.longitude);
+          
+          // Skip invalid coordinates
+          if (isNaN(lat) || isNaN(lng)) continue;
+          
+          // Create marker element
+          const el = document.createElement('div');
+          el.className = `custom-marker ${item.type} ${item.tier}`;
+          el.innerHTML = item.type === 'hyderabad-police' ? 'H' : 'C';
+          el.setAttribute('title', item.siteName);
+          
+          // Create marker
+          const marker = new mapboxgl.Marker({
+            element: el,
+            anchor: 'center'
+          })
+            .setLngLat([lng, lat])
+            .addTo(map);
+          
+          // Add click handler
+          marker.getElement().addEventListener('click', () => {
+            if (currentPopup) currentPopup.remove();
+            
+            // Create popup HTML
+            const popupContent = createFacilityPopupHTML(item);
+            
+            // Show popup
+            currentPopup = new mapboxgl.Popup({
+              offset: 25,
+              closeButton: true,
+              closeOnClick: true,
+              maxWidth: '350px'
+            })
+              .setLngLat([lng, lat])
+              .setHTML(popupContent)
+              .addTo(map);
+          });
+          
+          // Store marker reference
+          markers.push(marker);
+          visibleMarkers.push(marker);
+        }
+        
+        // Create bounds and fit map to markers
+        const bounds = new mapboxgl.LngLatBounds();
+        emergencyData.forEach(item => {
+          const lat = parseFloat(item.latitude);
+          const lng = parseFloat(item.longitude);
+          if (!isNaN(lat) && !isNaN(lng)) {
+            bounds.extend([lng, lat]);
+          }
+        });
+        
+        // Fit bounds
+        map.fitBounds(bounds, {
+          padding: { top: 100, bottom: 100, left: 350, right: 50 },
+          maxZoom: 12,
+          duration: 1000
+        });
         
         // Update stats
-        updateStats(hardcodedFacilities);
-      }, 200);
+        updateStats(emergencyData);
+        
+        // Update status
+        showStatus(`Loaded ${emergencyData.length} police stations (sample data)`, 'success');
+      }, 500);
     });
     
     // Sidebar toggle functionality
