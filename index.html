@@ -501,7 +501,7 @@
       100% { transform: rotate(360deg); }
     }
     
-    /* Custom Mapbox marker styles - Enhanced visibility */
+    // Custom Mapbox marker styles - Enhanced for visibility
     .mapboxgl-marker {
       transition: transform 0.3s ease;
       z-index: 100 !important; /* Ensure markers are above other map elements */
@@ -512,19 +512,20 @@
     }
     
     .custom-marker {
-      width: 36px; /* Larger size */
-      height: 36px;
+      width: 40px; /* Larger size */
+      height: 40px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       color: white;
       font-weight: bold;
-      font-size: 16px; /* Larger text */
-      box-shadow: 0 3px 8px rgba(0,0,0,0.5); /* More pronounced shadow */
+      font-size: 18px; /* Larger text */
+      box-shadow: 0 3px 10px rgba(0,0,0,0.6); /* More pronounced shadow */
       border: 3px solid white; /* Thicker border */
       cursor: pointer;
       transition: transform 0.3s ease;
+      position: relative;
     }
     
     .custom-marker:hover {
@@ -554,6 +555,7 @@
       border-radius: 50%;
       border: 3px solid white;
       box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      z-index: 50;
     }
     
     .custom-marker.vip::after {
@@ -788,26 +790,30 @@
     // Use your actual Mapbox token
     mapboxgl.accessToken = 'pk.eyJ1IjoidmVkYW50aG5hdGgiLCJhIjoiY203c3lsOWZyMGs4MzJpcmJoZTY1Ync4bSJ9.Hx83V0-qM8JOmh4y_SSXCw';
 
-    // Create the map with improved style and style controls
+    // Hard-coded sample data for immediate fallback
+    const EMERGENCY_DATA = [
+      { siteName: "Saifabad Police Station", latitude: 17.4010, longitude: 78.4730, type: "hyderabad-police", tier: "vip", squareFeet: 12500, address: "5-8-207/2, Saifabad, Hyderabad-500004", staff: 45, chemicals: 12, wasteVehicles: 4, machines: 15 },
+      { siteName: "Begumpet Police Station", latitude: 17.4440, longitude: 78.4680, type: "hyderabad-police", tier: "vip", squareFeet: 10200, address: "Behind Shoppers Stop, Begumpet, Hyderabad-500016", staff: 38, chemicals: 9, wasteVehicles: 3, machines: 12 },
+      { siteName: "Charminar Police Station", latitude: 17.3616, longitude: 78.4747, type: "hyderabad-police", tier: "vip", squareFeet: 15800, address: "Near Charminar Bus Stand, Hyderabad-500002", staff: 52, chemicals: 15, wasteVehicles: 5, machines: 18 },
+      { siteName: "Jubilee Hills Police Station", latitude: 17.4319, longitude: 78.4073, type: "hyderabad-police", tier: "platinum", squareFeet: 11600, address: "Road No. 10, Jubilee Hills, Hyderabad-500033" },
+      { siteName: "Gachibowli Police Station", latitude: 17.4438, longitude: 78.3515, type: "cyberabad-police", tier: "platinum", squareFeet: 9800, address: "Financial District, Gachibowli, Hyderabad-500032" },
+      { siteName: "Kukatpally Police Station", latitude: 17.4849, longitude: 78.4117, type: "cyberabad-police", tier: "gold", squareFeet: 13200, address: "Near JNTU, Kukatpally, Hyderabad-500085" },
+      { siteName: "Uppal Police Station", latitude: 17.4034, longitude: 78.5592, type: "hyderabad-police", tier: "gold", squareFeet: 8700, address: "Uppal X Roads, Hyderabad-500039" },
+      { siteName: "Miyapur Police Station", latitude: 17.4990, longitude: 78.3720, type: "cyberabad-police", tier: "silver", squareFeet: 7800, address: "Miyapur X Roads, Hyderabad-500049" },
+      { siteName: "Madhapur Police Station", latitude: 17.4500, longitude: 78.3900, type: "cyberabad-police", tier: "silver", squareFeet: 9500, address: "Near Cyber Towers, Madhapur, Hyderabad-500081" },
+      { siteName: "LB Nagar Police Station", latitude: 17.3521, longitude: 78.5472, type: "hyderabad-police", tier: "silver", squareFeet: 8200, address: "LB Nagar Circle, Hyderabad-500074" }
+    ];
+
+    // Create the map with improved style and debug mode
+    console.log('Initializing map...');
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11', // Changed to streets style for better visibility
+      style: 'mapbox://styles/mapbox/streets-v11', // Streets style for better visibility
       center: [78.4867, 17.3850], // Hyderabad center
       zoom: 11,
-      pitch: 15, // Slight pitch for better 3D look
+      pitch: 0, // Reduce 3D effects for stability
       bearing: 0
     });
-    
-    // Add style control
-    const layerList = document.getElementById('map-styles');
-    const inputs = layerList.getElementsByTagName('input');
-    
-    for (const input of inputs) {
-      input.onclick = (layer) => {
-        const layerId = layer.target.id;
-        map.setStyle('mapbox://styles/mapbox/' + layerId);
-      };
-    }
 
     // UI Elements
     const loader = document.getElementById('loader');
@@ -822,7 +828,8 @@
     let currentPopup = null;   // track open popup
     let markers = [];          // store all markers
     let visibleMarkers = [];   // track which markers are visible
-    
+    let mapInitialized = false; // track if map is fully initialized
+
     // Sample VIP data to ensure proper display
     const sampleVIPData = {
       "Saifabad": { staff: 45, supervisors: 5, managers: 2, area: "12,500 sq ft", chemicals: 12, wasteVehicles: 4, machines: 15 },
@@ -832,6 +839,20 @@
       "Gachibowli": { staff: 35, supervisors: 3, managers: 1, area: "9,800 sq ft", chemicals: 8, wasteVehicles: 3, machines: 10 },
       "Kukatpally": { staff: 47, supervisors: 5, managers: 2, area: "13,200 sq ft", chemicals: 13, wasteVehicles: 4, machines: 16 }
     };
+    
+    // Immediately start a failsafe timer
+    console.log('Starting failsafe timer...');
+    const failsafeTimer = setTimeout(() => {
+      console.log('⚠️ FAILSAFE TRIGGERED - Loading emergency data');
+      if (!mapInitialized || !markers.length) {
+        // Use emergency data directly
+        rawData = EMERGENCY_DATA;
+        createDirectMarkers(EMERGENCY_DATA);
+        updateStats(EMERGENCY_DATA);
+        loader.style.display = 'none';
+        showStatus('Data loaded using emergency fallback', 'success');
+      }
+    }, 5000); // 5 second failsafe
 
     // Make sure mapboxgl is defined
     if (typeof mapboxgl === 'undefined') {
@@ -1040,119 +1061,99 @@
       showStatus(`Data loaded successfully (${rawData.length} facilities)`, 'success');
     }
     
-    // Create direct markers - completely rewritten for reliability
+    // Directly create markers without relying on GeoJSON - most reliable approach
     function createDirectMarkers(data) {
-      console.log('Creating direct markers for facilities:', data.length);
-      showStatus(`Creating ${data.length} markers on map...`, 'loading');
-      
-      // First, make sure the map is fully loaded
-      if (!map.loaded()) {
-        console.log('Map not fully loaded, waiting...');
-        setTimeout(() => createDirectMarkers(data), 500);
-        return;
-      }
+      console.log('Creating direct markers for', data.length, 'facilities');
       
       // Remove any existing markers
-      markers.forEach(marker => marker.remove());
+      markers.forEach(marker => {
+        try {
+          marker.remove();
+        } catch (e) {
+          console.warn('Error removing marker:', e);
+        }
+      });
+      
       markers = [];
       visibleMarkers = [];
       
-      // Wait a moment to ensure map is ready
-      setTimeout(() => {
-        // Create a marker for each facility
-        data.forEach((item, index) => {
-          try {
-            if (!item.latitude || !item.longitude) {
-              console.warn(`Skipping marker for ${item.siteName || 'Unknown'} - missing coordinates`);
-              return;
-            }
+      // Create a marker for each facility
+      data.forEach((item, index) => {
+        try {
+          const lat = parseFloat(item.latitude);
+          const lng = parseFloat(item.longitude);
+          
+          if (isNaN(lat) || isNaN(lng)) {
+            console.warn(`Invalid coordinates for ${item.siteName}: ${item.latitude}, ${item.longitude}`);
+            return;
+          }
+          
+          // Create marker element
+          const el = document.createElement('div');
+          el.className = `custom-marker ${item.type || 'unknown'} ${item.tier || 'unknown'}`;
+          el.innerHTML = item.type === 'hyderabad-police' ? 'H' : 'C';
+          el.style.zIndex = '999'; // Ensure high z-index
+          
+          // Create and add the marker
+          const marker = new mapboxgl.Marker({
+            element: el,
+            anchor: 'center'
+          })
+            .setLngLat([lng, lat])
+            .addTo(map);
+          
+          // Add click handler
+          marker.getElement().addEventListener('click', () => {
+            if (currentPopup) currentPopup.remove();
             
-            const lat = parseFloat(item.latitude);
-            const lng = parseFloat(item.longitude);
+            // Create popup HTML
+            const popupContent = createFacilityPopupHTML(item);
             
-            if (isNaN(lat) || isNaN(lng)) {
-              console.warn(`Invalid coordinates for ${item.siteName}: ${item.latitude}, ${item.longitude}`);
-              return;
-            }
-            
-            console.log(`Creating marker ${index+1}/${data.length}: ${item.siteName} at ${lat}, ${lng}`);
-            
-            // Create marker element
-            const el = document.createElement('div');
-            el.className = `custom-marker ${item.type || 'unknown'} ${item.tier || 'unknown'}`;
-            el.innerHTML = item.type === 'hyderabad-police' ? 'H' : 'C';
-            el.setAttribute('title', item.siteName);
-            
-            // Create the marker with offset to prevent overlap
-            const marker = new mapboxgl.Marker({
-              element: el,
-              anchor: 'center'
+            // Show popup
+            currentPopup = new mapboxgl.Popup({
+              offset: 25,
+              closeButton: true,
+              closeOnClick: true,
+              maxWidth: '350px'
             })
               .setLngLat([lng, lat])
+              .setHTML(popupContent)
               .addTo(map);
-            
-            // Add click event for popup
-            marker.getElement().addEventListener('click', () => {
-              if (currentPopup) currentPopup.remove();
-              
-              // Format popup content
-              const popupContent = createFacilityPopupHTML(item);
-              
-              // Show popup
-              currentPopup = new mapboxgl.Popup({
-                offset: 25,
-                closeButton: true,
-                closeOnClick: true,
-                maxWidth: '350px'
-              })
-                .setLngLat([lng, lat])
-                .setHTML(popupContent)
-                .addTo(map);
-            });
-            
-            // Store marker reference
-            markers.push(marker);
-            visibleMarkers.push(marker);
-          } catch (e) {
-            console.error(`Error creating marker for ${item.siteName || 'Unknown'}:`, e);
+          });
+          
+          // Store marker references
+          markers.push(marker);
+          visibleMarkers.push(marker);
+        } catch (e) {
+          console.error(`Error creating marker for ${item.siteName || 'Unknown'}:`, e);
+        }
+      });
+      
+      console.log(`Successfully created ${markers.length} markers`);
+      
+      // If we have markers, fit the map to them
+      if (markers.length > 0) {
+        const bounds = new mapboxgl.LngLatBounds();
+        
+        data.forEach(item => {
+          const lat = parseFloat(item.latitude);
+          const lng = parseFloat(item.longitude);
+          if (!isNaN(lat) && !isNaN(lng)) {
+            bounds.extend([lng, lat]);
           }
         });
         
-        console.log(`Created ${markers.length} markers successfully`);
-        showStatus(`Created ${markers.length} markers successfully`, 'success');
-        
-        // Fit map to markers if any were created
-        if (markers.length > 0) {
-          const bounds = new mapboxgl.LngLatBounds();
-          data.forEach(item => {
-            if (item.latitude && item.longitude) {
-              const lat = parseFloat(item.latitude);
-              const lng = parseFloat(item.longitude);
-              if (!isNaN(lat) && !isNaN(lng)) {
-                bounds.extend([lng, lat]);
-              }
-            }
+        if (!bounds.isEmpty()) {
+          console.log('Fitting map to bounds');
+          map.fitBounds(bounds, {
+            padding: { top: 100, bottom: 100, left: 350, right: 50 },
+            maxZoom: 13,
+            duration: 1000
           });
-          
-          // Only fit bounds if we have valid coordinates
-          if (!bounds.isEmpty()) {
-            map.fitBounds(bounds, {
-              padding: { top: 100, bottom: 100, left: 350, right: 50 },
-              maxZoom: 14,
-              duration: 1000
-            });
-          } else {
-            console.warn('No valid coordinates found to fit bounds');
-            map.flyTo({
-              center: [78.4867, 17.3850], // Hyderabad center
-              zoom: 11
-            });
-          }
-        } else {
-          console.warn('No markers created, cannot fit map bounds');
-          showStatus('No markers could be created. Check coordinates in your data.', 'error');
         }
-      }, 500);
+      }
+      
+      return markers.length > 0;
     }
     
     function fetchDataAndBuildLayers() {
@@ -1867,143 +1868,32 @@
       }
     }
 
-    // Sample data button - direct marker creation bypassing GeoJSON
+    // Sample data button with reliability enhancements
     document.getElementById('load-sample-data').addEventListener('click', () => {
-      console.log('Manual sample data loading triggered');
-      
-      // Clear the global timeout since this is a manual action
-      clearTimeout(globalTimeoutId);
+      console.log('Manual sample data loading requested');
       
       // Show loading status
       showStatus('Loading sample data...', 'loading');
       
-      // Hide the main loader if it's still showing
-      loader.style.display = 'none';
+      // Directly use emergency data
+      rawData = EMERGENCY_DATA;
       
-      // Clear any existing data layers
       try {
-        if (map.getSource('facilities')) {
-          if (map.getLayer('tier-indicator')) map.removeLayer('tier-indicator');
-          if (map.getLayer('unclustered-label')) map.removeLayer('unclustered-label');
-          if (map.getLayer('unclustered-point')) map.removeLayer('unclustered-point');
-          if (map.getLayer('cluster-count')) map.removeLayer('cluster-count');
-          if (map.getLayer('clusters')) map.removeLayer('clusters');
-          map.removeSource('facilities');
+        // Force create markers
+        if (createDirectMarkers(EMERGENCY_DATA)) {
+          // Update stats and status
+          updateStats(EMERGENCY_DATA);
+          showStatus('Police stations loaded successfully!', 'success');
+        } else {
+          throw new Error('Failed to create markers');
         }
-      } catch (e) {
-        console.warn('Error cleaning up existing layers:', e);
+        
+        // Hide loader
+        loader.style.display = 'none';
+      } catch (error) {
+        console.error('Error loading sample data:', error);
+        showStatus('Error loading sample data. Please check console.', 'error');
       }
-      
-      // Remove any direct markers
-      markers.forEach(marker => {
-        try {
-          marker.remove();
-        } catch (e) {
-          console.warn('Error removing marker:', e);
-        }
-      });
-      markers = [];
-      visibleMarkers = [];
-      
-      // Force the map to Streets style for better visibility
-      try {
-        map.setStyle('mapbox://styles/mapbox/streets-v11');
-      } catch (e) {
-        console.warn('Could not set map style:', e);
-      }
-      
-      // Force-create our hardcoded markers
-      setTimeout(() => {
-        // Use the direct marker approach rather than GeoJSON
-        console.log('Creating markers directly from hardcoded sample data');
-        
-        // Set up direct hardcoded police stations just in case JSON handling fails
-        const emergencyData = [
-          { siteName: "Saifabad Police Station", latitude: 17.4010, longitude: 78.4730, type: "hyderabad-police", tier: "vip", squareFeet: 12500, address: "5-8-207/2, Saifabad, Hyderabad-500004", staff: 45, chemicals: 12, wasteVehicles: 4, machines: 15 },
-          { siteName: "Begumpet Police Station", latitude: 17.4440, longitude: 78.4680, type: "hyderabad-police", tier: "vip", squareFeet: 10200, address: "Behind Shoppers Stop, Begumpet, Hyderabad-500016", staff: 38, chemicals: 9, wasteVehicles: 3, machines: 12 },
-          { siteName: "Charminar Police Station", latitude: 17.3616, longitude: 78.4747, type: "hyderabad-police", tier: "vip", squareFeet: 15800, address: "Near Charminar Bus Stand, Hyderabad-500002", staff: 52, chemicals: 15, wasteVehicles: 5, machines: 18 },
-          { siteName: "Jubilee Hills Police Station", latitude: 17.4319, longitude: 78.4073, type: "hyderabad-police", tier: "platinum", squareFeet: 11600, address: "Road No. 10, Jubilee Hills, Hyderabad-500033" },
-          { siteName: "Gachibowli Police Station", latitude: 17.4438, longitude: 78.3515, type: "cyberabad-police", tier: "platinum", squareFeet: 9800, address: "Financial District, Gachibowli, Hyderabad-500032" },
-          { siteName: "Kukatpally Police Station", latitude: 17.4849, longitude: 78.4117, type: "cyberabad-police", tier: "gold", squareFeet: 13200, address: "Near JNTU, Kukatpally, Hyderabad-500085" },
-          { siteName: "Uppal Police Station", latitude: 17.4034, longitude: 78.5592, type: "hyderabad-police", tier: "gold", squareFeet: 8700, address: "Uppal X Roads, Hyderabad-500039" },
-          { siteName: "Miyapur Police Station", latitude: 17.4990, longitude: 78.3720, type: "cyberabad-police", tier: "silver", squareFeet: 7800, address: "Miyapur X Roads, Hyderabad-500049" },
-          { siteName: "Madhapur Police Station", latitude: 17.4500, longitude: 78.3900, type: "cyberabad-police", tier: "silver", squareFeet: 9500, address: "Near Cyber Towers, Madhapur, Hyderabad-500081" },
-          { siteName: "LB Nagar Police Station", latitude: 17.3521, longitude: 78.5472, type: "hyderabad-police", tier: "silver", squareFeet: 8200, address: "LB Nagar Circle, Hyderabad-500074" }
-        ];
-        
-        // Store raw data
-        rawData = emergencyData;
-        
-        // Skip GeoJSON and create markers directly
-        for (let i = 0; i < emergencyData.length; i++) {
-          const item = emergencyData[i];
-          const lat = parseFloat(item.latitude);
-          const lng = parseFloat(item.longitude);
-          
-          // Skip invalid coordinates
-          if (isNaN(lat) || isNaN(lng)) continue;
-          
-          // Create marker element
-          const el = document.createElement('div');
-          el.className = `custom-marker ${item.type} ${item.tier}`;
-          el.innerHTML = item.type === 'hyderabad-police' ? 'H' : 'C';
-          el.setAttribute('title', item.siteName);
-          
-          // Create marker
-          const marker = new mapboxgl.Marker({
-            element: el,
-            anchor: 'center'
-          })
-            .setLngLat([lng, lat])
-            .addTo(map);
-          
-          // Add click handler
-          marker.getElement().addEventListener('click', () => {
-            if (currentPopup) currentPopup.remove();
-            
-            // Create popup HTML
-            const popupContent = createFacilityPopupHTML(item);
-            
-            // Show popup
-            currentPopup = new mapboxgl.Popup({
-              offset: 25,
-              closeButton: true,
-              closeOnClick: true,
-              maxWidth: '350px'
-            })
-              .setLngLat([lng, lat])
-              .setHTML(popupContent)
-              .addTo(map);
-          });
-          
-          // Store marker reference
-          markers.push(marker);
-          visibleMarkers.push(marker);
-        }
-        
-        // Create bounds and fit map to markers
-        const bounds = new mapboxgl.LngLatBounds();
-        emergencyData.forEach(item => {
-          const lat = parseFloat(item.latitude);
-          const lng = parseFloat(item.longitude);
-          if (!isNaN(lat) && !isNaN(lng)) {
-            bounds.extend([lng, lat]);
-          }
-        });
-        
-        // Fit bounds
-        map.fitBounds(bounds, {
-          padding: { top: 100, bottom: 100, left: 350, right: 50 },
-          maxZoom: 12,
-          duration: 1000
-        });
-        
-        // Update stats
-        updateStats(emergencyData);
-        
-        // Update status
-        showStatus(`Loaded ${emergencyData.length} police stations (sample data)`, 'success');
-      }, 500);
     });
     
     // Sidebar toggle functionality
