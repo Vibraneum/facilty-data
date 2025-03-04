@@ -845,30 +845,30 @@ function fetchDataAndBuildLayers() {
     }
 
     // Enrich sites with VIP data
-    function enrichWithVIPData(data) {
-      data.forEach(site => {
-        // Check if site is VIP tier
-        if (site.tier === 'vip') {
-          // Get site name without "PS" suffix for matching
-          const baseName = site.siteName.replace(/\s*PS\s*$/, '');
-          
-          // Add VIP data if available, or generate sample data
-          if (sampleVIPData[baseName]) {
-            Object.assign(site, sampleVIPData[baseName]);
-          } else {
-            // Generate random data if no sample data exists
-            site.staff = Math.floor(Math.random() * 30) + 20;
-            site.supervisors = Math.floor(Math.random() * 5) + 2;
-            site.managers = Math.floor(Math.random() * 2) + 1;
-            site.area = site.squareFeet ? site.squareFeet + " sq ft" : Math.floor(Math.random() * 8000 + 7000) + " sq ft";
-            site.chemicals = Math.floor(Math.random() * 10) + 5;
-            site.wasteVehicles = Math.floor(Math.random() * 4) + 1;
-            site.machines = Math.floor(Math.random() * 10) + 5;
-          }
-        }
-      });
+function enrichWithVIPData(data) {
+  data.forEach(site => {
+    // Check if site is VIP tier
+    if (site.tier === 'vip') {
+      // Get site name without "PS" suffix for matching, with fallback for undefined siteName
+      const baseName = site.siteName ? site.siteName.replace(/\s*PS\s*$/, '') : 'Unknown';
+      
+      // Add VIP data if available, or generate sample data
+      if (sampleVIPData[baseName]) {
+        Object.assign(site, sampleVIPData[baseName]);
+      } else {
+        // Generate random data if no sample data exists
+        site.staff = Math.floor(Math.random() * 30) + 20;
+        site.supervisors = Math.floor(Math.random() * 5) + 2;
+        site.managers = Math.floor(Math.random() * 2) + 1;
+        site.area = site.squareFeet ? site.squareFeet + " sq ft" : Math.floor(Math.random() * 8000 + 7000) + " sq ft";
+        site.chemicals = Math.floor(Math.random() * 10) + 5;
+        site.wasteVehicles = Math.floor(Math.random() * 4) + 1;
+        site.machines = Math.floor(Math.random() * 10) + 5;
+      }
     }
-
+  });
+}
+   
     // Create custom markers for each facility
     function createMarkers(data) {
       // Clear existing markers
