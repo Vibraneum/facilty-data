@@ -235,8 +235,7 @@
       color: var(--secondary-color);
     }
 
-/* Repositioned Legend */
-.legend {
+
 /* Legend styles - improved positioning and interaction */
 .legend {
   position: absolute;
@@ -1230,7 +1229,7 @@ function fitBoundsToSource(sourceName) {
       // Fit map to all points
       fitBoundsToSource('facilities');
     
-    .catch(error => {
+    
       console.error('Fetch error:', error);
       rawData = generateSampleData();
     
@@ -1549,7 +1548,7 @@ function enrichWithVIPData(data) {
         .setLngLat(coordinates)
         .setHTML(html)
         .addTo(map);
-    }
+    
 
     // Build HTML for a stat card
     function buildStatCard(iconClass, value, label) {
