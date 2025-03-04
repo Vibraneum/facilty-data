@@ -1501,52 +1501,55 @@
     }
 
     // Update statistics in sidebar
-    function updateStats(data) {}
-      if (!data || !Array.isArray(data)) {
-        statsContainer.innerHTML = '<p>No statistics available</p>';
-        return;
-      }
+    // CORRECTED VERSION:
+function updateStats(data) { // Open curly brace
+  if (!data || !Array.isArray(data)) {
+    statsContainer.innerHTML = '<p>No statistics available</p>';
+    return;
+  }
+  
+  // Count by type
+  const typeCount = {
+    'hyderabad-police': 0,
+    'cyberabad-police': 0,
+    'private-fm-clients': 0
+  };
+  
+  // Count by tier
+  const tierCount = {
+    'vip': 0,
+    'platinum': 0,
+    'gold': 0,
+    'silver': 0
+  };
+  
+  // Calculate stats
+  data.forEach(item => {
+    if (item.type) typeCount[item.type] = (typeCount[item.type] || 0) + 1;
+    if (item.tier) tierCount[item.tier] = (tierCount[item.tier] || 0) + 1;
+  });
+  
+  // Generate HTML
+  let html = `
+    <div style="font-size: 14px; line-height: 1.6;">
+      <p><strong>Total Facilities:</strong> ${data.length}</p>
+      <p><strong>Types:</strong><br>
+        <span style="color: #3366cc;"><i class="fas fa-shield-alt"></i> Hyderabad Police:</span> ${typeCount['hyderabad-police'] || 0}<br>
+        <span style="color: #0099c6;"><i class="fas fa-laptop-code"></i> Cyberabad Police:</span> ${typeCount['cyberabad-police'] || 0}<br>
+        <span style="color: #9c27b0;"><i class="fas fa-building"></i> Private Clients:</span> ${typeCount['private-fm-clients'] || 0}
+      </p>
+      <p><strong>Categories:</strong><br>
+        <span style="color: #ff4500;"><i class="fas fa-crown"></i> VIP:</span> ${tierCount['vip'] || 0}<br>
+        <span style="color: #6c757d;"><i class="fas fa-medal"></i> Platinum:</span> ${tierCount['platinum'] || 0}<br>
+        <span style="color: #6c757d;"><i class="fas fa-award"></i> Gold:</span> ${tierCount['gold'] || 0}<br>
+        <span style="color: #6c757d;"><i class="fas fa-certificate"></i> Silver:</span> ${tierCount['silver'] || 0}
+      </p>
+    </div>
+  `;
+  
+  statsContainer.innerHTML = html;
+} // Close curly brace for the function
       
-      // Count by type
-      const typeCount = {
-        'hyderabad-police': 0,
-        'cyberabad-police': 0,
-        'private-fm-clients': 0
-      };
-      
-      // Count by tier
-      const tierCount = {
-        'vip': 0,
-        'platinum': 0,
-        'gold': 0,
-        'silver': 0
-      };
-      
-      // Calculate stats
-      data.forEach(item => {
-        if (item.type) typeCount[item.type] = (typeCount[item.type] || 0) + 1;
-        if (item.tier) tierCount[item.tier] = (tierCount[item.tier] || 0) + 1;
-      });
-      
-      // Generate HTML
-      let html = `
-        <div style="font-size: 14px; line-height: 1.6;">
-          <p><strong>Total Facilities:</strong> ${data.length}</p>
-          <p><strong>Types:</strong><br>
-            <span style="color: #3366cc;"><i class="fas fa-shield-alt"></i> Hyderabad Police:</span> ${typeCount['hyderabad-police'] || 0}<br>
-            <span style="color: #0099c6;"><i class="fas fa-laptop-code"></i> Cyberabad Police:</span> ${typeCount['cyberabad-police'] || 0}<br>
-            <span style="color: #9c27b0;"><i class="fas fa-building"></i> Private Clients:</span> ${typeCount['private-fm-clients'] || 0}
-          </p>
-          <p><strong>Categories:</strong><br>
-            <span style="color: #ff4500;"><i class="fas fa-crown"></i> VIP:</span> ${tierCount['vip'] || 0}<br>
-            <span style="color: #6c757d;"><i class="fas fa-medal"></i> Platinum:</span> ${tierCount['platinum'] || 0}<br>
-            <span style="color: #6c757d;"><i class="fas fa-award"></i> Gold:</span> ${tierCount['gold'] || 0}<br>
-            <span style="color: #6c757d;"><i class="fas fa-certificate"></i> Silver:</span> ${tierCount['silver'] || 0}
-          </p>
-        </div>
-      `;
-      
-      statsContainer.innerHTML = html;
 
     // Show status message
     function showStatus(message, type = 'info') {
