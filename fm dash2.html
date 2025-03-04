@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ixora Facility Management - Police Stations Hyderabad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- MAPBOX GL JS -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --primary-light: #007bff;
+      --secondary-color: #6c757d;
+      --success-color: #28a745;
+      --danger-color: #dc3545;
+      --warning-color: #ffc107;
+      --info-color: #17a2b8;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+      --body-bg: #f8f9fa;
+      --card-bg: #ffffff;
+      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --border-radius: 8px;
+      --transition-speed: 0.3s;
+      --primary-light-rgb: 0, 123, 255;
+
+      /* Category colors */
+      --vip-color: #ff4500;
+      --platinum-color: #e5e4e2;
+      --gold-color: #ffd700;
+      --silver-color: #c0c0c0;
+
+      /* Site type colors */
+      --hyderabad-color: #3366cc;
+      --cyberabad-color: #0099c6;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--body-bg);
+      color: var(--dark-color);
+    }
+
+    #map-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+
+    .header {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+      padding: 15px 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      max-width: 90%;
+      text-align: center;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .header img {
+      height: 40px;
+      margin-right: 15px;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .sidebar {
+      position: absolute;
+      top: 80px;
+      left: 20px;
+      bottom: 20px;
+      width: 300px;
+      z-index: 1000;
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      overflow-y: auto;
+      transition: transform var(--transition-speed), background-color var(--transition-speed);
+      transform: translateX(0);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .sidebar-content {
+      padding: 20px;
+    }
+    .sidebar-toggle {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      background-color: var(--primary-light);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+      transition: transform 0.2s ease;
+    }
+    .sidebar-toggle:hover {
+      transform: scale(1.1);
+    }
+    .sidebar.collapsed {
+      transform: translateX(-340px);
+    }
+
+    .filter-section {
+      margin-bottom: 24px;
+    }
+    .filter-section h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: var(--dark-color);
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 8px;
+      transition: color var(--transition-speed);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .filter-section h3 i {
+      color: var(--primary-light);
+    }
+    .checkbox-container {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.2s ease;
+    }
+    .checkbox-item:hover {
+      transform: translateX(5px);
+    }
+    .custom-checkbox {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .custom-checkbox input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    .checkmark {
+      height: 20px;
+      width: 20px;
+      background-color: #eee;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    .custom-checkbox:hover input ~ .checkmark {
+      background-color: #ccc;
+    }
+    .custom-checkbox input:checked ~ .checkmark {
+      background-color: var(--primary-light);
+    }
+    .checkmark:after {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      display: none;
+      font-size: 12px;
+    }
+    .custom-checkbox input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    .search-container {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    #search-bar {
+      width: 100%;
+      padding: 12px 40px 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-size: 14px;
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+    #search-bar:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(var(--primary-light-rgb), 0.25);
+    }
+    .search-icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--secondary-color);
+    }
+
+    .legend {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background-color: var(--card-bg);
+      padding: 15px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      width: 250px;
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .legend h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: var(--dark-color);
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 8px;
+    }
+    .legend-section {
+      margin-bottom: 15px;
+    }
+    .legend-item, .legend-tier-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      transition: transform 0.2s ease;
+    }
+    .legend-item:hover, .legend-tier-item:hover {
+      transform: translateX(5px);
+    }
+    .legend-color, .legend-tier-icon {
+      width: 30px;
+      height: 30px;
+      margin-right: 12px;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+      border: 2px solid white;
+    }
+    .legend-color:hover, .legend-tier-icon:hover {
+      transform: scale(1.1);
+    }
+    .type-hyderabad-police { background-color: var(--hyderabad-color); }
+    .type-cyberabad-police { background-color: var(--cyberabad-color); }
+    .tier-vip { background: linear-gradient(135deg, var(--vip-color), #ff6347); color: white; }
+    .tier-platinum { background: linear-gradient(135deg, var(--platinum-color), #ffffff); color: #333; }
+    .tier-gold { background: linear-gradient(135deg, var(--gold-color), #FFF7CC); color: #333; }
+    .tier-silver { background: linear-gradient(135deg, var(--silver-color), #E6E6E6); color: #333; }
+
+    /* VIP Popup styling */
+    .custom-popup {
+      max-width: 350px;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      color: var(--dark-color);
+    }
+    .custom-popup h3 {
+      margin: 0 0 12px 0;
+      color: var(--dark-color);
+      font-size: 18px;
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-type-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      color: white;
+      margin-right: 10px;
+      flex-shrink: 0;
+      font-size: 18px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+    .popup-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .popup-stat-card {
+      background-color: rgba(var(--primary-light-rgb), 0.1);
+      border-radius: var(--border-radius);
+      padding: 12px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid rgba(var(--primary-light-rgb), 0.2);
+    }
+    .popup-stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .popup-stat-icon {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: var(--primary-light);
+    }
+    .popup-stat-value {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--dark-color);
+    }
+    .popup-stat-label {
+      font-size: 12px;
+      color: var(--secondary-color);
+      margin-top: 3px;
+    }
+    
+    .popup-header-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    
+    .popup-tier-badge {
+      background-color: var(--light-color);
+      border-radius: 20px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+    }
+    
+    .popup-tier-badge.vip {
+      background-color: var(--vip-color);
+      color: white;
+    }
+    
+    .popup-tier-badge.platinum {
+      background-color: var(--platinum-color);
+      color: #333;
+    }
+    
+    .popup-tier-badge.gold {
+      background-color: var(--gold-color);
+      color: #333;
+    }
+    
+    .popup-tier-badge.silver {
+      background-color: var(--silver-color);
+      color: #333;
+    }
+
+    .popup-address {
+      background-color: rgba(var(--primary-light-rgb), 0.05);
+      padding: 12px;
+      border-radius: var(--border-radius);
+      margin-top: 10px;
+      font-size: 14px;
+      border-left: 3px solid var(--primary-light);
+    }
+    
+    .popup-address i {
+      color: var(--primary-light);
+      margin-right: 5px;
+    }
+
+    .loader-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1500;
+    }
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 5px solid var(--primary-light);
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      animation: rotation 1s linear infinite;
+      margin-bottom: 15px;
+    }
+    .loader-text {
+      color: var(--primary-color);
+      font-size: 18px;
+      font-weight: 500;
+    }
+    @keyframes rotation {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Custom Mapbox marker styles */
+    .mapboxgl-marker {
+      transition: transform 0.3s ease;
+    }
+    .mapboxgl-marker:hover {
+      transform: scale(1.2);
+    }
+    
+    .custom-marker {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+      border: 2px solid white;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .custom-marker:hover {
+      transform: scale(1.2);
+    }
+    
+    .custom-marker.hyderabad-police {
+      background-color: var(--hyderabad-color);
+    }
+    
+    .custom-marker.cyberabad-police {
+      background-color: var(--cyberabad-color);
+    }
+    
+    .custom-marker.vip::after,
+    .custom-marker.platinum::after,
+    .custom-marker.gold::after,
+    .custom-marker.silver::after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+    
+    .custom-marker.vip::after {
+      background-color: var(--vip-color);
+    }
+    
+    .custom-marker.platinum::after {
+      background-color: var(--platinum-color);
+    }
+    
+    .custom-marker.gold::after {
+      background-color: var(--gold-color);
+    }
+    
+    .custom-marker.silver::after {
+      background-color: var(--silver-color);
+    }
+    
+    /* Status indicator */
+    .status-indicator {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      padding: 10px 15px;
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .status-indicator.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .status-indicator i {
+      color: var(--success-color);
+    }
+    
+    .status-indicator.error i {
+      color: var(--danger-color);
+    }
+
+    /* Responsive & smaller screens */
+    @media (max-width: 768px) {
+      .header {
+        width: calc(100% - 40px);
+        padding: 10px 15px;
+      }
+      .sidebar {
+        width: 250px;
+      }
+      .legend {
+        bottom: 10px;
+        right: 10px;
+        width: 200px;
+      }
+    }
+    @media (max-width: 576px) {
+      .header h1 {
+        font-size: 16px;
+      }
+      .header img {
+        height: 30px;
+      }
+      .sidebar.collapsed {
+        transform: translateX(-240px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map-container">
+    <!-- Loader -->
+    <div class="loader-container" id="loader">
+      <div class="loader"></div>
+      <div class="loader-text">Loading facility data...</div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+      <img src="https://raw.githubusercontent.com/Vibraneum/facilty-data/refs/heads/main/Ixora%20FM%20logo.png" alt="Ixora FM Logo">
+      <h1>Ixora Facility Management - Police Stations Hyderabad</h1>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-toggle" id="sidebar-toggle">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <div class="sidebar-content">
+        <div class="search-container">
+          <input type="text" id="search-bar" placeholder="Search by site name...">
+          <span class="search-icon"><i class="fas fa-search"></i></span>
+        </div>
+
+        <div class="filter-section">
+          <h3><i class="fas fa-filter"></i> Site Types</h3>
+          <div class="checkbox-container">
+            <div class="checkbox-item">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="hyderabad-police" checked data-type="hyderabad-police"/>
+                <span class="checkmark"></span>
+              </label>
+              <span>Hyderabad Police</span>
+            </div>
+            <div class="checkbox-item">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="cyberabad-police" checked data-type="cyberabad-police"/>
+                <span class="checkmark"></span>
+              </label>
+              <span>Cyberabad Police</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3><i class="fas fa-medal"></i> Site Category</h3>
+          <div class="checkbox-container">
+            <div class="checkbox-item">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="vip-tier" checked data-tier="vip"/>
+                <span class="checkmark"></span>
+              </label>
+              <span>VIP</span>
+            </div>
+            <div class="checkbox-item">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="platinum-tier" checked data-tier="platinum"/>
+                <span class="checkmark"></span>
+              </label>
+              <span>Platinum</span>
+            </div>
+            <div class="checkbox-item">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="gold-tier" checked data-tier="gold"/>
+                <span class="checkmark"></span>
+              </label>
+              <span>Gold</span>
+            </div>
+            <div class="checkbox-item">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="silver-tier" checked data-tier="silver"/>
+                <span class="checkmark"></span>
+              </label>
+              <span>Silver</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="filter-section">
+          <h3><i class="fas fa-info-circle"></i> Statistics</h3>
+          <div id="stats-container">
+            Loading statistics...
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend" id="legend">
+      <div class="legend-section">
+        <h3>Site Types</h3>
+        <div class="legend-item">
+          <div class="legend-color type-hyderabad-police">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <span>Hyderabad Police</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color type-cyberabad-police">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <span>Cyberabad Police</span>
+        </div>
+      </div>
+      <div class="legend-section">
+        <h3>Site Categories</h3>
+        <div class="legend-tier-item">
+          <div class="legend-tier-icon tier-vip">V</div>
+          <span>VIP Tier</span>
+        </div>
+        <div class="legend-tier-item">
+          <div class="legend-tier-icon tier-platinum">P</div>
+          <span>Platinum Tier</span>
+        </div>
+        <div class="legend-tier-item">
+          <div class="legend-tier-icon tier-gold">G</div>
+          <span>Gold Tier</span>
+        </div>
+        <div class="legend-tier-item">
+          <div class="legend-tier-icon tier-silver">S</div>
+          <span>Silver Tier</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Status Indicator -->
+    <div class="status-indicator" id="status-indicator">
+      <i class="fas fa-check-circle"></i>
+      <span id="status-text">Data loaded successfully</span>
+    </div>
+
+    <div id="map"></div>
+  </div>
+
+  <script>
+    // Use your actual Mapbox token
+    mapboxgl.accessToken = 'pk.eyJ1IjoidmVkYW50aG5hdGgiLCJhIjoiY203c3lsOWZyMGs4MzJpcmJoZTY1Ync4bSJ9.Hx83V0-qM8JOmh4y_SSXCw';
+
+    // Create the map with improved style
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/light-v10', // Using a cleaner style
+      center: [78.4867, 17.3850], // Hyderabad center
+      zoom: 11,
+      pitch: 15, // Slight pitch for better 3D look
+      bearing: 0
+    });
+
+    // UI Elements
+    const loader = document.getElementById('loader');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarTgl = document.getElementById('sidebar-toggle');
+    const searchBar = document.getElementById('search-bar');
+    const statusIndicator = document.getElementById('status-indicator');
+    const statusText = document.getElementById('status-text');
+    const statsContainer = document.getElementById('stats-container');
+
+    let rawData = null;        // store fetched JSON
+    let currentPopup = null;   // track open popup
+    let markers = [];          // store all markers
+    let visibleMarkers = [];   // track which markers are visible
+    
+    // Sample VIP data to ensure proper display
+    const sampleVIPData = {
+      "Saifabad": { staff: 45, supervisors: 5, managers: 2, area: "12,500 sq ft", chemicals: 12, wasteVehicles: 4, machines: 15 },
+      "Begumpet": { staff: 38, supervisors: 4, managers: 1, area: "10,200 sq ft", chemicals: 9, wasteVehicles: 3, machines: 12 },
+      "Charminar": { staff: 52, supervisors: 6, managers: 2, area: "15,800 sq ft", chemicals: 15, wasteVehicles: 5, machines: 18 },
+      "Jubilee Hills": { staff: 41, supervisors: 5, managers: 2, area: "11,600 sq ft", chemicals: 11, wasteVehicles: 4, machines: 14 },
+      "Gachibowli": { staff: 35, supervisors: 3, managers: 1, area: "9,800 sq ft", chemicals: 8, wasteVehicles: 3, machines: 10 },
+      "Kukatpally": { staff: 47, supervisors: 5, managers: 2, area: "13,200 sq ft", chemicals: 13, wasteVehicles: 4, machines: 16 }
+    };
+
+    // On map load, add controls and fetch data
+    map.on('load', () => {
+      console.log('Map has loaded. Fetching data...');
+      
+      // Add navigation controls with improved positioning
+      map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+      
+      // Add fullscreen control
+      map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
+      
+      // Add geolocate control
+      map.addControl(
+        new mapboxgl.GeolocateControl({
+          positionOptions: {enableHighAccuracy: true},
+          trackUserLocation: true,
+          showUserHeading: true
+        }), 
+        'bottom-right'
+      );
+      
+      // Fetch data
+      fetchDataAndBuildLayers();
+    });
+
+    // Fetch data from GitHub
+    function fetchDataAndBuildLayers() {
+      showStatus('Loading facility data...', 'loading');
+      
+      fetch('https://raw.githubusercontent.com/Vibraneum/facilty-data/refs/heads/main/facilities.json')
+        .then(response => {
+          console.log('Fetch response status:', response.status);
+          if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.status);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Data fetched successfully:', data);
+          rawData = data;  // store raw data
+
+          // If data is empty or not an array, use sample data for demo
+          if (!Array.isArray(data) || data.length === 0) {
+            console.warn('No data or invalid data structure, using sample data');
+            rawData = generateSampleData();
+          }
+
+          // Add VIP data to relevant sites
+          enrichWithVIPData(rawData);
+          
+          // Create markers for each facility
+          createMarkers(rawData);
+          
+          // Update stats in sidebar
+          updateStats(rawData);
+          
+          // Hide loader
+          loader.style.display = 'none';
+          
+          // Show success status
+          showStatus('Data loaded successfully (' + rawData.length + ' facilities)', 'success');
+        })
+        .catch(error => {
+          console.error('Error fetching the data:', error);
+          
+          // Use sample data if fetch fails
+          console.log('Using sample data instead');
+          rawData = generateSampleData();
+          
+          // Add VIP data to relevant sites
+          enrichWithVIPData(rawData);
+          
+          // Create markers
+          createMarkers(rawData);
+          
+          // Update stats
+          updateStats(rawData);
+          
+          // Hide loader
+          loader.style.display = 'none';
+          
+          // Show error status
+          showStatus('Using sample data (fetch failed)', 'error');
+        });
+    }
+
+    // Generate sample data if fetch fails
+    function generateSampleData() {
+      const sampleData = [
+        { siteName: "Saifabad PS", latitude: 17.4010, longitude: 78.4730, type: "hyderabad-police", tier: "vip", squareFeet: 12500, address: "5-8-207/2, Saifabad, Hyderabad-500004" },
+        { siteName: "Begumpet PS", latitude: 17.4440, longitude: 78.4680, type: "hyderabad-police", tier: "vip", squareFeet: 10200, address: "Behind Shoppers Stop, Begumpet, Hyderabad-500016" },
+        { siteName: "Charminar PS", latitude: 17.3616, longitude: 78.4747, type: "hyderabad-police", tier: "vip", squareFeet: 15800, address: "Near Charminar Bus Stand, Hyderabad-500002" },
+        { siteName: "Jubilee Hills PS", latitude: 17.4319, longitude: 78.4073, type: "hyderabad-police", tier: "platinum", squareFeet: 11600, address: "Road No. 10, Jubilee Hills, Hyderabad-500033" },
+        { siteName: "Gachibowli PS", latitude: 17.4438, longitude: 78.3515, type: "cyberabad-police", tier: "platinum", squareFeet: 9800, address: "Financial District, Gachibowli, Hyderabad-500032" },
+        { siteName: "Kukatpally PS", latitude: 17.4849, longitude: 78.4117, type: "cyberabad-police", tier: "gold", squareFeet: 13200, address: "Near JNTU, Kukatpally, Hyderabad-500085" },
+        { siteName: "Uppal PS", latitude: 17.4034, longitude: 78.5592, type: "hyderabad-police", tier: "gold", squareFeet: 8700, address: "Uppal X Roads, Hyderabad-500039" },
+        { siteName: "Miyapur PS", latitude: 17.4990, longitude: 78.3720, type: "cyberabad-police", tier: "silver", squareFeet: 7800, address: "Miyapur X Roads, Hyderabad-500049" },
+        { siteName: "Madhapur PS", latitude: 17.4500, longitude: 78.3900, type: "cyberabad-police", tier: "silver", squareFeet: 9500, address: "Near Cyber Towers, Madhapur, Hyderabad-500081" },
+        { siteName: "LB Nagar PS", latitude: 17.3521, longitude: 78.5472, type: "hyderabad-police", tier: "silver", squareFeet: 8200, address: "LB Nagar Circle, Hyderabad-500074" }
+      ];
+      return sampleData;
+    }
+
+    // Enrich sites with VIP data
+    function enrichWithVIPData(data) {
+      data.forEach(site => {
+        // Check if site is VIP tier
+        if (site.tier === 'vip') {
+          // Get site name without "PS" suffix for matching
+          const baseName = site.siteName.replace(/\s*PS\s*$/, '');
+          
+          // Add VIP data if available, or generate sample data
+          if (sampleVIPData[baseName]) {
+            Object.assign(site, sampleVIPData[baseName]);
+          } else {
+            // Generate random data if no sample data exists
+            site.staff = Math.floor(Math.random() * 30) + 20;
+            site.supervisors = Math.floor(Math.random() * 5) + 2;
+            site.managers = Math.floor(Math.random() * 2) + 1;
+            site.area = site.squareFeet ? site.squareFeet + " sq ft" : Math.floor(Math.random() * 8000 + 7000) + " sq ft";
+            site.chemicals = Math.floor(Math.random() * 10) + 5;
+            site.wasteVehicles = Math.floor(Math.random() * 4) + 1;
+            site.machines = Math.floor(Math.random() * 10) + 5;
+          }
+        }
+      });
+    }
+
+    // Create custom markers for each facility
+    function createMarkers(data) {
+      // Clear existing markers
+      markers.forEach(marker => marker.remove());
+      markers = [];
+      visibleMarkers = [];
+      
+      data.forEach(item => {
+        // Parse coordinates
+        const lat = parseFloat(item.latitude);
+        const lng = parseFloat(item.longitude);
+        
+        // Skip if invalid coordinates
+        if (isNaN(lat) || isNaN(lng)) {
+          console.warn('Invalid coordinates for:', item.siteName);
+          return;
+        }
+        
+        // Create custom marker element
+        const el = document.createElement('div');
+        el.className = `custom-marker ${item.type} ${item.tier}`;
+        
+        // Add icon based on type
+        const iconClass = item.type === 'hyderabad-police' ? 'fa-shield-alt' : 'fa-laptop-code';
+        el.innerHTML = `<i class="fas ${iconClass}"></i>`;
+        
+        // Create marker
+        const marker = new mapboxgl.Marker(el)
+          .setLngLat([lng, lat])
+          .addTo(map);
+        
+        // Add click handler
+        marker.getElement().addEventListener('click', () => {
+          openFacilityPopup(item, [lng, lat]);
+        });
+        
+        // Store marker references
+        markers.push(marker);
+        visibleMarkers.push(marker);
+      });
+      
+      // Fit map to markers if any exist
+      if (markers.length > 0) {
+        fitMapToMarkers();
+      }
+    }
+
+    // Open popup with facility details
+    function openFacilityPopup(item, coordinates) {
+      if (currentPopup) currentPopup.remove();
+      
+      // Create HTML content for popup
+      let html = `<div class="custom-popup">`;
+      
+      // Header with site type icon and tier badge
+      html += `
+      <div class="popup-header-info">
+        <span class="site-type-icon ${
+          item.type === 'hyderabad-police' ? 'type-hyderabad-police' :
+          item.type === 'cyberabad-police' ? 'type-cyberabad-police' : ''
+        }">
+          ${item.type === 'hyderabad-police' ? '<i class="fas fa-shield-alt"></i>' :
+            item.type === 'cyberabad-police' ? '<i class="fas fa-laptop-code"></i>' :
+            '<i class="fas fa-map-marker-alt"></i>'}
+        </span>
+        <h3>${item.siteName || 'Unknown Site'}</h3>
+        <span class="popup-tier-badge ${item.tier}">
+          ${item.tier === 'vip' ? '<i class="fas fa-crown"></i> VIP' :
+            item.tier === 'platinum' ? '<i class="fas fa-medal"></i> Platinum' :
+            item.tier === 'gold' ? '<i class="fas fa-award"></i> Gold' :
+            '<i class="fas fa-certificate"></i> Silver'}
+        </span>
+      </div>`;
+
+      // VIP sites get detailed statistics
+      if (item.tier === 'vip') {
+        html += `<div class="popup-stats-grid">`;
+        html += buildStatCard('fa-user', item.staff || 'N/A', 'Staff');
+        html += buildStatCard('fa-user-tie', item.supervisors || 'N/A', 'Supervisors');
+        html += buildStatCard('fa-users-cog', item.managers || 'N/A', 'Managers');
+        html += buildStatCard('fa-chart-area', item.area || item.squareFeet + ' sq ft' || 'N/A', 'Area');
+        html += buildStatCard('fa-flask', item.chemicals || 'N/A', 'Chemicals');
+        html += buildStatCard('fa-truck', item.wasteVehicles || 'N/A', 'Waste Veh');
+        html += buildStatCard('fa-cogs', item.machines || 'N/A', 'Machines');
+        html += `</div>`;
+      } else {
+        // Non-VIP layout
+        html += `<p><strong>Square Feet:</strong> ${item.squareFeet || 'N/A'}</p>`;
+      }
+      
+      // Add address for all sites
+      if (item.address) {
+        html += `<div class="popup-address"><i class="fas fa-map-marker-alt"></i> ${item.address}</div>`;
+      }
+
+      html += `</div>`;
+
+      // Create and show popup
+      currentPopup = new mapboxgl.Popup({
+        offset: 25,
+        closeButton: true,
+        closeOnClick: true,
+        maxWidth: '350px'
+      })
+        .setLngLat(coordinates)
+        .setHTML(html)
+        .addTo(map);
+    }
+
+    // Build HTML for a stat card
+    function buildStatCard(iconClass, value, label) {
+      return `
+        <div class="popup-stat-card">
+          <div class="popup-stat-icon"><i class="fas ${iconClass}"></i></div>
+          <div class="popup-stat-value">${value}</div>
+          <div class="popup-stat-label">${label}</div>
+        </div>
+      `;
+    }
+
+    // Update statistics in sidebar
+    function updateStats(data) {
+      if (!data || !Array.isArray(data)) {
+        statsContainer.innerHTML = '<p>No statistics available</p>';
+        return;
+      }
+      
+      // Count by type
+      const typeCount = {
+        'hyderabad-police': 0,
+        'cyberabad-police': 0
+      };
+      
+      // Count by tier
+      const tierCount = {
+        'vip': 0,
+        'platinum': 0,
+        'gold': 0,
+        'silver': 0
+      };
+      
+      // Calculate stats
+      data.forEach(item => {
+        if (item.type) typeCount[item.type] = (typeCount[item.type] || 0) + 1;
+        if (item.tier) tierCount[item.tier] = (tierCount[item.tier] || 0) + 1;
+      });
+      
+      // Generate HTML
+      let html = `
+        <div style="font-size: 14px; line-height: 1.6;">
+          <p><strong>Total Facilities:</strong> ${data.length}</p>
+          <p><strong>Types:</strong> 
+            Hyderabad (${typeCount['hyderabad-police'] || 0}), 
+            Cyberabad (${typeCount['cyberabad-police'] || 0})
+          </p>
+          <p><strong>Categories:</strong><br>
+            <span style="color: var(--vip-color);"><i class="fas fa-crown"></i> VIP:</span> ${tierCount['vip'] || 0}<br>
+            <span style="color: #6c757d;"><i class="fas fa-medal"></i> Platinum:</span> ${tierCount['platinum'] || 0}<br>
+            <span style="color: #6c757d;"><i class="fas fa-award"></i> Gold:</span> ${tierCount['gold'] || 0}<br>
+            <span style="color: #6c757d;"><i class="fas fa-certificate"></i> Silver:</span> ${tierCount['silver'] || 0}
+          </p>
+        </div>
+      `;
+      
+      statsContainer.innerHTML = html;
+    }
+
+    // Show status message
+    function showStatus(message, type = 'info') {
+      statusText.textContent = message;
+      statusIndicator.className = 'status-indicator';
+      
+      if (type === 'error') {
+        statusIndicator.classList.add('error');
+        statusIndicator.querySelector('i').className = 'fas fa-exclamation-circle';
+      } else if (type === 'loading') {
+        statusIndicator.querySelector('i').className = 'fas fa-spinner fa-spin';
+      } else {
+        statusIndicator.querySelector('i').className = 'fas fa-check-circle';
+      }
+      
+      statusIndicator.classList.add('visible');
+      
+      // Hide after 5 seconds unless it's a loading message
+      if (type !== 'loading') {
+        setTimeout(() => {
+          statusIndicator.classList.remove('visible');
+        }, 5000);
+      }
+    }
+
+    // Fit map to visible markers
+    function fitMapToMarkers() {
+      if (visibleMarkers.length === 0) return;
+      
+      const bounds = new mapboxgl.LngLatBounds();
+      
+      visibleMarkers.forEach(marker => {
+        bounds.extend(marker.getLngLat());
+      });
+      
+      map.fitBounds(bounds, {
+        padding: 50,
+        maxZoom: 15,
+        duration: 1000
+      });
+    }
+
+    // Sidebar toggle functionality
+    sidebarTgl.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      const icon = sidebarTgl.querySelector('i');
+      if (sidebar.classList.contains('collapsed')) {
+        icon.classList.remove('fa-chevron-left');
+        icon.classList.add('fa-chevron-right');
+      } else {
+        icon.classList.remove('fa-chevron-right');
+        icon.classList.add('fa-chevron-left');
+      }
+    });
+
+    // Filter functionality
+    const checkboxes = document.querySelectorAll('.checkbox-container input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        applyFilters();
+      });
+    });
+    
+    function applyFilters() {
+      const activeTypes = [];
+      const activeTiers = [];
+      
+      // Get selected filter values
+      checkboxes.forEach(cb => {
+        if (cb.checked) {
+          if (cb.dataset.type) activeTypes.push(cb.dataset.type);
+          if (cb.dataset.tier) activeTiers.push(cb.dataset.tier);
+        }
+      });
+      
+      // Reset visible markers array
+      visibleMarkers = [];
+      
+      // Apply filters to markers
+      markers.forEach((marker, index) => {
+        const item = rawData[index];
+        
+        // Check if marker should be visible
+        const typeMatch = activeTypes.includes(item.type);
+        const tierMatch = activeTiers.includes(item.tier);
+        
+        if (typeMatch && tierMatch) {
+          marker.getElement().style.display = 'flex';
+          visibleMarkers.push(marker);
+        } else {
+          marker.getElement().style.display = 'none';
+        }
+      });
+      
+      // Fit map to visible markers
+      if (visibleMarkers.length > 0) {
+        fitMapToMarkers();
+      }
+      
+      // Update status
+      showStatus(`Showing ${visibleMarkers.length} of ${markers.length} facilities`, 'info');
+    }
+
+    // Search functionality
+    searchBar.addEventListener('input', () => {
+      const query = searchBar.value.trim().toLowerCase();
+      
+      // Reset visible markers
+      visibleMarkers = [];
+      
+      // Filter markers by search query
+      markers.forEach((marker, index) => {
+        const item = rawData[index];
+        const name = (item.siteName || '').toLowerCase();
+        const address = (item.address || '').toLowerCase();
+        
+        // Check filter checkboxes first
+        const typeCheckbox = document.querySelector(`input[data-type="${item.type}"]`);
+        const tierCheckbox = document.querySelector(`input[data-tier="${item.tier}"]`);
+        const typeChecked = typeCheckbox ? typeCheckbox.checked : true;
+        const tierChecked = tierCheckbox ? tierCheckbox.checked : true;
+        
+        if (
+          (query === '' || name.includes(query) || address.includes(query)) && 
+          typeChecked && 
+          tierChecked
+        ) {
+          marker.getElement().style.display = 'flex';
+          visibleMarkers.push(marker);
+        } else {
+          marker.getElement().style.display = 'none';
+        }
+      });
+      
+      // Update status
+      showStatus(`Found ${visibleMarkers.length} matches`, 'info');
+      
+      // If single result, zoom to it
+      if (visibleMarkers.length === 1) {
+        map.flyTo({
+          center: visibleMarkers[0].getLngLat(),
+          zoom: 15,
+          duration: 1000
+        });
+      } 
+      // If multiple results, fit to bounds
+      else if (visibleMarkers.length > 1) {
+        fitMapToMarkers();
+      }
+    });
+  </script>
+</body>
+</html>
