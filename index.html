@@ -5,9 +5,9 @@
   <title>Ixora Facility Management - Police Stations Hyderabad</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- MAPBOX GL JS -->
-  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
-  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <!-- MAPBOX GL JS - Updated to specific working version -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
 
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
@@ -235,7 +235,7 @@
       color: var(--secondary-color);
     }
 
-    /* Repositioned Legend */
+    /* Legend styles - improved positioning and interaction */
     .legend {
       position: absolute;
       bottom: 90px;
@@ -300,7 +300,7 @@
       display: none;
     }
 
-    /* Existing legend styles */
+    /* Your existing legend styles - preserved */
     .legend-section {
       margin-bottom: 15px;
     }
@@ -341,7 +341,7 @@
     .tier-gold { background: linear-gradient(135deg, var(--gold-color), #FFF7CC); color: #333; }
     .tier-silver { background: linear-gradient(135deg, var(--silver-color), #E6E6E6); color: #333; }
 
-    /* Improve map controls positioning */
+    /* Improve map controls positioning to avoid overlap with legend */
     .mapboxgl-ctrl-top-right {
       top: 20px !important;
       right: 20px !important;
@@ -351,7 +351,6 @@
       bottom: 20px !important;
       right: 20px !important;
     }
-
     /* VIP Popup styling */
     .custom-popup {
       max-width: 350px;
@@ -417,13 +416,13 @@
       color: var(--secondary-color);
       margin-top: 3px;
     }
-
+    
     .popup-header-info {
       display: flex;
       align-items: center;
       margin-bottom: 5px;
     }
-
+    
     .popup-tier-badge {
       background-color: var(--light-color);
       border-radius: 20px;
@@ -435,22 +434,22 @@
       gap: 4px;
       margin-left: auto;
     }
-
+    
     .popup-tier-badge.vip {
       background-color: var(--vip-color);
       color: white;
     }
-
+    
     .popup-tier-badge.platinum {
       background-color: var(--platinum-color);
       color: #333;
     }
-
+    
     .popup-tier-badge.gold {
       background-color: var(--gold-color);
       color: #333;
     }
-
+    
     .popup-tier-badge.silver {
       background-color: var(--silver-color);
       color: #333;
@@ -464,7 +463,7 @@
       font-size: 14px;
       border-left: 3px solid var(--primary-light);
     }
-
+    
     .popup-address i {
       color: var(--primary-light);
       margin-right: 5px;
@@ -501,72 +500,78 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-
-    /* Custom Mapbox marker styles */
+    
+    /* Custom Mapbox marker styles - Enhanced visibility */
     .mapboxgl-marker {
       transition: transform 0.3s ease;
+      z-index: 100 !important; /* Ensure markers are above other map elements */
     }
     .mapboxgl-marker:hover {
       transform: scale(1.2);
+      z-index: 200 !important;
     }
-
+    
     .custom-marker {
-      width: 30px;
-      height: 30px;
+      width: 36px; /* Larger size */
+      height: 36px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       color: white;
       font-weight: bold;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-      border: 2px solid white;
+      font-size: 16px; /* Larger text */
+      box-shadow: 0 3px 8px rgba(0,0,0,0.5); /* More pronounced shadow */
+      border: 3px solid white; /* Thicker border */
       cursor: pointer;
       transition: transform 0.3s ease;
     }
-
+    
     .custom-marker:hover {
       transform: scale(1.2);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.7);
     }
-
+    
     .custom-marker.hyderabad-police {
-      background-color: var(--hyderabad-color);
+      background-color: #3366cc;
     }
-
+    
     .custom-marker.cyberabad-police {
-      background-color: var(--cyberabad-color);
+      background-color: #0099c6;
     }
-
+    
+    /* Category indicators with enhanced visibility */
     .custom-marker.vip::after,
     .custom-marker.platinum::after,
     .custom-marker.gold::after,
     .custom-marker.silver::after {
       content: "";
       position: absolute;
-      top: -5px;
-      right: -5px;
-      width: 15px;
-      height: 15px;
+      top: -8px;
+      right: -8px;
+      width: 20px; /* Larger indicator */
+      height: 20px;
       border-radius: 50%;
-      border: 2px solid white;
+      border: 3px solid white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     }
-
+    
     .custom-marker.vip::after {
-      background-color: var(--vip-color);
+      background-color: #ff4500;
     }
-
+    
     .custom-marker.platinum::after {
-      background-color: var(--platinum-color);
+      background-color: #e5e4e2;
     }
-
+    
     .custom-marker.gold::after {
-      background-color: var(--gold-color);
+      background-color: #ffd700;
     }
-
+    
     .custom-marker.silver::after {
-      background-color: var(--silver-color);
+      background-color: #c0c0c0;
     }
-
+    
     /* Status indicator */
     .status-indicator {
       position: absolute;
@@ -586,16 +591,16 @@
       transition: opacity 0.3s ease, transform 0.3s ease;
       border: 1px solid rgba(0, 0, 0, 0.05);
     }
-
+    
     .status-indicator.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
+    
     .status-indicator i {
       color: var(--success-color);
     }
-
+    
     .status-indicator.error i {
       color: var(--danger-color);
     }
@@ -707,7 +712,7 @@
             </div>
           </div>
         </div>
-
+        
         <div class="filter-section">
           <h3><i class="fas fa-info-circle"></i> Statistics</h3>
           <div id="stats-container">
@@ -734,6 +739,14 @@
           <span>Cyberabad Police</span>
         </div>
       </div>
+      <!-- Fallback button for manual data loading -->
+      <div class="legend-section" style="margin-top: 15px; text-align: center;">
+        <button id="load-sample-data" style="background-color: var(--primary-light); color: white; 
+               border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
+          <i class="fas fa-database"></i> Load Sample Data
+        </button>
+      </div>
+      
       <div class="legend-section">
         <h3>Site Categories</h3>
         <div class="legend-tier-item">
@@ -754,7 +767,7 @@
         </div>
       </div>
     </div>
-
+    
     <!-- Status Indicator -->
     <div class="status-indicator" id="status-indicator">
       <i class="fas fa-check-circle"></i>
@@ -768,15 +781,26 @@
     // Use your actual Mapbox token
     mapboxgl.accessToken = 'pk.eyJ1IjoidmVkYW50aG5hdGgiLCJhIjoiY203c3lsOWZyMGs4MzJpcmJoZTY1Ync4bSJ9.Hx83V0-qM8JOmh4y_SSXCw';
 
-    // Create the map with improved style
+    // Create the map with improved style and style controls
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/light-v10',
+      style: 'mapbox://styles/mapbox/streets-v11', // Changed to streets style for better visibility
       center: [78.4867, 17.3850], // Hyderabad center
       zoom: 11,
-      pitch: 15,
+      pitch: 15, // Slight pitch for better 3D look
       bearing: 0
     });
+    
+    // Add style control
+    const layerList = document.getElementById('map-styles');
+    const inputs = layerList.getElementsByTagName('input');
+    
+    for (const input of inputs) {
+      input.onclick = (layer) => {
+        const layerId = layer.target.id;
+        map.setStyle('mapbox://styles/mapbox/' + layerId);
+      };
+    }
 
     // UI Elements
     const loader = document.getElementById('loader');
@@ -791,7 +815,7 @@
     let currentPopup = null;   // track open popup
     let markers = [];          // store all markers
     let visibleMarkers = [];   // track which markers are visible
-
+    
     // Sample VIP data to ensure proper display
     const sampleVIPData = {
       "Saifabad": { staff: 45, supervisors: 5, managers: 2, area: "12,500 sq ft", chemicals: 12, wasteVehicles: 4, machines: 15 },
@@ -802,44 +826,355 @@
       "Kukatpally": { staff: 47, supervisors: 5, managers: 2, area: "13,200 sq ft", chemicals: 13, wasteVehicles: 4, machines: 16 }
     };
 
-    // Map load event
-    map.on('load', () => {
-      console.log('Map has loaded. Fetching data...');
+    // Make sure mapboxgl is defined
+    if (typeof mapboxgl === 'undefined') {
+      console.error('Mapbox GL JS is not loaded. Check your internet connection or try a different browser.');
+      alert('Mapbox GL JS failed to load. Please check your internet connection and reload the page.');
+    }
 
-      // Add navigation controls with improved positioning
+    // Handle potential map initialization errors
+    try {
+      // Do an immediate load of sample data if needed
+      const urlParams = new URLSearchParams(window.location.search);
+      const directLoad = urlParams.get('load') === 'sample';
+      
+      map.on('load', () => {
+        console.log('Map has loaded. Setting up...');
+        
+        // Create a debug status display
+        showStatus('Map loaded successfully. Setting up controls...', 'success');
+        
+        // Add navigation controls with improved positioning
       map.addControl(new mapboxgl.NavigationControl(), 'top-right');
-
+      
       // Add fullscreen control
       map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
-
+      
       // Add geolocate control
       map.addControl(
         new mapboxgl.GeolocateControl({
-          positionOptions: { enableHighAccuracy: true },
+          positionOptions: {enableHighAccuracy: true},
           trackUserLocation: true,
           showUserHeading: true
-        }),
+        }), 
         'top-right'
       );
+      
+      // Check if we should immediately load sample data (for testing)
+      if (directLoad) {
+        console.log('Direct sample data loading triggered by URL parameter');
+        setTimeout(() => {
+          document.getElementById('load-sample-data').click();
+        }, 1000);
+      } else {
+        // Fetch data normally
+        fetchDataAndBuildLayers();
+      }
+      });
+      
+      // Add map style change event handler
+      map.on('style.load', () => {
+        console.log('Map style loaded/changed');
+        
+        // If we have markers but changed style, recreate them to ensure visibility
+        if (markers.length > 0 && rawData) {
+          console.log('Recreating markers after style change');
+          setTimeout(() => createDirectMarkers(rawData), 500);
+        }
+      });
+    } catch (error) {
+      console.error('Error initializing map:', error);
+      alert('Failed to initialize the map. Please try refreshing the page or use the "Load Sample Data" button.');
+    }
 
-      // Fetch data
-      fetchDataAndBuildLayers();
-    });
-
-    // Fetch data and build layers
+    // Update your fetchDataAndBuildLayers function to use proper GeoJSON source and layers
+    // Function to try multiple URLs in sequence
+    function fetchWithFallback(urls, index) {
+      if (index >= urls.length) {
+        // If we've tried all URLs, use sample data
+        console.error('All URLs failed, using sample data');
+        processData(generateSampleData());
+        return;
+      }
+      
+      console.log(`Trying URL ${index + 1}/${urls.length}: ${urls[index]}`);
+      
+      fetch(urls[index], {
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        console.log('Response received, parsing JSON...');
+        return response.json();
+      })
+      .then(data => {
+        console.log('JSON parsed successfully');
+        processData(data);
+      })
+      .catch(error => {
+        console.error(`Failed to fetch from ${urls[index]}:`, error);
+        // Try the next URL
+        fetchWithFallback(urls, index + 1);
+      });
+    }
+    
+    // Process the data once we have it
+    function processData(data) {
+      console.log('Processing data:', data ? (Array.isArray(data) ? data.length + ' items' : 'object') : 'null');
+      
+      // If data is in unexpected format, transform it
+      if (data && typeof data === 'object' && !Array.isArray(data)) {
+        console.log('Converting object to array');
+        // Handle case where data is an object instead of array
+        if (data.facilities && Array.isArray(data.facilities)) {
+          data = data.facilities;
+        } else {
+          // Try to extract array if data is wrapped in another property
+          for (const key in data) {
+            if (Array.isArray(data[key])) {
+              console.log(`Found array in property ${key}`);
+              data = data[key];
+              break;
+            }
+          }
+        }
+      }
+      
+      // Fallback if data is empty or not an array
+      if (!data || !Array.isArray(data) || data.length === 0) {
+        console.warn('Invalid or empty data, using sample data');
+        data = generateSampleData();
+      }
+      
+      rawData = data;
+      
+      // Enrich with VIP data
+      enrichWithVIPData(rawData);
+      
+      // Convert to GeoJSON
+      const geojsonData = {
+        type: 'FeatureCollection',
+        features: rawData.map(item => ({
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [parseFloat(item.longitude), parseFloat(item.latitude)]
+          },
+          properties: { ...item }
+        }))
+      };
+      
+      // Add the source and layers
+      try {
+        // Add the facilities source
+        map.addSource('facilities', {
+          type: 'geojson',
+          data: geojsonData,
+          cluster: true,
+          clusterMaxZoom: 14,
+          clusterRadius: 50,
+          clusterProperties: {
+            // Count sites by type
+            hyderabad_count: ['+', ['case', ['==', ['get', 'type'], 'hyderabad-police'], 1, 0]],
+            cyberabad_count: ['+', ['case', ['==', ['get', 'type'], 'cyberabad-police'], 1, 0]],
+            // Count sites by tier
+            vip_count: ['+', ['case', ['==', ['get', 'tier'], 'vip'], 1, 0]],
+            platinum_count: ['+', ['case', ['==', ['get', 'tier'], 'platinum'], 1, 0]],
+            gold_count: ['+', ['case', ['==', ['get', 'tier'], 'gold'], 1, 0]],
+            silver_count: ['+', ['case', ['==', ['get', 'tier'], 'silver'], 1, 0]]
+          }
+        });
+        
+        // Add the layers
+        addMapLayers();
+        
+        // Setup map interactions
+        setupMapInteraction();
+        
+        // Fit map to the points
+        fitBoundsToSource('facilities');
+      } catch (error) {
+        console.error('Error setting up map source/layers:', error);
+        createDirectMarkers(rawData);
+      }
+      
+      // Update stats and hide loader
+      updateStats(rawData);
+      loader.style.display = 'none';
+      
+      // Show success message
+      showStatus(`Data loaded successfully (${rawData.length} facilities)`, 'success');
+    }
+    
+    // Create direct markers - completely rewritten for reliability
+    function createDirectMarkers(data) {
+      console.log('Creating direct markers for facilities:', data.length);
+      showStatus(`Creating ${data.length} markers on map...`, 'loading');
+      
+      // First, make sure the map is fully loaded
+      if (!map.loaded()) {
+        console.log('Map not fully loaded, waiting...');
+        setTimeout(() => createDirectMarkers(data), 500);
+        return;
+      }
+      
+      // Remove any existing markers
+      markers.forEach(marker => marker.remove());
+      markers = [];
+      visibleMarkers = [];
+      
+      // Wait a moment to ensure map is ready
+      setTimeout(() => {
+        // Create a marker for each facility
+        data.forEach((item, index) => {
+          try {
+            if (!item.latitude || !item.longitude) {
+              console.warn(`Skipping marker for ${item.siteName || 'Unknown'} - missing coordinates`);
+              return;
+            }
+            
+            const lat = parseFloat(item.latitude);
+            const lng = parseFloat(item.longitude);
+            
+            if (isNaN(lat) || isNaN(lng)) {
+              console.warn(`Invalid coordinates for ${item.siteName}: ${item.latitude}, ${item.longitude}`);
+              return;
+            }
+            
+            console.log(`Creating marker ${index+1}/${data.length}: ${item.siteName} at ${lat}, ${lng}`);
+            
+            // Create marker element
+            const el = document.createElement('div');
+            el.className = `custom-marker ${item.type || 'unknown'} ${item.tier || 'unknown'}`;
+            el.innerHTML = item.type === 'hyderabad-police' ? 'H' : 'C';
+            el.setAttribute('title', item.siteName);
+            
+            // Create the marker with offset to prevent overlap
+            const marker = new mapboxgl.Marker({
+              element: el,
+              anchor: 'center'
+            })
+              .setLngLat([lng, lat])
+              .addTo(map);
+            
+            // Add click event for popup
+            marker.getElement().addEventListener('click', () => {
+              if (currentPopup) currentPopup.remove();
+              
+              // Format popup content
+              const popupContent = createFacilityPopupHTML(item);
+              
+              // Show popup
+              currentPopup = new mapboxgl.Popup({
+                offset: 25,
+                closeButton: true,
+                closeOnClick: true,
+                maxWidth: '350px'
+              })
+                .setLngLat([lng, lat])
+                .setHTML(popupContent)
+                .addTo(map);
+            });
+            
+            // Store marker reference
+            markers.push(marker);
+            visibleMarkers.push(marker);
+          } catch (e) {
+            console.error(`Error creating marker for ${item.siteName || 'Unknown'}:`, e);
+          }
+        });
+        
+        console.log(`Created ${markers.length} markers successfully`);
+        showStatus(`Created ${markers.length} markers successfully`, 'success');
+        
+        // Fit map to markers if any were created
+        if (markers.length > 0) {
+          const bounds = new mapboxgl.LngLatBounds();
+          data.forEach(item => {
+            if (item.latitude && item.longitude) {
+              const lat = parseFloat(item.latitude);
+              const lng = parseFloat(item.longitude);
+              if (!isNaN(lat) && !isNaN(lng)) {
+                bounds.extend([lng, lat]);
+              }
+            }
+          });
+          
+          // Only fit bounds if we have valid coordinates
+          if (!bounds.isEmpty()) {
+            map.fitBounds(bounds, {
+              padding: { top: 100, bottom: 100, left: 350, right: 50 },
+              maxZoom: 14,
+              duration: 1000
+            });
+          } else {
+            console.warn('No valid coordinates found to fit bounds');
+            map.flyTo({
+              center: [78.4867, 17.3850], // Hyderabad center
+              zoom: 11
+            });
+          }
+        } else {
+          console.warn('No markers created, cannot fit map bounds');
+          showStatus('No markers could be created. Check coordinates in your data.', 'error');
+        }
+      }, 500);
+    }
+    
     function fetchDataAndBuildLayers() {
       showStatus('Loading facility data...', 'loading');
-
-      fetch('facilities.json')
+      console.log('Fetching facility data...');
+      
+      // URLs to try in sequence
+      const urls = [
+        'https://raw.githubusercontent.com/Vibraneum/facilty-data/main/facilities.json',
+        // Add alternate URLs here as fallbacks
+        './facilities.json' // Local file - include this if you've saved it locally
+      ];
+      
+      // Try fetching from the first URL, then fall back to others if needed
+      fetchWithFallback(urls, 0)
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
+          console.log('Response received, parsing JSON...');
           return response.json();
         })
         .then(data => {
+          console.log('JSON parsed successfully');
+          
+          // If data is in unexpected format, transform it
+          if (data && typeof data === 'object' && !Array.isArray(data)) {
+            console.log('Converting object to array');
+            // Handle case where data is an object instead of array
+            if (data.facilities && Array.isArray(data.facilities)) {
+              return data.facilities;
+            }
+            // Try to extract array if data is wrapped in another property
+            for (const key in data) {
+              if (Array.isArray(data[key])) {
+                console.log(`Found array in property ${key}`);
+                return data[key];
+              }
+            }
+          }
+          return data;
+        })
+        .then(data => {
+          console.log('Data loaded successfully:', data.length, 'facilities');
           rawData = data;
-
+          
+          // Fallback if data is empty
+          if (!data || data.length === 0) {
+            console.warn('No facilities found in JSON, using sample data');
+            rawData = generateSampleData();
+          }
+          
           // Convert array data to GeoJSON format
           const geojsonData = {
             type: 'FeatureCollection',
@@ -854,7 +1189,7 @@
               }
             }))
           };
-
+          
           // Add the facilities source with optimized clustering params
           map.addSource('facilities', {
             type: 'geojson',
@@ -863,320 +1198,303 @@
             clusterMaxZoom: 14,
             clusterRadius: 50,
             clusterProperties: {
+              // Count sites by type
               hyderabad_count: ['+', ['case', ['==', ['get', 'type'], 'hyderabad-police'], 1, 0]],
               cyberabad_count: ['+', ['case', ['==', ['get', 'type'], 'cyberabad-police'], 1, 0]],
+              // Count sites by tier
               vip_count: ['+', ['case', ['==', ['get', 'tier'], 'vip'], 1, 0]],
               platinum_count: ['+', ['case', ['==', ['get', 'tier'], 'platinum'], 1, 0]],
               gold_count: ['+', ['case', ['==', ['get', 'tier'], 'gold'], 1, 0]],
               silver_count: ['+', ['case', ['==', ['get', 'tier'], 'silver'], 1, 0]]
             }
           });
-
-          // Add a layer for the clusters
-          map.addLayer({
-            id: 'clusters',
-            type: 'circle',
-            source: 'facilities',
-            filter: ['has', 'point_count'],
-            paint: {
-              'circle-radius': [
-                'step',
-                ['get', 'point_count'],
-                20,
-                5,
-                25,
-                10,
-                30,
-                20,
-                35
-              ],
-              'circle-color': [
-                'case',
-                ['>', ['get', 'hyderabad_count'], ['get', 'cyberabad_count']],
-                '#3366cc', // From --hyderabad-color
-                '#0099c6'  // From --cyberabad-color
-              ],
-              'circle-stroke-width': 2,
-              'circle-stroke-color': '#ffffff'
-            }
-          });
-
-          // Add a layer for cluster counts
-          map.addLayer({
-            id: 'cluster-count',
-            type: 'symbol',
-            source: 'facilities',
-            filter: ['has', 'point_count'],
-            layout: {
-              'text-field': '{point_count_abbreviated}',
-              'text-size': 14,
-              'text-font': ['DIN Pro Medium', 'Arial Unicode MS Bold']
-            },
-            paint: {
-              'text-color': '#ffffff'
-            }
-          });
-
-          // Create a layer for individual points
-          map.addLayer({
-            id: 'unclustered-point',
-            type: 'circle',
-            source: 'facilities',
-            filter: ['!', ['has', 'point_count']],
-            paint: {
-              'circle-radius': 12,
-              'circle-color': [
-                'match',
-                ['get', 'type'],
-                'hyderabad-police', '#3366cc', // From --hyderabad-color
-                'cyberabad-police', '#0099c6', // From --cyberabad-color
-                '#ccc'
-              ],
-              'circle-stroke-width': 2,
-              'circle-stroke-color': '#ffffff'
-            }
-          });
-
-          // Add a symbol layer for individual points
-          map.addLayer({
-            id: 'unclustered-label',
-            type: 'symbol',
-            source: 'facilities',
-            filter: ['!', ['has', 'point_count']],
-            layout: {
-              'text-field': [
-                'match',
-                ['get', 'type'],
-                'hyderabad-police', 'H',
-                'cyberabad-police', 'C',
-                'X'
-              ],
-              'text-size': 10,
-              'text-font': ['DIN Pro Bold', 'Arial Unicode MS Bold']
-            },
-            paint: {
-              'text-color': '#ffffff'
-            }
-          });
-
-          // Add a second ring to show tier color for individual points
-          map.addLayer({
-            id: 'tier-indicator',
-            type: 'circle',
-            source: 'facilities',
-            filter: ['!', ['has', 'point_count']],
-            paint: {
-              'circle-radius': 6,
-              'circle-color': [
-                'match',
-                ['get', 'tier'],
-                'vip', '#ff4500',       // From --vip-color
-                'platinum', '#e5e4e2',  // From --platinum-color
-                'gold', '#ffd700',      // From --gold-color
-                'silver', '#c0c0c0',    // From --silver-color
-                '#ccc'
-              ],
-              'circle-stroke-width': 1,
-              'circle-stroke-color': '#ffffff',
-              'circle-translate': [10, -10]
-            }
-          });
-
+          
+          // Add the layers
+          addMapLayers();
+          
           // Setup click events for clusters and points
           setupMapInteraction();
-
+          
+          // Enrich VIP data
+          enrichWithVIPData(rawData);
+          
           // Update stats and hide loader
           updateStats(rawData);
           loader.style.display = 'none';
-
+          
           // Show success status
           showStatus(`Data loaded successfully (${rawData.length} facilities)`, 'success');
-
+          
           // Fit map to all points
           fitBoundsToSource('facilities');
         })
         .catch(error => {
           console.error('Fetch error:', error);
           console.log('Falling back to sample data');
+          
+          // Use sample data if fetch fails
           rawData = generateSampleData();
-
-          // Add VIP data to relevant sites
+          
+          // Enrich with VIP data
           enrichWithVIPData(rawData);
-
-          // Convert array data to GeoJSON format
-          const geojsonData = {
-            type: 'FeatureCollection',
-            features: rawData.map(item => ({
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: [parseFloat(item.longitude), parseFloat(item.latitude)]
-              },
-              properties: {
-                ...item
-              }
-            }))
-          };
-
-          // Update the map source with sample data
-          if (map.getSource('facilities')) {
-            map.getSource('facilities').setData(geojsonData);
-          } else {
-            map.addSource('facilities', {
-              type: 'geojson',
-              data: geojsonData,
-              cluster: true,
-              clusterMaxZoom: 14,
-              clusterRadius: 50,
-              clusterProperties: {
-                hyderabad_count: ['+', ['case', ['==', ['get', 'type'], 'hyderabad-police'], 1, 0]],
-                cyberabad_count: ['+', ['case', ['==', ['get', 'type'], 'cyberabad-police'], 1, 0]],
-                vip_count: ['+', ['case', ['==', ['get', 'tier'], 'vip'], 1, 0]],
-                platinum_count: ['+', ['case', ['==', ['get', 'tier'], 'platinum'], 1, 0]],
-                gold_count: ['+', ['case', ['==', ['get', 'tier'], 'gold'], 1, 0]],
-                silver_count: ['+', ['case', ['==', ['get', 'tier'], 'silver'], 1, 0]]
-              }
+          
+          // Create direct markers instead of using GeoJSON source
+          try {
+            console.log('Creating markers directly for each facility');
+            
+            // Remove any existing markers
+            markers.forEach(marker => marker.remove());
+            markers = [];
+            visibleMarkers = [];
+            
+            // Create a marker for each facility
+            rawData.forEach(item => {
+              console.log(`Creating marker for ${item.siteName} at ${item.latitude}, ${item.longitude}`);
+              
+              // Create marker element
+              const el = document.createElement('div');
+              el.className = `custom-marker ${item.type} ${item.tier}`;
+              el.innerHTML = item.type === 'hyderabad-police' ? 'H' : 'C';
+              
+              // Create and store the marker
+              const marker = new mapboxgl.Marker(el)
+                .setLngLat([parseFloat(item.longitude), parseFloat(item.latitude)])
+                .addTo(map);
+              
+              // Add click handler
+              marker.getElement().addEventListener('click', () => {
+                if (currentPopup) currentPopup.remove();
+                
+                // Create popup HTML
+                const popupContent = createFacilityPopupHTML(item);
+                
+                currentPopup = new mapboxgl.Popup({
+                  offset: 25,
+                  closeButton: true,
+                  closeOnClick: true,
+                  maxWidth: '350px'
+                })
+                  .setLngLat([parseFloat(item.longitude), parseFloat(item.latitude)])
+                  .setHTML(popupContent)
+                  .addTo(map);
+              });
+              
+              // Store marker
+              markers.push(marker);
+              visibleMarkers.push(marker);
             });
-
-            // Add layers (same as in .then block)
-            map.addLayer({
-              id: 'clusters',
-              type: 'circle',
-              source: 'facilities',
-              filter: ['has', 'point_count'],
-              paint: {
-                'circle-radius': [
-                  'step',
-                  ['get', 'point_count'],
-                  20,
-                  5,
-                  25,
-                  10,
-                  30,
-                  20,
-                  35
-                ],
-                'circle-color': [
-                  'case',
-                  ['>', ['get', 'hyderabad_count'], ['get', 'cyberabad_count']],
-                  '#3366cc',
-                  '#0099c6'
-                ],
-                'circle-stroke-width': 2,
-                'circle-stroke-color': '#ffffff'
-              }
+            
+            // Update stats and hide loader
+            updateStats(rawData);
+            loader.style.display = 'none';
+            
+            // Show status
+            showStatus(`Showing ${rawData.length} facilities (using fallback method)`, 'info');
+            
+            // Fit map to markers
+            const bounds = new mapboxgl.LngLatBounds();
+            rawData.forEach(item => {
+              bounds.extend([parseFloat(item.longitude), parseFloat(item.latitude)]);
             });
-
-            map.addLayer({
-              id: 'cluster-count',
-              type: 'symbol',
-              source: 'facilities',
-              filter: ['has', 'point_count'],
-              layout: {
-                'text-field': '{point_count_abbreviated}',
-                'text-size': 14,
-                'text-font': ['DIN Pro Medium', 'Arial Unicode MS Bold']
-              },
-              paint: {
-                'text-color': '#ffffff'
-              }
+            
+            map.fitBounds(bounds, {
+              padding: { top: 100, bottom: 100, left: 350, right: 50 },
+              maxZoom: 14,
+              duration: 1000
             });
-
-            map.addLayer({
-              id: 'unclustered-point',
-              type: 'circle',
-              source: 'facilities',
-              filter: ['!', ['has', 'point_count']],
-              paint: {
-                'circle-radius': 12,
-                'circle-color': [
-                  'match',
-                  ['get', 'type'],
-                  'hyderabad-police', '#3366cc',
-                  'cyberabad-police', '#0099c6',
-                  '#ccc'
-                ],
-                'circle-stroke-width': 2,
-                'circle-stroke-color': '#ffffff'
-              }
-            });
-
-            map.addLayer({
-              id: 'unclustered-label',
-              type: 'symbol',
-              source: 'facilities',
-              filter: ['!', ['has', 'point_count']],
-              layout: {
-                'text-field': [
-                  'match',
-                  ['get', 'type'],
-                  'hyderabad-police', 'H',
-                  'cyberabad-police', 'C',
-                  'X'
-                ],
-                'text-size': 10,
-                'text-font': ['DIN Pro Bold', 'Arial Unicode MS Bold']
-              },
-              paint: {
-                'text-color': '#ffffff'
-              }
-            });
-
-            map.addLayer({
-              id: 'tier-indicator',
-              type: 'circle',
-              source: 'facilities',
-              filter: ['!', ['has', 'point_count']],
-              paint: {
-                'circle-radius': 6,
-                'circle-color': [
-                  'match',
-                  ['get', 'tier'],
-                  'vip', '#ff4500',
-                  'platinum', '#e5e4e2',
-                  'gold', '#ffd700',
-                  'silver', '#c0c0c0',
-                  '#ccc'
-                ],
-                'circle-stroke-width': 1,
-                'circle-stroke-color': '#ffffff',
-                'circle-translate': [10, -10]
-              }
-            });
-
-            setupMapInteraction();
+            
+          } catch (markerError) {
+            console.error('Error creating markers:', markerError);
+            
+            // Ultimate fallback - use GeoJSON source
+            console.log('Fallback to GeoJSON source');
+            
+            try {
+              // Convert to GeoJSON
+              const geojsonData = {
+                type: 'FeatureCollection',
+                features: rawData.map(item => ({
+                  type: 'Feature',
+                  geometry: {
+                    type: 'Point',
+                    coordinates: [parseFloat(item.longitude), parseFloat(item.latitude)]
+                  },
+                  properties: {
+                    ...item
+                  }
+                }))
+              };
+              
+              console.log('Created GeoJSON data:', geojsonData);
+              
+              // Add the facilities source with sample data
+              map.addSource('facilities', {
+                type: 'geojson',
+                data: geojsonData,
+                cluster: true,
+                clusterMaxZoom: 14,
+                clusterRadius: 50,
+                clusterProperties: {
+                  // Count sites by type
+                  hyderabad_count: ['+', ['case', ['==', ['get', 'type'], 'hyderabad-police'], 1, 0]],
+                  cyberabad_count: ['+', ['case', ['==', ['get', 'type'], 'cyberabad-police'], 1, 0]],
+                  // Count sites by tier
+                  vip_count: ['+', ['case', ['==', ['get', 'tier'], 'vip'], 1, 0]],
+                  platinum_count: ['+', ['case', ['==', ['get', 'tier'], 'platinum'], 1, 0]],
+                  gold_count: ['+', ['case', ['==', ['get', 'tier'], 'gold'], 1, 0]],
+                  silver_count: ['+', ['case', ['==', ['get', 'tier'], 'silver'], 1, 0]]
+                }
+              });
+              
+              // Add layers
+              addMapLayers();
+              
+              // Setup click events
+              setupMapInteraction();
+            } catch (geoJsonError) {
+              console.error('Error with GeoJSON approach:', geoJsonError);
+              showStatus(`Failed to display facilities: ${geoJsonError.message}`, 'error');
+            }
           }
-
-          // Update stats
+          
+          // Update stats and hide loader
           updateStats(rawData);
-
-          // Hide loader
           loader.style.display = 'none';
-
+          
           // Show error status with detailed message
           showStatus(`Failed to fetch facilities.json: ${error.message}. Using sample data.`, 'error');
-
-          // Fit map to all points
-          fitBoundsToSource('facilities');
         });
     }
 
-    // Set up map interactions for clusters and individual points
+    function addMapLayers() {
+      // Add a layer for the clusters
+      map.addLayer({
+        id: 'clusters',
+        type: 'circle',
+        source: 'facilities',
+        filter: ['has', 'point_count'],
+        paint: {
+          // Size circles based on cluster size
+          'circle-radius': [
+            'step',
+            ['get', 'point_count'],
+            20,   // Default radius of 20px
+            5,    // If point_count >= 5
+            25,   // radius = 25px
+            10,   // If point_count >= 10
+            30,   // radius = 30px
+            20,   // If point_count >= 20
+            35    // radius = 35px
+          ],
+          // Color circles based on cluster composition
+          'circle-color': [
+            'case',
+            ['>', ['get', 'hyderabad_count'], ['get', 'cyberabad_count']], 
+            'var(--hyderabad-color)',  // More Hyderabad police
+            'var(--cyberabad-color)'   // More or equal Cyberabad police
+          ],
+          'circle-stroke-width': 2,
+          'circle-stroke-color': '#ffffff'
+        }
+      });
+      
+      // Add a layer for cluster counts
+      map.addLayer({
+        id: 'cluster-count',
+        type: 'symbol',
+        source: 'facilities',
+        filter: ['has', 'point_count'],
+        layout: {
+          'text-field': '{point_count_abbreviated}',
+          'text-size': 14,
+          'text-font': ['DIN Pro Medium', 'Arial Unicode MS Bold']
+        },
+        paint: {
+          'text-color': '#ffffff'
+        }
+      });
+      
+      // Create a layer for individual points
+      map.addLayer({
+        id: 'unclustered-point',
+        type: 'circle',
+        source: 'facilities',
+        filter: ['!', ['has', 'point_count']],
+        paint: {
+          'circle-radius': 12,
+          'circle-color': [
+            'match',
+            ['get', 'type'],
+            'hyderabad-police', 'var(--hyderabad-color)',
+            'cyberabad-police', 'var(--cyberabad-color)',
+            '#ccc'  // fallback color
+          ],
+          'circle-stroke-width': 2,
+          'circle-stroke-color': '#ffffff'
+        }
+      });
+      
+      // Add a symbol layer for individual points
+      map.addLayer({
+        id: 'unclustered-label',
+        type: 'symbol',
+        source: 'facilities',
+        filter: ['!', ['has', 'point_count']],
+        layout: {
+          'text-field': [
+            'match',
+            ['get', 'type'],
+            'hyderabad-police', 'H',
+            'cyberabad-police', 'C',
+            'X'
+          ],
+          'text-size': 10,
+          'text-font': ['DIN Pro Bold', 'Arial Unicode MS Bold']
+        },
+        paint: {
+          'text-color': '#ffffff'
+        }
+      });
+      
+      // Add a second ring to show tier color for individual points
+      map.addLayer({
+        id: 'tier-indicator',
+        type: 'circle',
+        source: 'facilities',
+        filter: ['!', ['has', 'point_count']],
+        paint: {
+          'circle-radius': 6,
+          'circle-color': [
+            'match',
+            ['get', 'tier'],
+            'vip', 'var(--vip-color)',
+            'platinum', 'var(--platinum-color)',
+            'gold', 'var(--gold-color)',
+            'silver', 'var(--silver-color)',
+            '#ccc'  // fallback color
+          ],
+          'circle-stroke-width': 1,
+          'circle-stroke-color': '#ffffff',
+          'circle-translate': [10, -10]
+        }
+      });
+    }
+
     function setupMapInteraction() {
       // Click handler for clusters
       map.on('click', 'clusters', (e) => {
         const features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
         if (!features || features.length === 0) return;
-
+        
         const clusterId = features[0].properties.cluster_id;
-
+        
         // Get cluster expansion info
         map.getSource('facilities').getClusterExpansionZoom(clusterId, (err, zoom) => {
           if (err) return;
-
+          
           // Get cluster center
           const coordinates = features[0].geometry.coordinates.slice();
-
+          
           // Create cluster popup content
           const hyderabadCount = features[0].properties.hyderabad_count || 0;
           const cyberabadCount = features[0].properties.cyberabad_count || 0;
@@ -1184,7 +1502,7 @@
           const platinumCount = features[0].properties.platinum_count || 0;
           const goldCount = features[0].properties.gold_count || 0;
           const silverCount = features[0].properties.silver_count || 0;
-
+          
           const popupContent = `
             <div class="custom-popup">
               <h3>Cluster Details</h3>
@@ -1204,10 +1522,10 @@
               </div>
             </div>
           `;
-
+          
           // Create and show popup
           if (currentPopup) currentPopup.remove();
-
+          
           currentPopup = new mapboxgl.Popup({
             offset: 25,
             closeButton: true,
@@ -1217,7 +1535,7 @@
             .setLngLat(coordinates)
             .setHTML(popupContent)
             .addTo(map);
-
+          
           // Add zoom button click handler
           setTimeout(() => {
             const zoomButton = document.getElementById('zoom-to-cluster');
@@ -1234,30 +1552,30 @@
           }, 100);
         });
       });
-
+      
       // Hover effects for clusters
       map.on('mouseenter', 'clusters', () => {
         map.getCanvas().style.cursor = 'pointer';
       });
-
+      
       map.on('mouseleave', 'clusters', () => {
         map.getCanvas().style.cursor = '';
       });
-
+      
       // Click handler for individual points
       map.on('click', 'unclustered-point', (e) => {
         const features = map.queryRenderedFeatures(e.point, { layers: ['unclustered-point'] });
         if (!features || features.length === 0) return;
-
+        
         const properties = features[0].properties;
         const coordinates = features[0].geometry.coordinates.slice();
-
+        
         // Format popup content based on site data
         const popupContent = createFacilityPopupHTML(properties);
-
+        
         // Create popup
         if (currentPopup) currentPopup.remove();
-
+        
         currentPopup = new mapboxgl.Popup({
           offset: 25,
           closeButton: true,
@@ -1268,12 +1586,12 @@
           .setHTML(popupContent)
           .addTo(map);
       });
-
+      
       // Hover effects for points
       map.on('mouseenter', 'unclustered-point', () => {
         map.getCanvas().style.cursor = 'pointer';
       });
-
+      
       map.on('mouseleave', 'unclustered-point', () => {
         map.getCanvas().style.cursor = '';
       });
@@ -1287,15 +1605,15 @@
       const chemicals = parseInt(properties.chemicals) || 0;
       const wasteVehicles = parseInt(properties.wasteVehicles) || 0;
       const machines = parseInt(properties.machines) || 0;
-
+      
       // Format facility name
       const siteName = properties.siteName || 'Unknown Site';
       const siteType = properties.type || 'unknown';
       const siteTier = properties.tier || 'unknown';
-
+      
       // Start building popup HTML
       let html = `<div class="custom-popup">`;
-
+      
       // Header with site type icon and tier badge
       html += `
       <div class="popup-header-info">
@@ -1321,7 +1639,7 @@
         html += `<div class="popup-stats-grid">`;
         // Core information
         html += buildStatCard('fa-chart-area', formatNumber(squareFeet) + ' sq ft', 'Area');
-
+        
         // VIP-specific information
         if (staff) html += buildStatCard('fa-user', staff, 'Staff');
         if (chemicals) html += buildStatCard('fa-flask', chemicals, 'Chemicals');
@@ -1332,86 +1650,15 @@
         // Non-VIP layout
         html += `<p><strong>Square Feet:</strong> ${formatNumber(squareFeet)} sq ft</p>`;
       }
-
+      
       // Add address for all sites
       if (properties.address) {
         html += `<div class="popup-address"><i class="fas fa-map-marker-alt"></i> ${properties.address}</div>`;
       }
 
       html += `</div>`;
-
+      
       return html;
-    }
-
-    // Helper function to format numbers with commas
-    function formatNumber(num) {
-      if (!num) return 'N/A';
-      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
-    // Helper function to fit map bounds to a source
-    function fitBoundsToSource(sourceName) {
-      const sourceFeatures = map.querySourceFeatures(sourceName);
-
-      if (sourceFeatures.length === 0) {
-        // Fallback to Hyderabad center if no features
-        map.flyTo({
-          center: [78.4867, 17.3850],
-          zoom: 11
-        });
-        return;
-      }
-
-      const bounds = new mapboxgl.LngLatBounds();
-
-      sourceFeatures.forEach(feature => {
-        if (feature.geometry && feature.geometry.type === 'Point') {
-          bounds.extend(feature.geometry.coordinates);
-        }
-      });
-
-      map.fitBounds(bounds, {
-        padding: { top: 100, bottom: 100, left: 350, right: 50 },
-        maxZoom: 14,
-        duration: 1000
-      });
-    }
-
-    // Generate sample data if fetch fails
-    function generateSampleData() {
-      const sampleData = [
-        { siteName: "Saifabad PS", latitude: 17.4010, longitude: 78.4730, type: "hyderabad-police", tier: "vip", squareFeet: 12500, address: "5-8-207/2, Saifabad, Hyderabad-500004" },
-        { siteName: "Begumpet PS", latitude: 17.4440, longitude: 78.4680, type: "hyderabad-police", tier: "vip", squareFeet: 10200, address: "Behind Shoppers Stop, Begumpet, Hyderabad-500016" },
-        { siteName: "Charminar PS", latitude: 17.3616, longitude: 78.4747, type: "hyderabad-police", tier: "vip", squareFeet: 15800, address: "Near Charminar Bus Stand, Hyderabad-500002" },
-        { siteName: "Jubilee Hills PS", latitude: 17.4319, longitude: 78.4073, type: "hyderabad-police", tier: "platinum", squareFeet: 11600, address: "Road No. 10, Jubilee Hills, Hyderabad-500033" },
-        { siteName: "Gachibowli PS", latitude: 17.4438, longitude: 78.3515, type: "cyberabad-police", tier: "platinum", squareFeet: 9800, address: "Financial District, Gachibowli, Hyderabad-500032" },
-        { siteName: "Kukatpally PS", latitude: 17.4849, longitude: 78.4117, type: "cyberabad-police", tier: "gold", squareFeet: 13200, address: "Near JNTU, Kukatpally, Hyderabad-500085" },
-        { siteName: "Uppal PS", latitude: 17.4034, longitude: 78.5592, type: "hyderabad-police", tier: "gold", squareFeet: 8700, address: "Uppal X Roads, Hyderabad-500039" },
-        { siteName: "Miyapur PS", latitude: 17.4990, longitude: 78.3720, type: "cyberabad-police", tier: "silver", squareFeet: 7800, address: "Miyapur X Roads, Hyderabad-500049" },
-        { siteName: "Madhapur PS", latitude: 17.4500, longitude: 78.3900, type: "cyberabad-police", tier: "silver", squareFeet: 9500, address: "Near Cyber Towers, Madhapur, Hyderabad-500081" },
-        { siteName: "LB Nagar PS", latitude: 17.3521, longitude: 78.5472, type: "hyderabad-police", tier: "silver", squareFeet: 8200, address: "LB Nagar Circle, Hyderabad-500074" }
-      ];
-      return sampleData;
-    }
-
-    // Enrich sites with VIP data
-    function enrichWithVIPData(data) {
-      data.forEach(site => {
-        if (site.tier === 'vip') {
-          const baseName = site.siteName ? site.siteName.replace(/\s*PS\s*$/, '') : 'Unknown';
-          if (sampleVIPData[baseName]) {
-            Object.assign(site, sampleVIPData[baseName]);
-          } else {
-            site.staff = Math.floor(Math.random() * 30) + 20;
-            site.supervisors = Math.floor(Math.random() * 5) + 2;
-            site.managers = Math.floor(Math.random() * 2) + 1;
-            site.area = site.squareFeet ? site.squareFeet + " sq ft" : Math.floor(Math.random() * 8000 + 7000) + " sq ft";
-            site.chemicals = Math.floor(Math.random() * 10) + 5;
-            site.wasteVehicles = Math.floor(Math.random() * 4) + 1;
-            site.machines = Math.floor(Math.random() * 10) + 5;
-          }
-        }
-      });
     }
 
     // Build HTML for a stat card
@@ -1425,30 +1672,128 @@
       `;
     }
 
+    // Helper function to format numbers with commas
+    function formatNumber(num) {
+      if (!num) return 'N/A';
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    // Enrich sites with VIP data
+    function enrichWithVIPData(data) {
+      data.forEach(site => {
+        // Check if site is VIP tier
+        if (site.tier === 'vip') {
+          // Get site name without "PS" suffix for matching
+          const baseName = site.siteName ? site.siteName.replace(/\s*PS\s*$/, '') : 'Unknown';
+          
+          // Add VIP data if available, or generate sample data
+          if (sampleVIPData[baseName]) {
+            Object.assign(site, sampleVIPData[baseName]);
+          } else {
+            // Generate random data if no sample data exists
+            site.staff = Math.floor(Math.random() * 30) + 20;
+            site.supervisors = Math.floor(Math.random() * 5) + 2;
+            site.managers = Math.floor(Math.random() * 2) + 1;
+            site.area = site.squareFeet ? site.squareFeet + " sq ft" : Math.floor(Math.random() * 8000 + 7000) + " sq ft";
+            site.chemicals = Math.floor(Math.random() * 10) + 5;
+            site.wasteVehicles = Math.floor(Math.random() * 4) + 1;
+            site.machines = Math.floor(Math.random() * 10) + 5;
+          }
+        }
+      });
+    }
+
+    // Generate sample data if fetch fails
+    function generateSampleData() {
+      console.log('Generating sample data');
+      const sampleData = [
+        { siteName: "Saifabad PS", latitude: 17.4010, longitude: 78.4730, type: "hyderabad-police", tier: "vip", squareFeet: 12500, address: "5-8-207/2, Saifabad, Hyderabad-500004" },
+        { siteName: "Begumpet PS", latitude: 17.4440, longitude: 78.4680, type: "hyderabad-police", tier: "vip", squareFeet: 10200, address: "Behind Shoppers Stop, Begumpet, Hyderabad-500016" },
+        { siteName: "Charminar PS", latitude: 17.3616, longitude: 78.4747, type: "hyderabad-police", tier: "vip", squareFeet: 15800, address: "Near Charminar Bus Stand, Hyderabad-500002" },
+        { siteName: "Jubilee Hills PS", latitude: 17.4319, longitude: 78.4073, type: "hyderabad-police", tier: "platinum", squareFeet: 11600, address: "Road No. 10, Jubilee Hills, Hyderabad-500033" },
+        { siteName: "Gachibowli PS", latitude: 17.4438, longitude: 78.3515, type: "cyberabad-police", tier: "platinum", squareFeet: 9800, address: "Financial District, Gachibowli, Hyderabad-500032" },
+        { siteName: "Kukatpally PS", latitude: 17.4849, longitude: 78.4117, type: "cyberabad-police", tier: "gold", squareFeet: 13200, address: "Near JNTU, Kukatpally, Hyderabad-500085" },
+        { siteName: "Uppal PS", latitude: 17.4034, longitude: 78.5592, type: "hyderabad-police", tier: "gold", squareFeet: 8700, address: "Uppal X Roads, Hyderabad-500039" },
+        { siteName: "Miyapur PS", latitude: 17.4990, longitude: 78.3720, type: "cyberabad-police", tier: "silver", squareFeet: 7800, address: "Miyapur X Roads, Hyderabad-500049" },
+        { siteName: "Madhapur PS", latitude: 17.4500, longitude: 78.3900, type: "cyberabad-police", tier: "silver", squareFeet: 9500, address: "Near Cyber Towers, Madhapur, Hyderabad-500081" },
+        { siteName: "LB Nagar PS", latitude: 17.3521, longitude: 78.5472, type: "hyderabad-police", tier: "silver", squareFeet: 8200, address: "LB Nagar Circle, Hyderabad-500074" }
+      ];
+      
+      // Log the sample data for verification
+      console.log('Sample data generated:', sampleData.length, 'facilities');
+      return sampleData;
+    }
+    
+    // Add hardcoded sample data to ensure visualization works regardless of API
+    const hardcodedFacilities = [
+      { siteName: "Saifabad PS", latitude: 17.4010, longitude: 78.4730, type: "hyderabad-police", tier: "vip", squareFeet: 12500, address: "5-8-207/2, Saifabad, Hyderabad-500004", staff: 45, chemicals: 12, wasteVehicles: 4, machines: 15 },
+      { siteName: "Begumpet PS", latitude: 17.4440, longitude: 78.4680, type: "hyderabad-police", tier: "vip", squareFeet: 10200, address: "Behind Shoppers Stop, Begumpet, Hyderabad-500016", staff: 38, chemicals: 9, wasteVehicles: 3, machines: 12 },
+      { siteName: "Charminar PS", latitude: 17.3616, longitude: 78.4747, type: "hyderabad-police", tier: "vip", squareFeet: 15800, address: "Near Charminar Bus Stand, Hyderabad-500002", staff: 52, chemicals: 15, wasteVehicles: 5, machines: 18 },
+      { siteName: "Jubilee Hills PS", latitude: 17.4319, longitude: 78.4073, type: "hyderabad-police", tier: "platinum", squareFeet: 11600, address: "Road No. 10, Jubilee Hills, Hyderabad-500033" },
+      { siteName: "Gachibowli PS", latitude: 17.4438, longitude: 78.3515, type: "cyberabad-police", tier: "platinum", squareFeet: 9800, address: "Financial District, Gachibowli, Hyderabad-500032" },
+      { siteName: "Kukatpally PS", latitude: 17.4849, longitude: 78.4117, type: "cyberabad-police", tier: "gold", squareFeet: 13200, address: "Near JNTU, Kukatpally, Hyderabad-500085" },
+      { siteName: "Uppal PS", latitude: 17.4034, longitude: 78.5592, type: "hyderabad-police", tier: "gold", squareFeet: 8700, address: "Uppal X Roads, Hyderabad-500039" },
+      { siteName: "Miyapur PS", latitude: 17.4990, longitude: 78.3720, type: "cyberabad-police", tier: "silver", squareFeet: 7800, address: "Miyapur X Roads, Hyderabad-500049" },
+      { siteName: "Madhapur PS", latitude: 17.4500, longitude: 78.3900, type: "cyberabad-police", tier: "silver", squareFeet: 9500, address: "Near Cyber Towers, Madhapur, Hyderabad-500081" },
+      { siteName: "LB Nagar PS", latitude: 17.3521, longitude: 78.5472, type: "hyderabad-police", tier: "silver", squareFeet: 8200, address: "LB Nagar Circle, Hyderabad-500074" }
+    ];
+
+    // Helper function to fit map bounds to a source
+    function fitBoundsToSource(sourceName) {
+      const sourceFeatures = map.querySourceFeatures(sourceName);
+      
+      if (sourceFeatures.length === 0) {
+        // Fallback to Hyderabad center if no features
+        map.flyTo({
+          center: [78.4867, 17.3850],
+          zoom: 11
+        });
+        return;
+      }
+      
+      const bounds = new mapboxgl.LngLatBounds();
+      
+      sourceFeatures.forEach(feature => {
+        if (feature.geometry && feature.geometry.type === 'Point') {
+          bounds.extend(feature.geometry.coordinates);
+        }
+      });
+      
+      map.fitBounds(bounds, {
+        padding: { top: 100, bottom: 100, left: 350, right: 50 },
+        maxZoom: 14,
+        duration: 1000
+      });
+    }
+
     // Update statistics in sidebar
     function updateStats(data) {
       if (!data || !Array.isArray(data)) {
         statsContainer.innerHTML = '<p>No statistics available</p>';
         return;
       }
-
+      
+      // Count by type
       const typeCount = {
         'hyderabad-police': 0,
         'cyberabad-police': 0
       };
-
+      
+      // Count by tier
       const tierCount = {
         'vip': 0,
         'platinum': 0,
         'gold': 0,
         'silver': 0
       };
-
+      
+      // Calculate stats
       data.forEach(item => {
         if (item.type) typeCount[item.type] = (typeCount[item.type] || 0) + 1;
         if (item.tier) tierCount[item.tier] = (tierCount[item.tier] || 0) + 1;
       });
-
+      
+      // Generate HTML
       let html = `
         <div style="font-size: 14px; line-height: 1.6;">
           <p><strong>Total Facilities:</strong> ${data.length}</p>
@@ -1464,7 +1809,7 @@
           </p>
         </div>
       `;
-
+      
       statsContainer.innerHTML = html;
     }
 
@@ -1472,7 +1817,7 @@
     function showStatus(message, type = 'info') {
       statusText.textContent = message;
       statusIndicator.className = 'status-indicator';
-
+      
       if (type === 'error') {
         statusIndicator.classList.add('error');
         statusIndicator.querySelector('i').className = 'fas fa-exclamation-circle';
@@ -1481,9 +1826,10 @@
       } else {
         statusIndicator.querySelector('i').className = 'fas fa-check-circle';
       }
-
+      
       statusIndicator.classList.add('visible');
-
+      
+      // Hide after 5 seconds unless it's a loading message
       if (type !== 'loading') {
         setTimeout(() => {
           statusIndicator.classList.remove('visible');
@@ -1491,23 +1837,57 @@
       }
     }
 
-    // Fit map to visible markers
-    function fitMapToMarkers() {
-      if (visibleMarkers.length === 0) return;
-
-      const bounds = new mapboxgl.LngLatBounds();
-
-      visibleMarkers.forEach(marker => {
-        bounds.extend(marker.getLngLat());
+    // Sample data button - direct marker creation bypassing GeoJSON
+    document.getElementById('load-sample-data').addEventListener('click', () => {
+      console.log('Manual sample data loading triggered');
+      
+      // Show loading status
+      showStatus('Loading sample data...', 'loading');
+      
+      // Clear any existing data layers
+      try {
+        if (map.getSource('facilities')) {
+          if (map.getLayer('tier-indicator')) map.removeLayer('tier-indicator');
+          if (map.getLayer('unclustered-label')) map.removeLayer('unclustered-label');
+          if (map.getLayer('unclustered-point')) map.removeLayer('unclustered-point');
+          if (map.getLayer('cluster-count')) map.removeLayer('cluster-count');
+          if (map.getLayer('clusters')) map.removeLayer('clusters');
+          map.removeSource('facilities');
+        }
+      } catch (e) {
+        console.warn('Error cleaning up existing layers:', e);
+      }
+      
+      // Remove any direct markers
+      markers.forEach(marker => {
+        try {
+          marker.remove();
+        } catch (e) {
+          console.warn('Error removing marker:', e);
+        }
       });
-
-      map.fitBounds(bounds, {
-        padding: 50,
-        maxZoom: 15,
-        duration: 1000
-      });
-    }
-
+      markers = [];
+      visibleMarkers = [];
+      
+      // Use setTimeout to ensure UI updates before creating markers
+      setTimeout(() => {
+        // Use the direct marker approach rather than GeoJSON
+        console.log('Creating markers directly from hardcoded sample data');
+        
+        // Enrich VIP data first
+        enrichWithVIPData(hardcodedFacilities);
+        
+        // Use raw data
+        rawData = hardcodedFacilities;
+        
+        // Skip the GeoJSON processing and create markers directly
+        createDirectMarkers(hardcodedFacilities);
+        
+        // Update stats
+        updateStats(hardcodedFacilities);
+      }, 200);
+    });
+    
     // Sidebar toggle functionality
     sidebarTgl.addEventListener('click', () => {
       sidebar.classList.toggle('collapsed');
@@ -1519,6 +1899,13 @@
         icon.classList.remove('fa-chevron-right');
         icon.classList.add('fa-chevron-left');
       }
+      
+      // Prevent the sidebar from disappearing completely
+      setTimeout(() => {
+        if (sidebar.style.display === 'none') {
+          sidebar.style.display = 'block';
+        }
+      }, 100);
     });
 
     // Filter functionality
@@ -1532,96 +1919,114 @@
     function applyFilters() {
       const activeTypes = [];
       const activeTiers = [];
-
+      
+      // Get selected filter values
       checkboxes.forEach(cb => {
         if (cb.checked) {
           if (cb.dataset.type) activeTypes.push(cb.dataset.type);
           if (cb.dataset.tier) activeTiers.push(cb.dataset.tier);
         }
       });
-
-      // Since we're using Mapbox layers, update the visibility using Mapbox filters
-      const typeFilter = activeTypes.length > 0
-        ? ['in', ['get', 'type'], ['literal', activeTypes]]
-        : ['all'];
-      const tierFilter = activeTiers.length > 0
-        ? ['in', ['get', 'tier'], ['literal', activeTiers]]
-        : ['all'];
-
-      const combinedFilter = [
-        'all',
-        ['!', ['has', 'point_count']], // Only apply to unclustered points
-        typeFilter,
-        tierFilter
-      ];
-
-      map.setFilter('unclustered-point', combinedFilter);
-      map.setFilter('unclustered-label', combinedFilter);
-      map.setFilter('tier-indicator', combinedFilter);
-
-      // Update status based on visible features
-      const visibleFeatures = map.queryRenderedFeatures({ layers: ['unclustered-point'] });
-      showStatus(`Showing ${visibleFeatures.length} facilities`, 'info');
+      
+      // Create a combined filter expression for the map
+      const typeFilter = ['in', ['get', 'type'], ...activeTypes];
+      const tierFilter = ['in', ['get', 'tier'], ...activeTiers];
+      
+      // Apply filters to map layers for unclustered points
+      const combinedFilter = ['all', typeFilter, tierFilter];
+      
+      map.setFilter('unclustered-point', ['all', ['!', ['has', 'point_count']], ...combinedFilter]);
+      map.setFilter('unclustered-label', ['all', ['!', ['has', 'point_count']], ...combinedFilter]);
+      map.setFilter('tier-indicator', ['all', ['!', ['has', 'point_count']], ...combinedFilter]);
+      
+      // Update source data to reflect filtered items
+      // This will rebuild clusters based on filtered data
+      const filteredData = {
+        type: 'FeatureCollection',
+        features: rawData
+          .filter(item => activeTypes.includes(item.type) && activeTiers.includes(item.tier))
+          .map(item => ({
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [parseFloat(item.longitude), parseFloat(item.latitude)]
+            },
+            properties: { ...item }
+          }))
+      };
+      
+      map.getSource('facilities').setData(filteredData);
+      
+      // Show status message with count of visible features
+      showStatus(`Showing ${filteredData.features.length} of ${rawData.length} facilities`, 'info');
     }
 
     // Search functionality
     searchBar.addEventListener('input', () => {
       const query = searchBar.value.trim().toLowerCase();
-
+      
+      if (query === '') {
+        // If search is cleared, reset to showing all filtered facilities
+        applyFilters();
+        return;
+      }
+      
+      // Filter by search query plus active checkboxes
       const activeTypes = [];
       const activeTiers = [];
-
+      
       checkboxes.forEach(cb => {
         if (cb.checked) {
           if (cb.dataset.type) activeTypes.push(cb.dataset.type);
           if (cb.dataset.tier) activeTiers.push(cb.dataset.tier);
         }
       });
-
-      const typeFilter = activeTypes.length > 0
-        ? ['in', ['get', 'type'], ['literal', activeTypes]]
-        : ['all'];
-      const tierFilter = activeTiers.length > 0
-        ? ['in', ['get', 'tier'], ['literal', activeTiers]]
-        : ['all'];
-
-      const searchFilter = query
-        ? ['any',
-            ['==', ['downcase', ['get', 'siteName']], query],
-            ['==', ['downcase', ['get', 'address']], query]
-          ]
-        : ['all'];
-
-      const combinedFilter = [
-        'all',
-        ['!', ['has', 'point_count']],
-        typeFilter,
-        tierFilter,
-        searchFilter
-      ];
-
-      map.setFilter('unclustered-point', combinedFilter);
-      map.setFilter('unclustered-label', combinedFilter);
-      map.setFilter('tier-indicator', combinedFilter);
-
-      const visibleFeatures = map.queryRenderedFeatures({ layers: ['unclustered-point'] });
-      showStatus(`Found ${visibleFeatures.length} matches`, 'info');
-
-      if (visibleFeatures.length === 1) {
-        const coords = visibleFeatures[0].geometry.coordinates;
+      
+      const filteredData = {
+        type: 'FeatureCollection',
+        features: rawData
+          .filter(item => {
+            const nameMatch = item.siteName && item.siteName.toLowerCase().includes(query);
+            const addressMatch = item.address && item.address.toLowerCase().includes(query);
+            const typeMatch = activeTypes.includes(item.type);
+            const tierMatch = activeTiers.includes(item.tier);
+            
+            return (nameMatch || addressMatch) && typeMatch && tierMatch;
+          })
+          .map(item => ({
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [parseFloat(item.longitude), parseFloat(item.latitude)]
+            },
+            properties: { ...item }
+          }))
+      };
+      
+      map.getSource('facilities').setData(filteredData);
+      
+      // Update status
+      showStatus(`Found ${filteredData.features.length} matches`, 'info');
+      
+      // If single result, zoom to it
+      if (filteredData.features.length === 1) {
+        const feature = filteredData.features[0];
         map.flyTo({
-          center: coords,
+          center: feature.geometry.coordinates,
           zoom: 15,
           duration: 1000
         });
-      } else if (visibleFeatures.length > 1) {
+      } 
+      // If multiple results but not too many, fit bounds
+      else if (filteredData.features.length > 1 && filteredData.features.length < 50) {
         const bounds = new mapboxgl.LngLatBounds();
-        visibleFeatures.forEach(feature => {
+        filteredData.features.forEach(feature => {
           bounds.extend(feature.geometry.coordinates);
         });
+        
         map.fitBounds(bounds, {
-          padding: 50,
-          maxZoom: 15,
+          padding: { top: 100, bottom: 100, left: 350, right: 50 },
+          maxZoom: 14,
           duration: 1000
         });
       }
