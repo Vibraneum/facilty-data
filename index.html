@@ -116,7 +116,7 @@
     .sidebar-toggle {
       position: absolute;
       top: 10px;
-      right: -32px;
+      right: 10px;
       width: 32px;
       height: 32px;
       background-color: var(--primary-light);
@@ -127,15 +127,14 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      z-index: 2000;
+      z-index: 10;
       transition: transform 0.2s ease;
     }
     .sidebar-toggle:hover {
       transform: scale(1.1);
     }
     .sidebar.collapsed {
-      transform: translateX(-280px) !important;
-      min-width: 20px !important;
+      transform: translateX(-340px);
     }
 
     .filter-section {
@@ -165,7 +164,6 @@
       align-items: center;
       gap: 10px;
       transition: transform 0.2s ease;
-      margin-bottom: 6px;
     }
     .checkbox-item:hover {
       transform: translateX(5px);
@@ -174,8 +172,6 @@
       position: relative;
       display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
     }
     .custom-checkbox input {
       position: absolute;
@@ -238,7 +234,6 @@
       top: 50%;
       transform: translateY(-50%);
       color: var(--secondary-color);
-      pointer-events: none;
     }
 
     /* Legend styles - improved positioning and interaction */
@@ -340,13 +335,13 @@
       transform: scale(1.1);
     }
 
-    .type-hyderabad-police { background-color: #3366cc; }
-    .type-cyberabad-police { background-color: #0099c6; }
-    .type-private-fm-clients { background-color: #9c27b0; }
-    .tier-vip { background: linear-gradient(135deg, #ff4500, #ff6347); color: white; }
-    .tier-platinum { background: linear-gradient(135deg, #e5e4e2, #ffffff); color: #333; }
-    .tier-gold { background: linear-gradient(135deg, #ffd700, #FFF7CC); color: #333; }
-    .tier-silver { background: linear-gradient(135deg, #c0c0c0, #E6E6E6); color: #333; }
+    .type-hyderabad-police { background-color: var(--hyderabad-color); }
+    .type-cyberabad-police { background-color: var(--cyberabad-color); }
+    .type-private-fm-clients { background-color: var(--private-color); }
+    .tier-vip { background: linear-gradient(135deg, var(--vip-color), #ff6347); color: white; }
+    .tier-platinum { background: linear-gradient(135deg, var(--platinum-color), #ffffff); color: #333; }
+    .tier-gold { background: linear-gradient(135deg, var(--gold-color), #FFF7CC); color: #333; }
+    .tier-silver { background: linear-gradient(135deg, var(--silver-color), #E6E6E6); color: #333; }
 
     /* Improve map controls positioning to avoid overlap with legend */
     .mapboxgl-ctrl-top-right {
@@ -358,31 +353,25 @@
       bottom: 20px !important;
       right: 20px !important;
     }
-    
     /* VIP Popup styling */
     .custom-popup {
       max-width: 350px;
-      width: 100%;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      background: #ffffff;
+      background: var(--card-bg);
       padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      color: #212529;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      color: var(--dark-color);
     }
-    
     .custom-popup h3 {
       margin: 0 0 12px 0;
-      color: #212529;
+      color: var(--dark-color);
       font-size: 18px;
-      border-bottom: 2px solid #007bff;
+      border-bottom: 2px solid var(--primary-light);
       padding-bottom: 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    
     .site-type-icon {
       display: inline-flex;
       align-items: center;
@@ -396,54 +385,48 @@
       font-size: 18px;
       box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     }
-    
     .popup-stats-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
       gap: 10px;
       margin-top: 15px;
     }
-    
     .popup-stat-card {
-      background-color: rgba(0, 123, 255, 0.1);
-      border-radius: 8px;
+      background-color: rgba(var(--primary-light-rgb), 0.1);
+      border-radius: var(--border-radius);
       padding: 12px;
       text-align: center;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      border: 1px solid rgba(0, 123, 255, 0.2);
+      border: 1px solid rgba(var(--primary-light-rgb), 0.2);
     }
-    
     .popup-stat-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
-    
     .popup-stat-icon {
       font-size: 18px;
       margin-bottom: 8px;
-      color: #007bff;
+      color: var(--primary-light);
     }
-    
     .popup-stat-value {
       font-size: 18px;
       font-weight: bold;
-      color: #212529;
+      color: var(--dark-color);
     }
-    
     .popup-stat-label {
       font-size: 12px;
-      color: #6c757d;
+      color: var(--secondary-color);
       margin-top: 3px;
     }
     
     .popup-header-info {
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
     
     .popup-tier-badge {
-      background-color: #f8f9fa;
+      background-color: var(--light-color);
       border-radius: 20px;
       padding: 3px 8px;
       font-size: 12px;
@@ -455,37 +438,36 @@
     }
     
     .popup-tier-badge.vip {
-      background-color: #ff4500;
+      background-color: var(--vip-color);
       color: white;
     }
     
     .popup-tier-badge.platinum {
-      background-color: #e5e4e2;
+      background-color: var(--platinum-color);
       color: #333;
     }
     
     .popup-tier-badge.gold {
-      background-color: #ffd700;
+      background-color: var(--gold-color);
       color: #333;
     }
     
     .popup-tier-badge.silver {
-      background-color: #c0c0c0;
+      background-color: var(--silver-color);
       color: #333;
     }
 
     .popup-address {
-      background-color: rgba(0, 123, 255, 0.05);
+      background-color: rgba(var(--primary-light-rgb), 0.05);
       padding: 12px;
-      border-radius: 8px;
+      border-radius: var(--border-radius);
       margin-top: 10px;
       font-size: 14px;
-      border-left: 3px solid #007bff;
-      word-wrap: break-word;
+      border-left: 3px solid var(--primary-light);
     }
     
     .popup-address i {
-      color: #007bff;
+      color: var(--primary-light);
       margin-right: 5px;
     }
 
@@ -505,14 +487,14 @@
     .loader {
       width: 48px;
       height: 48px;
-      border: 5px solid #007bff;
+      border: 5px solid var(--primary-light);
       border-bottom-color: transparent;
       border-radius: 50%;
       animation: rotation 1s linear infinite;
       margin-bottom: 15px;
     }
     .loader-text {
-      color: #0056b3;
+      color: var(--primary-color);
       font-size: 18px;
       font-weight: 500;
     }
@@ -521,14 +503,11 @@
       100% { transform: rotate(360deg); }
     }
     
-    /* Custom Mapbox marker styles - Enhanced for visibility */
+    // Custom Mapbox marker styles - Enhanced for visibility
     .mapboxgl-marker {
       transition: transform 0.3s ease;
       z-index: 100 !important; /* Ensure markers are above other map elements */
-      pointer-events: auto !important;
-      cursor: pointer !important;
     }
-    
     .mapboxgl-marker:hover {
       transform: scale(1.2);
       z-index: 200 !important;
@@ -538,9 +517,9 @@
       width: 40px; /* Larger size */
       height: 40px;
       border-radius: 50%;
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       color: white;
       font-weight: bold;
       font-size: 18px; /* Larger text */
@@ -607,9 +586,9 @@
       bottom: 20px;
       left: 20px;
       padding: 10px 15px;
-      background-color: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
       font-size: 14px;
       display: flex;
       align-items: center;
@@ -627,82 +606,11 @@
     }
     
     .status-indicator i {
-      color: #28a745;
+      color: var(--success-color);
     }
     
     .status-indicator.error i {
-      color: #dc3545;
-    }
-    
-    /* Ensure popups have appropriate styling */
-    .mapboxgl-popup-content {
-      padding: 0 !important;
-      overflow: hidden !important;
-      max-width: 350px !important;
-    }
-
-    /* Fix for the cluster icons */
-    .cluster-card {
-      background-color: rgba(255, 255, 255, 0.95);
-      border-radius: 8px;
-      padding: 15px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      text-align: center;
-      min-width: 250px;
-    }
-    
-    .cluster-card h3 {
-      margin-top: 0;
-      margin-bottom: 15px;
-      border-bottom: 2px solid #007bff;
-      padding-bottom: 5px;
-      font-size: 18px;
-    }
-    
-    .cluster-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-    
-    .cluster-stat {
-      background-color: rgba(0, 123, 255, 0.1);
-      border-radius: 8px;
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    
-    .cluster-stat:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .cluster-stat-icon {
-      font-size: 24px;
-      margin-bottom: 10px;
-      color: #007bff;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background-color: rgba(0, 123, 255, 0.2);
-    }
-    
-    .cluster-stat-value {
-      font-size: 22px;
-      font-weight: bold;
-      color: #212529;
-    }
-    
-    .cluster-stat-label {
-      font-size: 14px;
-      color: #6c757d;
-      margin-top: 5px;
+      color: var(--danger-color);
     }
 
     /* Responsive & smaller screens */
@@ -728,7 +636,7 @@
         height: 30px;
       }
       .sidebar.collapsed {
-        transform: translateX(-240px) !important;
+        transform: translateX(-240px);
       }
     }
   </style>
@@ -887,8 +795,8 @@
           </div>
         </div>
       </div>
-    <!-- "Reload All Data" button -->
-    <div class="legend-section" style="margin: 20px 0; text-align: center;">
+    <!-- "Load Sample Data" is now "Reload All Data" -->
+      <div class="legend-section" style="margin: 20px 0; text-align: center;">
         <button id="load-sample-data" style="background-color: #007bff; color: white; 
                border: none; padding: 12px 15px; border-radius: 4px; cursor: pointer;
                width: 100%; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -975,7 +883,6 @@
     let markers = [];          // store all markers
     let visibleMarkers = [];   // track which markers are visible
     let mapInitialized = false; // track if map is fully initialized
-    let currentMapStyle = 'streets-v11'; // Track current map style
 
     // Create the map with improved style
     console.log('Initializing map...');
@@ -1144,8 +1051,7 @@
       // Enrich with VIP data
       enrichWithVIPData(rawData);
       
-      // Try direct marker approach which is more reliable
-      console.log('Using direct marker approach for most reliability');
+      // Use direct marker approach which is more reliable
       createDirectMarkers(rawData);
       
       // Update stats and hide loader
@@ -1203,8 +1109,6 @@
           } else {
             el.innerHTML = '?';
           }
-          
-          el.style.zIndex = '999'; // Ensure high z-index
           
           // Create and add the marker
           const marker = new mapboxgl.Marker({
@@ -1321,8 +1225,11 @@
       }
       
       data.forEach(site => {
-        // Skip if not a VIP or Platinum tier
+        // Skip if not a VIP or platinum tier
         if (site.tier !== 'vip' && site.tier !== 'platinum') return;
+        
+        // Skip if already has all data
+        if (site.staff && site.chemicals && site.wasteVehicles && site.machines) return;
         
         // Get site name without suffixes for matching
         let baseName = site.siteName || '';
@@ -1352,12 +1259,10 @@
       });
     }
 
-    // Create HTML for facility popup with improved formatting
+    // Create HTML for facility popup
     function createFacilityPopupHTML(properties) {
-      // Parse string properties - JSON properties get stringified when in GeoJSON layers
+      // Parse string properties if needed
       let props = properties;
-      
-      // If properties come from GeoJSON, they might be stringified
       if (typeof properties === 'string') {
         try {
           props = JSON.parse(properties);
@@ -1377,76 +1282,39 @@
       const siteType = props.type || 'unknown';
       const siteTier = props.tier || 'unknown';
       
-      // Start building popup HTML with improved formatting
-      let html = `<div class="custom-popup" style="width: 100%; max-width: 350px; word-wrap: break-word;">`;
-      
-      // Header with site type icon and tier badge
-      html += `
-      <div class="popup-header-info" style="display: flex; align-items: center; margin-bottom: 10px;">
-        <span class="site-type-icon" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; color: white; margin-right: 10px; flex-shrink: 0; font-size: 18px; box-shadow: 0 3px 6px rgba(0,0,0,0.2); background-color: ${
-          siteType === 'hyderabad-police' ? '#3366cc' :
-          siteType === 'cyberabad-police' ? '#0099c6' : 
-          siteType === 'private-fm-clients' ? '#9c27b0' : '#cccccc'
-        }">
-          ${siteType === 'hyderabad-police' ? '<i class="fas fa-shield-alt"></i>' :
-            siteType === 'cyberabad-police' ? '<i class="fas fa-laptop-code"></i>' :
-            siteType === 'private-fm-clients' ? '<i class="fas fa-building"></i>' :
-            '<i class="fas fa-map-marker-alt"></i>'}
-        </span>
-        <h3 style="margin: 0; font-size: 16px; flex-grow: 1; overflow: hidden; text-overflow: ellipsis;">${siteName}</h3>
-        <span class="popup-tier-badge" style="background-color: ${
-          siteTier === 'vip' ? '#ff4500' :
-          siteTier === 'platinum' ? '#e5e4e2' :
-          siteTier === 'gold' ? '#ffd700' :
-          siteTier === 'silver' ? '#c0c0c0' : '#f8f9fa'
-        }; color: ${
-          siteTier === 'vip' ? 'white' : '#333'
-        }; border-radius: 20px; padding: 3px 8px; font-size: 12px; font-weight: bold; display: inline-flex; align-items: center; gap: 4px; margin-left: auto;">
-          ${siteTier === 'vip' ? '<i class="fas fa-crown"></i> VIP' :
-            siteTier === 'platinum' ? '<i class="fas fa-medal"></i> Platinum' :
-            siteTier === 'gold' ? '<i class="fas fa-award"></i> Gold' :
-            '<i class="fas fa-certificate"></i> Silver'}
-        </span>
-      </div>`;
-
-      // VIP sites get detailed statistics with improved formatting
-      if (siteTier === 'vip' || siteTier === 'platinum') {
-        html += `<div class="popup-stats-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px;">`;
-        // Core information
-        html += buildStatCard('fa-chart-area', formatNumber(squareFeet) + ' sq ft', 'Area');
+      // Create a simple popup with key information
+      let html = `<div class="custom-popup">
+        <h3>${siteName}</h3>
+        <p><strong>Type:</strong> ${getTypeName(siteType)}</p>
+        <p><strong>Tier:</strong> ${siteTier.charAt(0).toUpperCase() + siteTier.slice(1)}</p>
+        <p><strong>Square Feet:</strong> ${formatNumber(squareFeet)} sq ft</p>`;
         
-        // VIP-specific information
-        if (staff) html += buildStatCard('fa-user', staff, 'Staff');
-        if (chemicals) html += buildStatCard('fa-flask', chemicals, 'Chemicals');
-        if (wasteVehicles) html += buildStatCard('fa-truck', wasteVehicles, 'Waste Veh');
-        if (machines) html += buildStatCard('fa-cogs', machines, 'Machines');
-        html += `</div>`;
-      } else {
-        // Non-VIP layout
-        html += `<p style="margin: 10px 0;"><strong>Square Feet:</strong> ${formatNumber(squareFeet)} sq ft</p>`;
+      // Add VIP/Platinum specific information
+      if (siteTier === 'vip' || siteTier === 'platinum') {
+        if (staff) html += `<p><strong>Staff:</strong> ${staff}</p>`;
+        if (chemicals) html += `<p><strong>Chemicals:</strong> ${chemicals}</p>`;
+        if (wasteVehicles) html += `<p><strong>Waste Vehicles:</strong> ${wasteVehicles}</p>`;
+        if (machines) html += `<p><strong>Machines:</strong> ${machines}</p>`;
       }
       
-      // Add address for all sites with improved word wrapping
+      // Add address
       if (props.address) {
-        html += `<div class="popup-address" style="background-color: rgba(0, 123, 255, 0.05); padding: 12px; border-radius: 8px; margin-top: 10px; font-size: 14px; border-left: 3px solid #007bff; word-wrap: break-word;">
-          <i class="fas fa-map-marker-alt" style="color: #007bff; margin-right: 5px;"></i> ${props.address}
-        </div>`;
+        html += `<p><strong>Address:</strong> ${props.address}</p>`;
       }
-
+      
       html += `</div>`;
       
       return html;
     }
 
-    // Build HTML for a stat card with improved styling
-    function buildStatCard(iconClass, value, label) {
-      return `
-        <div class="popup-stat-card" style="background-color: rgba(0, 123, 255, 0.1); border-radius: 8px; padding: 12px; text-align: center; border: 1px solid rgba(0, 123, 255, 0.2);">
-          <div class="popup-stat-icon" style="font-size: 18px; margin-bottom: 8px; color: #007bff;"><i class="fas ${iconClass}"></i></div>
-          <div class="popup-stat-value" style="font-size: 16px; font-weight: bold; color: #212529;">${value}</div>
-          <div class="popup-stat-label" style="font-size: 12px; color: #6c757d; margin-top: 3px;">${label}</div>
-        </div>
-      `;
+    // Helper function to get type name
+    function getTypeName(type) {
+      switch(type) {
+        case 'hyderabad-police': return 'Hyderabad Police';
+        case 'cyberabad-police': return 'Cyberabad Police';
+        case 'private-fm-clients': return 'Private Client';
+        default: return 'Unknown';
+      }
     }
 
     // Helper function to format numbers with commas
@@ -1461,95 +1329,54 @@
       return EMERGENCY_DATA;
     }
 
-    // Helper function to fit map bounds to a source
-    function fitBoundsToSource(sourceName) {
-      try {
-        const sourceFeatures = map.querySourceFeatures(sourceName);
-        
-        if (sourceFeatures.length === 0) {
-          // Fallback to Hyderabad center if no features
-          map.flyTo({
-            center: [78.4867, 17.3850],
-            zoom: 11
-          });
-          return;
-        }
-        
-        const bounds = new mapboxgl.LngLatBounds();
-        
-        sourceFeatures.forEach(feature => {
-          if (feature.geometry && feature.geometry.type === 'Point') {
-            bounds.extend(feature.geometry.coordinates);
-          }
-        });
-        
-        if (!bounds.isEmpty()) {
-          map.fitBounds(bounds, {
-            padding: { top: 100, bottom: 100, left: 350, right: 50 },
-            maxZoom: 14,
-            duration: 1000
-          });
-        }
-      } catch (error) {
-        console.error('Error fitting bounds:', error);
-        // Fallback to Hyderabad center
-        map.flyTo({
-          center: [78.4867, 17.3850],
-          zoom: 11
-        });
+    // Corrected updateStats function
+    function updateStats(data) {
+      if (!data || !Array.isArray(data)) {
+        statsContainer.innerHTML = '<p>No statistics available</p>';
+        return;
       }
-    }
-
-    // Update statistics in sidebar
-    // CORRECTED VERSION:
-function updateStats(data) { // Open curly brace
-  if (!data || !Array.isArray(data)) {
-    statsContainer.innerHTML = '<p>No statistics available</p>';
-    return;
-  }
-  
-  // Count by type
-  const typeCount = {
-    'hyderabad-police': 0,
-    'cyberabad-police': 0,
-    'private-fm-clients': 0
-  };
-  
-  // Count by tier
-  const tierCount = {
-    'vip': 0,
-    'platinum': 0,
-    'gold': 0,
-    'silver': 0
-  };
-  
-  // Calculate stats
-  data.forEach(item => {
-    if (item.type) typeCount[item.type] = (typeCount[item.type] || 0) + 1;
-    if (item.tier) tierCount[item.tier] = (tierCount[item.tier] || 0) + 1;
-  });
-  
-  // Generate HTML
-  let html = `
-    <div style="font-size: 14px; line-height: 1.6;">
-      <p><strong>Total Facilities:</strong> ${data.length}</p>
-      <p><strong>Types:</strong><br>
-        <span style="color: #3366cc;"><i class="fas fa-shield-alt"></i> Hyderabad Police:</span> ${typeCount['hyderabad-police'] || 0}<br>
-        <span style="color: #0099c6;"><i class="fas fa-laptop-code"></i> Cyberabad Police:</span> ${typeCount['cyberabad-police'] || 0}<br>
-        <span style="color: #9c27b0;"><i class="fas fa-building"></i> Private Clients:</span> ${typeCount['private-fm-clients'] || 0}
-      </p>
-      <p><strong>Categories:</strong><br>
-        <span style="color: #ff4500;"><i class="fas fa-crown"></i> VIP:</span> ${tierCount['vip'] || 0}<br>
-        <span style="color: #6c757d;"><i class="fas fa-medal"></i> Platinum:</span> ${tierCount['platinum'] || 0}<br>
-        <span style="color: #6c757d;"><i class="fas fa-award"></i> Gold:</span> ${tierCount['gold'] || 0}<br>
-        <span style="color: #6c757d;"><i class="fas fa-certificate"></i> Silver:</span> ${tierCount['silver'] || 0}
-      </p>
-    </div>
-  `;
-  
-  statsContainer.innerHTML = html;
-} // Close curly brace for the function
       
+      // Count by type
+      const typeCount = {
+        'hyderabad-police': 0,
+        'cyberabad-police': 0,
+        'private-fm-clients': 0
+      };
+      
+      // Count by tier
+      const tierCount = {
+        'vip': 0,
+        'platinum': 0,
+        'gold': 0,
+        'silver': 0
+      };
+      
+      // Calculate stats
+      data.forEach(item => {
+        if (item.type) typeCount[item.type] = (typeCount[item.type] || 0) + 1;
+        if (item.tier) tierCount[item.tier] = (tierCount[item.tier] || 0) + 1;
+      });
+      
+      // Generate HTML
+      let html = `
+        <div style="font-size: 14px; line-height: 1.6;">
+          <p><strong>Total Facilities:</strong> ${data.length}</p>
+          <p><strong>Types:</strong><br>
+            <span style="color: #3366cc;"><i class="fas fa-shield-alt"></i> Hyderabad Police:</span> ${typeCount['hyderabad-police'] || 0}<br>
+            <span style="color: #0099c6;"><i class="fas fa-laptop-code"></i> Cyberabad Police:</span> ${typeCount['cyberabad-police'] || 0}<br>
+            <span style="color: #9c27b0;"><i class="fas fa-building"></i> Private Clients:</span> ${typeCount['private-fm-clients'] || 0}
+          </p>
+          <p><strong>Categories:</strong><br>
+            <span style="color: #ff4500;"><i class="fas fa-crown"></i> VIP:</span> ${tierCount['vip'] || 0}<br>
+            <span style="color: #6c757d;"><i class="fas fa-medal"></i> Platinum:</span> ${tierCount['platinum'] || 0}<br>
+            <span style="color: #6c757d;"><i class="fas fa-award"></i> Gold:</span> ${tierCount['gold'] || 0}<br>
+            <span style="color: #6c757d;"><i class="fas fa-certificate"></i> Silver:</span> ${tierCount['silver'] || 0}
+          </p>
+        </div>
+      `;
+      
+      statsContainer.innerHTML = html;
+    }
 
     // Show status message
     function showStatus(message, type = 'info') {
@@ -1591,7 +1418,7 @@ function updateStats(data) { // Open curly brace
       // Try fetching with proper Promise handling
       fetchWithFallback(urls)
         .then(data => {
-          console.log('Facility data loaded successfully:', data.length, 'items');
+          console.log('Facility data loaded successfully:', Array.isArray(data) ? data.length : 'object', 'items');
           processData(data);
           return true;
         })
@@ -1618,20 +1445,16 @@ function updateStats(data) { // Open curly brace
       fetchFacilityData();
     });
     
-    // Fixed: Sidebar toggle functionality
+    // Sidebar toggle functionality
     sidebarTgl.addEventListener('click', () => {
       sidebar.classList.toggle('collapsed');
       const icon = sidebarTgl.querySelector('i');
-      
       if (sidebar.classList.contains('collapsed')) {
         icon.classList.remove('fa-chevron-left');
         icon.classList.add('fa-chevron-right');
-        sidebar.style.transform = 'translateX(-280px)';
-        sidebar.style.minWidth = '20px'; // Ensure a small portion remains visible
       } else {
         icon.classList.remove('fa-chevron-right');
         icon.classList.add('fa-chevron-left');
-        sidebar.style.transform = 'translateX(0)';
       }
     });
 
@@ -1708,8 +1531,7 @@ function updateStats(data) { // Open curly brace
       // Clear visible markers array
       visibleMarkers = [];
       
-      // Filter markers directly with improved matching
-      let matchCount = 0;
+      // Filter markers directly
       markers.forEach((marker, index) => {
         if (!rawData || index >= rawData.length) return;
         
@@ -1720,15 +1542,12 @@ function updateStats(data) { // Open curly brace
         const tierMatch = activeTiers.includes(item.tier);
         
         if ((nameMatch || addressMatch) && typeMatch && tierMatch) {
-          matchCount++;
-          marker.getElement().style.display = ''; // Using empty string is more reliable
+          marker.getElement().style.display = '';
           visibleMarkers.push(marker);
         } else {
           marker.getElement().style.display = 'none';
         }
       });
-      
-      console.log(`Found ${matchCount} matches for "${query}"`);
       
       // Update status
       showStatus(`Found ${visibleMarkers.length} matches for "${query}"`, 'info');
@@ -1763,129 +1582,31 @@ function updateStats(data) { // Open curly brace
       }
     });
 
-    // Improved cluster popup content
-    function createClusterPopupHTML(hyderabadCount, cyberabadCount, privateCount, vipCount, platinumCount, goldCount, silverCount) {
-      let html = `
-      <div class="cluster-card">
-        <h3>Cluster Details</h3>
-        <div class="cluster-stats">
-          <!-- First row: site types -->
-          <div class="cluster-stat">
-            <div class="cluster-stat-icon" style="background-color: rgba(51, 102, 204, 0.2); color: #3366cc;">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <div class="cluster-stat-value">${hyderabadCount}</div>
-            <div class="cluster-stat-label">Hyderabad</div>
-          </div>
-          
-          <div class="cluster-stat">
-            <div class="cluster-stat-icon" style="background-color: rgba(0, 153, 198, 0.2); color: #0099c6;">
-              <i class="fas fa-laptop-code"></i>
-            </div>
-            <div class="cluster-stat-value">${cyberabadCount}</div>
-            <div class="cluster-stat-label">Cyberabad</div>
-          </div>
-          
-          ${privateCount > 0 ? `
-          <div class="cluster-stat">
-            <div class="cluster-stat-icon" style="background-color: rgba(156, 39, 176, 0.2); color: #9c27b0;">
-              <i class="fas fa-building"></i>
-            </div>
-            <div class="cluster-stat-value">${privateCount}</div>
-            <div class="cluster-stat-label">Private</div>
-          </div>
-          ` : ''}
-          
-          <!-- Second row: tiers -->
-          ${vipCount > 0 ? `
-          <div class="cluster-stat">
-            <div class="cluster-stat-icon" style="background-color: rgba(255, 69, 0, 0.2); color: #ff4500;">
-              <i class="fas fa-crown"></i>
-            </div>
-            <div class="cluster-stat-value">${vipCount}</div>
-            <div class="cluster-stat-label">VIP</div>
-          </div>
-          ` : ''}
-          
-          ${platinumCount > 0 ? `
-          <div class="cluster-stat">
-            <div class="cluster-stat-icon" style="background-color: rgba(229, 228, 226, 0.5); color: #6c757d;">
-              <i class="fas fa-medal"></i>
-            </div>
-            <div class="cluster-stat-value">${platinumCount}</div>
-            <div class="cluster-stat-label">Platinum</div>
-          </div>
-          ` : ''}
-          
-          ${goldCount > 0 ? `
-          <div class="cluster-stat">
-            <div class="cluster-stat-icon" style="background-color: rgba(255, 215, 0, 0.2); color: #ffc107;">
-              <i class="fas fa-award"></i>
-            </div>
-            <div class="cluster-stat-value">${goldCount}</div>
-            <div class="cluster-stat-label">Gold</div>
-          </div>
-          ` : ''}
-          
-          ${silverCount > 0 ? `
-          <div class="cluster-stat">
-            <div class="cluster-stat-icon" style="background-color: rgba(192, 192, 192, 0.3); color: #6c757d;">
-              <i class="fas fa-certificate"></i>
-            </div>
-            <div class="cluster-stat-value">${silverCount}</div>
-            <div class="cluster-stat-label">Silver</div>
-          </div>
-          ` : ''}
-        </div>
-        
-        <div style="text-align: center; margin-top: 15px;">
-          <button id="zoom-to-cluster" style="background-color: #007bff; color: white; 
-                 border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;
-                 font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-            <i class="fas fa-search-plus"></i> Zoom In
-          </button>
-        </div>
-      </div>
-      `;
-      
-      return html;
-    }
-
-    // Fixed: Map style radio buttons with event handlers to persist markers
+    // Map style radio buttons with proper event handlers
     const layerIds = ['streets-v11', 'light-v10', 'dark-v10', 'satellite-v9'];
     layerIds.forEach(layerId => {
       document.getElementById(layerId).addEventListener('change', function() {
-        // Store current map center and zoom level
-        const center = map.getCenter();
-        const zoom = map.getZoom();
-        const currentStyle = 'mapbox://styles/mapbox/' + layerId;
+        // Store current map center and zoom before style change
+        const currentCenter = map.getCenter();
+        const currentZoom = map.getZoom();
         
-        // Store current markers data
-        const savedData = rawData; 
+        // Change the map style
+        map.setStyle('mapbox://styles/mapbox/' + layerId);
         
-        // Set the flag to indicate style change is happening
-        console.log(`Changing map style to: ${layerId}`);
-        currentMapStyle = layerId;
-        
-        // Change map style
-        map.setStyle(currentMapStyle);
-        
-        // Set up a listener for the style.load event
+        // After the style loads, restore the markers
         map.once('style.load', function() {
-          console.log('Style loaded, recreating markers');
+          console.log('Map style changed, recreating markers');
           
-          // Re-add the markers after the style has changed
-          if (savedData && savedData.length > 0) {
-            // Re-use the existing data to recreate markers
-            setTimeout(() => {
-              console.log('Recreating markers with saved data');
-              createDirectMarkers(savedData);
-              
-              // Restore view
-              map.setCenter(center);
-              map.setZoom(zoom);
-            }, 500);
-          }
+          // Restore the previous view
+          map.setCenter(currentCenter);
+          map.setZoom(currentZoom);
+          
+          // Give the map a moment to stabilize, then recreate markers
+          setTimeout(() => {
+            if (rawData && rawData.length > 0) {
+              createDirectMarkers(rawData);
+            }
+          }, 100);
         });
       });
     });
